@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Evac Shuttle
+  - Minion
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - 
   - Floor
   - Shootable
-  - 
+  - Player
   - 
   - 
   - 
