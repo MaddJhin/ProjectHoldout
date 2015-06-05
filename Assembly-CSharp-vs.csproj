@@ -46,6 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
      <Compile Include="Assets\Scripts\Camera\CameraScroll.cs" />
      <Compile Include="Assets\Scripts\Enemy\EnemyHealth.cs" />
      <Compile Include="Assets\Scripts\Enemy\EnemyMovement.cs" />
@@ -55,6 +56,22 @@
      <Compile Include="Assets\Scripts\Player\ThirdPersonUserControl.cs" />
      <Compile Include="Assets\Scripts\SimpleTestSpawner.cs" />
      <None Include="Assets\Shaders\Rim Lit Bumped Specular.shader" />
+=======
+     <Compile Include="Assets\HashIDs.cs" />
+     <Compile Include="Assets\Scripts\AICharacterControl.cs" />
+     <Compile Include="Assets\Scripts\AnimatorSetup.cs" />
+     <Compile Include="Assets\Scripts\BruteStun.cs" />
+     <Compile Include="Assets\Scripts\BruteUnit.cs" />
+     <Compile Include="Assets\Scripts\MinionPunch.cs" />
+     <Compile Include="Assets\Scripts\MinionUnit.cs" />
+     <Compile Include="Assets\Scripts\PlaceTargetWithMouse.cs" />
+     <Compile Include="Assets\Scripts\ThirdPersonCharacter.cs" />
+     <Compile Include="Assets\Scripts\ThirdPersonUserControl.cs" />
+     <Compile Include="Assets\Scripts\UnitSight.cs" />
+     <Compile Include="Assets\Scripts\UnitStats.cs" />
+     <None Include="Assets\Shaders\Alpha_Texture.shader" />
+     <None Include="Assets\Shaders\DoubleSided-Light-Spec.shader" />
+>>>>>>> Temporary
      <None Include="Assets\Shaders\ProjectorLight.shader" />
      <None Include="Assets\ThirdPersonCharacterGuidelines.txt" />
      <None Include="Assets\Shaders\Skybox-Procedural.shader" />
