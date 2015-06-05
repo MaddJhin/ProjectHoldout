@@ -48,16 +48,16 @@
   <ItemGroup>
      <Compile Include="Assets\HashIDs.cs" />
      <Compile Include="Assets\Scripts\AICharacterControl.cs" />
+     <Compile Include="Assets\Scripts\AnimatorSetup.cs" />
+     <Compile Include="Assets\Scripts\BruteStun.cs" />
+     <Compile Include="Assets\Scripts\BruteUnit.cs" />
+     <Compile Include="Assets\Scripts\MinionPunch.cs" />
+     <Compile Include="Assets\Scripts\MinionUnit.cs" />
      <Compile Include="Assets\Scripts\PlaceTargetWithMouse.cs" />
      <Compile Include="Assets\Scripts\ThirdPersonCharacter.cs" />
      <Compile Include="Assets\Scripts\ThirdPersonUserControl.cs" />
-     <Compile Include="Assets\Scripts\Unapplied\AnimatorSetup.cs" />
-     <Compile Include="Assets\Scripts\Unit Actions\BruteStun.cs" />
-     <Compile Include="Assets\Scripts\Unit Actions\MinionPunch.cs" />
-     <Compile Include="Assets\Scripts\Unit Actions\UnitSight.cs" />
+     <Compile Include="Assets\Scripts\UnitSight.cs" />
      <Compile Include="Assets\Scripts\UnitStats.cs" />
-     <Compile Include="Assets\Scripts\Unit_Types\BruteUnit.cs" />
-     <Compile Include="Assets\Scripts\Unit_Types\MinionUnit.cs" />
      <None Include="Assets\Shaders\Alpha_Texture.shader" />
      <None Include="Assets\Shaders\DoubleSided-Light-Spec.shader" />
      <None Include="Assets\Shaders\ProjectorLight.shader" />
