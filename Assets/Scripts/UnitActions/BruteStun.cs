@@ -6,6 +6,7 @@ public class BruteStun : MonoBehaviour {
     [SerializeField] public float damage = 5f;
     [SerializeField] public AudioClip attackSound;
     [SerializeField] public float duration = 3f;
+    [SerializeField] public float radius = 5f;
 
     private Animator anim;
     private UnitStats targetHealth;
@@ -24,10 +25,10 @@ public class BruteStun : MonoBehaviour {
 
     public void Slam(GameObject target)
     {
-        targetHealth = target.GetComponent<UnitStats>();
         attacking = true;
-        targetHealth.TakeDamage(damage);
-        targetHealth.ApplyStatus(UnitStats.statusEffects.stun, duration);
+
+        AreaOfEffect aoe = new AreaOfEffect();
+        aoe.AreaStun(target.transform.position, radius, damage, duration, gameObject);
         SlamEffects();
         attacking = false;
         Debug.Log("Slam!");

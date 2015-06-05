@@ -62,6 +62,7 @@ public class MinionUnit : MonoBehaviour
     void Attack()
     {
         agent.Stop();
+        Debug.Log(vision.actionTarget);
         action.Punch(vision.actionTarget);
     }
 
