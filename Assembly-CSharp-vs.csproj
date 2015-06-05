@@ -58,8 +58,10 @@
      <Compile Include="Assets\Scripts\SimpleTestSpawner.cs" />
      <Compile Include="Assets\Scripts\UnitActions\BruteStun.cs" />
      <Compile Include="Assets\Scripts\UnitActions\MinionPunch.cs" />
+     <Compile Include="Assets\Scripts\UnitActions\SelfDestruct.cs" />
      <Compile Include="Assets\Scripts\UnitActions\UnitSight.cs" />
      <Compile Include="Assets\Scripts\UnitStats.cs" />
+     <Compile Include="Assets\Scripts\UnitTypes\BobUnit.cs" />
      <Compile Include="Assets\Scripts\UnitTypes\BruteUnit.cs" />
      <Compile Include="Assets\Scripts\UnitTypes\MinionUnit.cs" />
      <None Include="Assets\Shaders\Alpha_Texture.shader" />
