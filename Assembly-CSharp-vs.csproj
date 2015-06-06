@@ -63,6 +63,7 @@
      <Compile Include="Assets\Scripts\UnitStats.cs" />
      <Compile Include="Assets\Scripts\UnitTypes\BobUnit.cs" />
      <Compile Include="Assets\Scripts\UnitTypes\BruteUnit.cs" />
+     <Compile Include="Assets\Scripts\UnitTypes\FlyingUnit.cs" />
      <Compile Include="Assets\Scripts\UnitTypes\MinionUnit.cs" />
      <None Include="Assets\Shaders\Alpha_Texture.shader" />
      <None Include="Assets\Shaders\DoubleSided-Light-Spec.shader" />
