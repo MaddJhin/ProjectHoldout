@@ -29,7 +29,7 @@ public class MinionUnit : MonoBehaviour
     private SphereCollider actionRadius;
     private Animator anim;
     private UnitStats stats;
-    private MinionPunch action;
+    private BasicAttack action;
     private UnitSight vision;
     private float elapsedTime;
 
@@ -39,7 +39,7 @@ public class MinionUnit : MonoBehaviour
         actionRadius = GetComponent<SphereCollider>();
         anim = GetComponent<Animator>();
         stats = GetComponent<UnitStats>();
-        action = GetComponent<MinionPunch>();
+        action = GetComponent<BasicAttack>();
         vision = GetComponent<UnitSight>();
         elapsedTime = 0f;
     }

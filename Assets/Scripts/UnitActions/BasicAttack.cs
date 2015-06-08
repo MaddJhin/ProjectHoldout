@@ -13,7 +13,7 @@ using System.Collections;
  * Authors: Andrew Tully
  */
 
-public class MinionPunch : MonoBehaviour 
+public class BasicAttack : MonoBehaviour 
 {
     [SerializeField] public float damage = 5f;
     [SerializeField] public AudioClip punchSound;

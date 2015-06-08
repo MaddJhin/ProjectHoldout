@@ -178,7 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6af85621be8c9d34a8e955e68de9f409, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
+  damage: 100
   attackSound: {fileID: 0}
   radius: 5
 --- !u!135 &13524014

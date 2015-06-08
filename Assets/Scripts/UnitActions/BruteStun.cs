@@ -10,7 +10,7 @@ public class BruteStun : MonoBehaviour {
 
     private Animator anim;
     private UnitStats targetHealth;
-    private bool attacking;
+    public bool attacking;
     private float attackRange;
 
     void Awake()
@@ -29,6 +29,7 @@ public class BruteStun : MonoBehaviour {
 
         AreaOfEffect aoe = new AreaOfEffect();
         aoe.AreaStun(target.transform.position, radius, damage, duration, gameObject);
+
         SlamEffects();
         attacking = false;
         Debug.Log("Slam!");

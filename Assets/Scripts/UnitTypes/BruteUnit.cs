@@ -34,7 +34,8 @@ public class BruteUnit : MonoBehaviour {
             Attack();
         }
 
-        else if (vision.actionTarget == null)
+
+        else if (vision.actionTarget == null && action.attacking == false)
             Move();
 
         elapsedTime += Time.deltaTime;
@@ -43,6 +44,7 @@ public class BruteUnit : MonoBehaviour {
     void Attack()
     {
         agent.Stop();
+        Debug.Log(vision.actionTarget);
         action.Slam(vision.actionTarget);
     }
 
