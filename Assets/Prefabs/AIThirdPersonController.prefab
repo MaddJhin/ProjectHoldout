@@ -180,6 +180,10 @@ GameObject:
   - 195: {fileID: 19597056}
   - 114: {fileID: 11402594}
   - 114: {fileID: 11450346}
+  - 114: {fileID: 11464358}
+  - 114: {fileID: 11427152}
+  - 114: {fileID: 11435310}
+  - 135: {fileID: 13507202}
   m_Layer: 0
   m_Name: AIThirdPersonController
   m_TagString: Untagged
@@ -1779,7 +1783,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 113348}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: .0172810853, y: -2.14121982e-08, z: .157655239}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 434400}
@@ -1981,7 +1985,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 119590}
-  m_LocalRotation: {x: .532675147, y: .0703404471, z: .836132646, w: -.110415131}
+  m_LocalRotation: {x: .532675207, y: .0703404546, z: .836132765, w: -.110415146}
   m_LocalPosition: {x: 2.22714643e-05, y: -6.1504652e-05, z: .0260270257}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2403,6 +2407,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+--- !u!114 &11427152
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 113348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 911d6138cd63c704391455651647b861, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5
+  punchSound: {fileID: 0}
+--- !u!114 &11435310
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 113348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03f9c5f928c8c864fa4b7ff503e04350, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetInRange: 0
+  actionTarget: {fileID: 0}
+  priorityList:
+  - 
+  - 
+  - 
 --- !u!114 &11450346
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2422,13 +2456,40 @@ MonoBehaviour:
   m_MoveSpeedMultiplier: 1
   m_AnimSpeedMultiplier: 1
   m_GroundCheckDistance: .200000003
+--- !u!114 &11464358
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 113348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e63de67a0857d5c44b1756f81dc578dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  attackSpeed: 1
+  attackRange: 1
+  armor: 0
+--- !u!135 &13507202
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 113348}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2.5
+  m_Center: {x: 0, y: .800000012, z: 0}
 --- !u!136 &13654204
 CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 113348}
-  m_Material: {fileID: 13400000, guid: cf63880488ec29f43a759ecd9c6c5123, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: .300000012
