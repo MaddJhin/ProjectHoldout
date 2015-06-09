@@ -533,7 +533,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &183635904
 Transform:
   m_ObjectHideFlags: 0
@@ -3000,7 +3000,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 177844, guid: e02a91454d6b9a0478949d4eedef53fe, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 19573666, guid: e02a91454d6b9a0478949d4eedef53fe, type: 2}
       propertyPath: m_Radius
@@ -3086,25 +3086,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1338623524}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1415666804 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 162596, guid: 978722db66dd83140ade7dc9167f863c, type: 2}
-  m_PrefabInternal: {fileID: 1494883728}
---- !u!54 &1415666809
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1415666804}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: .0500000007
-  m_UseGravity: 1
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 2
 --- !u!1 &1423657419
 GameObject:
   m_ObjectHideFlags: 0
@@ -3343,52 +3324,7 @@ Prefab:
       propertyPath: targetLoc
       value: 
       objectReference: {fileID: 879404532}
-    - target: {fileID: 162596, guid: 978722db66dd83140ade7dc9167f863c, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 13526308, guid: 978722db66dd83140ade7dc9167f863c, type: 2}
-      propertyPath: m_Radius
-      value: .200000003
-      objectReference: {fileID: 0}
-    - target: {fileID: 189742, guid: 978722db66dd83140ade7dc9167f863c, type: 2}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 147048, guid: 978722db66dd83140ade7dc9167f863c, type: 2}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5494012, guid: 978722db66dd83140ade7dc9167f863c, type: 2}
-      propertyPath: m_UseGravity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11481298, guid: 978722db66dd83140ade7dc9167f863c, type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 13614012, guid: 978722db66dd83140ade7dc9167f863c, type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 19598296, guid: 978722db66dd83140ade7dc9167f863c, type: 2}
-      propertyPath: m_AutoBraking
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 19598296, guid: 978722db66dd83140ade7dc9167f863c, type: 2}
-      propertyPath: m_Radius
-      value: .129999995
-      objectReference: {fileID: 0}
-    - target: {fileID: 19598296, guid: 978722db66dd83140ade7dc9167f863c, type: 2}
-      propertyPath: m_Height
-      value: .400000006
-      objectReference: {fileID: 0}
-    - target: {fileID: 19598296, guid: 978722db66dd83140ade7dc9167f863c, type: 2}
-      propertyPath: m_StoppingDistance
-      value: .100000001
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5494012, guid: 978722db66dd83140ade7dc9167f863c, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 978722db66dd83140ade7dc9167f863c, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1510833210
@@ -4177,7 +4113,7 @@ Prefab:
       objectReference: {fileID: 879404532}
     - target: {fileID: 107854, guid: b534c5c16e2d1624e8945e8887e08389, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b534c5c16e2d1624e8945e8887e08389, type: 2}
@@ -4493,7 +4429,7 @@ GameObject:
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!54 &2130787399
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -28,11 +28,6 @@ public class BasicAttack : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    void Update()
-    {
-        
-    }
-
     public void Punch(GameObject target)
     {
         targetHealth = target.GetComponent<UnitStats>();

@@ -78,7 +78,6 @@ public class UnitSight : MonoBehaviour
                 {
                     actionTarget = other.gameObject;
                     targetInRange = true;
-                    targetStats = actionTarget.GetComponent<UnitStats>();
                 }
             }  
         }
