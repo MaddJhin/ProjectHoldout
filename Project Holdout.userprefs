@@ -1,12 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\AreaOfEffect.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\SimpleTestSpawner.cs">
     <Files>
-      <File FileName="Assets\Scripts\UnitStats.cs" Line="64" Column="1" />
-      <File FileName="Assets\Scripts\UnitActions\BasicAttack.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\UnitActions\UnitSight.cs" Line="77" Column="50" />
-      <File FileName="Assets\Scripts\Player\PlaceTargetWithMouse.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\AreaOfEffect.cs" Line="23" Column="46" />
+      <File FileName="Assets\Scripts\SimpleTestSpawner.cs" Line="2" Column="26" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
