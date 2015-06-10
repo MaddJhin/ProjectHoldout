@@ -1330,34 +1330,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 191342, guid: 8cc87300df414354482bec4011145aeb, type: 2}
-      propertyPath: m_TagString
-      value: Barricade
-      objectReference: {fileID: 0}
-    - target: {fileID: 189676, guid: 8cc87300df414354482bec4011145aeb, type: 2}
-      propertyPath: m_TagString
-      value: Barricade
-      objectReference: {fileID: 0}
-    - target: {fileID: 154578, guid: 8cc87300df414354482bec4011145aeb, type: 2}
-      propertyPath: m_TagString
-      value: Barricade
-      objectReference: {fileID: 0}
-    - target: {fileID: 141220, guid: 8cc87300df414354482bec4011145aeb, type: 2}
-      propertyPath: m_TagString
-      value: Barricade
-      objectReference: {fileID: 0}
-    - target: {fileID: 107830, guid: 8cc87300df414354482bec4011145aeb, type: 2}
-      propertyPath: m_TagString
-      value: Barricade
-      objectReference: {fileID: 0}
-    - target: {fileID: 185576, guid: 8cc87300df414354482bec4011145aeb, type: 2}
-      propertyPath: m_TagString
-      value: Barricade
-      objectReference: {fileID: 0}
-    - target: {fileID: 100406, guid: 8cc87300df414354482bec4011145aeb, type: 2}
-      propertyPath: m_TagString
-      value: Barricade
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8cc87300df414354482bec4011145aeb, type: 2}
   m_IsPrefabParent: 0
