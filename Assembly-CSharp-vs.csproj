@@ -51,10 +51,12 @@
      <Compile Include="Assets\Scripts\Camera\CameraScroll.cs" />
      <Compile Include="Assets\Scripts\Enemy\EnemyHealth.cs" />
      <Compile Include="Assets\Scripts\Enemy\EnemyMovement.cs" />
-     <Compile Include="Assets\Scripts\Player\AICharacterControl.cs" />
-     <Compile Include="Assets\Scripts\Player\PlaceTargetWithMouse.cs" />
-     <Compile Include="Assets\Scripts\Player\ThirdPersonCharacter.cs" />
-     <Compile Include="Assets\Scripts\Player\ThirdPersonUserControl.cs" />
+     <Compile Include="Assets\Scripts\Player\InputManager.cs" />
+     <Compile Include="Assets\Scripts\Player\PlayerCharacterControl.cs" />
+     <Compile Include="Assets\Scripts\Player\Standard Assets\AICharacterControl.cs" />
+     <Compile Include="Assets\Scripts\Player\Standard Assets\PlaceTargetWithMouse.cs" />
+     <Compile Include="Assets\Scripts\Player\Standard Assets\ThirdPersonCharacter.cs" />
+     <Compile Include="Assets\Scripts\Player\Standard Assets\ThirdPersonUserControl.cs" />
      <Compile Include="Assets\Scripts\SimpleTestSpawner.cs" />
      <Compile Include="Assets\Scripts\UnitActions\BasicAttack.cs" />
      <Compile Include="Assets\Scripts\UnitActions\BruteStun.cs" />
