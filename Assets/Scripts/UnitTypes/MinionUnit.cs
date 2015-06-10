@@ -23,8 +23,6 @@ using System.Collections;
 
 public class MinionUnit : MonoBehaviour 
 {
-    [SerializeField] public GameObject targetLoc;
-
     private NavMeshAgent agent;
     private SphereCollider actionRadius;
     private Animator anim;
@@ -32,6 +30,7 @@ public class MinionUnit : MonoBehaviour
     private BasicAttack action;
     private UnitSight vision;
     private float elapsedTime;
+    private Vector3 targetLoc;
 
     void Awake()
     {
@@ -46,14 +45,16 @@ public class MinionUnit : MonoBehaviour
 
     void Update()
     {
+        // Update the target location
+        targetLoc = vision.actionTarget.transform.position;
 
-        if (vision.targetInRange && stats.attackSpeed < elapsedTime)
+        if (stats.attackSpeed < elapsedTime && vision.targetDistance < agent.stoppingDistance)
         {
             elapsedTime = 0f;
             Attack();
         }
 
-        else if (vision.actionTarget == null)
+        else
             Move();
 
         elapsedTime += Time.deltaTime;
@@ -69,6 +70,6 @@ public class MinionUnit : MonoBehaviour
     void Move()
     {
         agent.Resume();
-        agent.SetDestination(targetLoc.transform.position);
+        agent.SetDestination(targetLoc);
     }
 }

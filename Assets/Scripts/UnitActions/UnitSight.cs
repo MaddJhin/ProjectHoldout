@@ -30,6 +30,8 @@ public class UnitSight : MonoBehaviour
     // First element is the highest priority
     // E.G: if element[0] contains the string "Player", the "Player" tag is highest priority
     [SerializeField] public List<string> priorityList = new List<string>();
+
+    public float targetDistance; // Distance between this object and it's target
     private SphereCollider sightRange;
     private UnitStats targetStats;
 
@@ -44,6 +46,13 @@ public class UnitSight : MonoBehaviour
         if (actionTarget == null)
         {
             targetInRange = false;
+            actionTarget = GameObject.FindGameObjectWithTag("Evac Shuttle");
+        }
+
+        // Calculate distance every update
+        else
+        {
+            targetDistance = Vector3.Distance(actionTarget.transform.position, gameObject.transform.position);
         }
     }
 
@@ -55,11 +64,12 @@ public class UnitSight : MonoBehaviour
         {
             // If a match is found then that gameObject becomes the new target
             // The first element is first priority etc
-            if (other.gameObject.tag == targetTag && actionTarget == null)
+            if (other.gameObject.tag == targetTag && (actionTarget == null || actionTarget == GameObject.FindGameObjectWithTag("Evac Shuttle")))
             {
                 actionTarget = other.gameObject;
                 targetInRange = true;
                 targetStats = actionTarget.GetComponent<UnitStats>();
+                targetDistance = Vector3.Distance(actionTarget.transform.position, gameObject.transform.position);
             }
         }      
     }
@@ -67,17 +77,18 @@ public class UnitSight : MonoBehaviour
     // If the current target leaves range, it helps to select a new target
     void OnTriggerStay(Collider other)
     {
-        if (actionTarget == null)
+        if (actionTarget == null || actionTarget == GameObject.FindGameObjectWithTag("Evac Shuttle"))
         {
             // Check each tag considered a priority
             foreach (string targetTag in priorityList)
             {
                 // If a match is found then that gameObject becomes the new target
                 // The first element is first priority etc
-                if (other.gameObject.tag == targetTag && actionTarget == null)
+                if (other.gameObject.tag == targetTag && (actionTarget == null ||actionTarget == GameObject.FindGameObjectWithTag("Evac Shuttle")))
                 {
                     actionTarget = other.gameObject;
                     targetInRange = true;
+                    targetDistance = Vector3.Distance(actionTarget.transform.position, gameObject.transform.position);
                 }
             }  
         }

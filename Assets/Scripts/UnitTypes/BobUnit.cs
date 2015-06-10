@@ -23,9 +23,6 @@ using System.Collections;
 
 public class BobUnit : MonoBehaviour
 {
-    [SerializeField]
-    public GameObject targetLoc;
-
     private NavMeshAgent agent;
     private SphereCollider actionRadius;
     private Animator anim;
@@ -33,6 +30,7 @@ public class BobUnit : MonoBehaviour
     private SelfDestruct action;
     private UnitSight vision;
     private float elapsedTime;
+    private Vector3 targetLoc;
 
     void Awake()
     {
@@ -47,15 +45,19 @@ public class BobUnit : MonoBehaviour
 
     void Update()
     {
+        // Update the target location
+        targetLoc = vision.actionTarget.transform.position;
 
-        if (vision.targetInRange && stats.attackSpeed < elapsedTime)
+        Debug.Log("Current target: " + vision.actionTarget);
+
+        if (stats.attackSpeed < elapsedTime && vision.targetDistance < agent.stoppingDistance)
         {
             Debug.Log("Attacking");
             elapsedTime = 0f;
             Attack();
         }
 
-        else if (vision.actionTarget == null)
+        else
             Move();
 
         elapsedTime += Time.deltaTime;
@@ -72,6 +74,6 @@ public class BobUnit : MonoBehaviour
     void Move()
     {
         agent.Resume();
-        agent.SetDestination(targetLoc.transform.position);
+        agent.SetDestination(targetLoc);
     }
 }

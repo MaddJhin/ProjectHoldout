@@ -1,11 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BruteUnit : MonoBehaviour {
-
-    [SerializeField]
-    public GameObject targetLoc;
-
+public class BruteUnit : MonoBehaviour 
+{
     private NavMeshAgent agent;
     private SphereCollider actionRadius;
     private Animator anim;
@@ -13,6 +10,7 @@ public class BruteUnit : MonoBehaviour {
     private BruteStun action;
     private UnitSight vision;
     private float elapsedTime;
+    private Vector3 targetLoc;
 
     void Awake()
     {
@@ -27,15 +25,18 @@ public class BruteUnit : MonoBehaviour {
 
     void Update()
     {
+        // Update target location
+        targetLoc = vision.actionTarget.transform.position;
+
         // Attack speed timer
-        if (vision.targetInRange && stats.attackSpeed < elapsedTime)
+        if (stats.attackSpeed < elapsedTime && vision.targetDistance < agent.stoppingDistance)
         {
             elapsedTime = 0f;
             Attack();
         }
 
 
-        else if (vision.actionTarget == null && action.attacking == false)
+        else
             Move();
 
         elapsedTime += Time.deltaTime;
@@ -51,6 +52,6 @@ public class BruteUnit : MonoBehaviour {
     void Move()
     {
         agent.Resume();
-        agent.SetDestination(targetLoc.transform.position);
+        agent.SetDestination(targetLoc);
     }
 }

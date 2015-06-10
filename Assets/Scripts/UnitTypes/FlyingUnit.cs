@@ -3,9 +3,7 @@ using System.Collections;
 
 public class FlyingUnit : MonoBehaviour 
 {
-
     [SerializeField]
-    public GameObject targetLoc;
     public float height = 30f;
 
     private Rigidbody rb;
@@ -13,6 +11,7 @@ public class FlyingUnit : MonoBehaviour
     private Animator anim;
     private UnitStats stats;
     private UnitSight vision;
+    private Vector3 targetLoc;
 
     void Awake()
     {
@@ -25,13 +24,17 @@ public class FlyingUnit : MonoBehaviour
 
     void Update()
     {
+        // Ensures that the flyer remains at a specified height
         transform.position = new Vector3(transform.position.x, height, transform.position.z);
+
+        // Update the target location
+        targetLoc = vision.actionTarget.transform.position;
         Move();
     }
 
     void Move()
     {
         agent.Resume();
-        agent.SetDestination(targetLoc.transform.position);
+        agent.SetDestination(targetLoc);
     }
 }

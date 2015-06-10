@@ -39,7 +39,7 @@ GameObject:
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &189742
 GameObject:
   m_ObjectHideFlags: 1
@@ -169,7 +169,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 791c70012b4cbfd4895e6d8fc99af001, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetLoc: {fileID: 0}
 --- !u!114 &11469176
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -186,6 +185,7 @@ MonoBehaviour:
   priorityList:
   - Player
   - Barricade
+  targetDistance: 0
 --- !u!114 &11481298
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -275,7 +275,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: .100000001
+  m_StoppingDistance: 3
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
   m_AutoRepath: 1
