@@ -49,9 +49,11 @@
      <Compile Include="Assets\Scripts\AnimatorSetup.cs" />
      <Compile Include="Assets\Scripts\AreaOfEffect.cs" />
      <Compile Include="Assets\Scripts\Camera\CameraScroll.cs" />
+     <Compile Include="Assets\Scripts\DeltaTimeTest.cs" />
      <Compile Include="Assets\Scripts\Enemy\EnemyHealth.cs" />
      <Compile Include="Assets\Scripts\Enemy\EnemyMovement.cs" />
-     <Compile Include="Assets\Scripts\Player\InputManager.cs" />
+     <Compile Include="Assets\Scripts\InputManager.cs" />
+     <Compile Include="Assets\Scripts\Player\PlayerAttack.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerCharacterControl.cs" />
      <Compile Include="Assets\Scripts\Player\Standard Assets\AICharacterControl.cs" />
      <Compile Include="Assets\Scripts\Player\Standard Assets\PlaceTargetWithMouse.cs" />

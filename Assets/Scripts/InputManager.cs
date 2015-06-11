@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class InputManager : MonoBehaviour {
@@ -32,7 +32,7 @@ public class InputManager : MonoBehaviour {
 		// If player selects barricade, call SetTarget on the selected player character, checking for null.
 		else if (hit.collider.tag == "Barricade" && setTargetOn != null)
 		{
-			setTargetOn.SetTarget(hit.point);
+			setTargetOn.SetDestination(hit.transform);
 		}
 
 		// Place target reticule 
