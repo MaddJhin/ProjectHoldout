@@ -15,7 +15,7 @@ GameObject:
   - 54: {fileID: 5423552}
   m_Layer: 10
   m_Name: Flyer
-  m_TagString: Untagged
+  m_TagString: Flyer
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -136,6 +136,7 @@ MonoBehaviour:
   targetInRange: 0
   actionTarget: {fileID: 0}
   priorityList: []
+  targetDistance: 0
 --- !u!114 &11434416
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -147,7 +148,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47c41f51ca61cb44e9981f01cc619af8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetLoc: {fileID: 0}
   height: 30
 --- !u!114 &11490420
 MonoBehaviour:

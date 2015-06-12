@@ -6,6 +6,11 @@ TagManager:
   tags:
   - Evac Shuttle
   - Barricade
+  - Minion
+  - Flyer
+  - Bob
+  - Brute
+  - Evoker
   layers:
   - Default
   - TransparentFX
