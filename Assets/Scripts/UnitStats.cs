@@ -39,7 +39,8 @@ public class UnitStats : MonoBehaviour
 
     public void KillUnit()
     {
-        Destroy(gameObject);
+        // Deactivates the unit
+        gameObject.SetActive(false);
     }
 
     public void ApplyStatus(statusEffects effect, float duration)

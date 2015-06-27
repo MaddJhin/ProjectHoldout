@@ -13,7 +13,7 @@ GameObject:
   - 64: {fileID: 6465810}
   m_Layer: 0
   m_Name: Barrier tetra prefab
-  m_TagString: Untagged
+  m_TagString: Barricade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -46,7 +46,7 @@ GameObject:
   - 64: {fileID: 6406856}
   m_Layer: 0
   m_Name: Barrier tetra prefab
-  m_TagString: Untagged
+  m_TagString: Barricade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -61,7 +61,7 @@ GameObject:
   - 4: {fileID: 420514}
   m_Layer: 0
   m_Name: Barricade 2
-  m_TagString: Untagged
+  m_TagString: Barricade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -79,7 +79,7 @@ GameObject:
   - 64: {fileID: 6413710}
   m_Layer: 0
   m_Name: Barrier tetra prefab
-  m_TagString: Untagged
+  m_TagString: Barricade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
