@@ -2,10 +2,10 @@ fileFormatVersion: 2
 guid: 6f7f0798d552cde4db3a4527cc4fbde2
 labels:
 - Architecture
-- Barrier
 - Concrete
 - Industrial
 - Prop
+- Barrier
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:

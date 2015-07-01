@@ -452,6 +452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccb97797e4f027c418b1818a8d7479ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 100
   damagePerHit: 20
   attackRange: 2
   timeBetweenAttacks: .150000006
@@ -461,7 +462,6 @@ MonoBehaviour:
   - Minion
   - Bob
   attackTarget: {fileID: 0}
-  originalStoppingDistance: 0
 --- !u!82 &269673343
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2148,7 +2148,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 441444, guid: c11cf535496cc924085bf8cdb80a1355, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 8.31999969
+      value: 4.40999985
       objectReference: {fileID: 0}
     - target: {fileID: 441444, guid: c11cf535496cc924085bf8cdb80a1355, type: 2}
       propertyPath: m_LocalPosition.y
