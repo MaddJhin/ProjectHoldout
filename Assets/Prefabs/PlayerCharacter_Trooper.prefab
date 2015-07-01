@@ -513,7 +513,7 @@ GameObject:
   - 114: {fileID: 11418450}
   - 114: {fileID: 11445624}
   m_Layer: 0
-  m_Name: TrooperPlayerCharacter
+  m_Name: PlayerCharacter_Trooper
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1534,7 +1534,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 143706}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.360000014, y: 0, z: -27.3899994}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 485962}
@@ -2239,7 +2239,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 185320}
-  m_LocalRotation: {x: .532675207, y: .0703404546, z: .836132765, w: -.110415146}
+  m_LocalRotation: {x: .532675147, y: .0703404471, z: .836132646, w: -.110415131}
   m_LocalPosition: {x: 2.22714643e-05, y: -6.1504652e-05, z: .0260270257}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2419,10 +2419,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ffe48266eb9be54898bd679b94166a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 50
-  punchSound: {fileID: 0}
+  timeBetweenAttacks: 0
+  range: 0
   attackTarget: {fileID: 0}
-  targetInRange: 0
+  shootPoint: {fileID: 0}
 --- !u!114 &11463906
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2435,14 +2435,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionTarget: {fileID: 0}
-  agent: {fileID: 0}
-  targetInRange: 0
   priorityList:
   - Bob
   - Brute
   - Evoker
   - Minion
-  targetDistance: 0
   targetBarricade: {fileID: 0}
 --- !u!135 &13508914
 SphereCollider:

@@ -2,25 +2,20 @@
 using System.Collections;
 using System.Collections.Generic;
 
-[RequireComponent(typeof (NavMeshAgent))]
-
 public class PlayerCharacterControl : MonoBehaviour {
 
-	public Transform actionTarget; // target to aim for
-	public NavMeshAgent agent;
-	public bool targetInRange;
-	public List<string> priorityList = new List<string>();	// Stores priority of GameObject tags. First element is the highest priority
-	public float targetDistance; // Distance between this object and it's target
+	public Transform actionTarget; 
+	public List<string> priorityList = new List<string>();
 	public Transform targetBarricade;
 
+	NavMeshAgent agent;
 	PlayerAttack attackControl;
 	Animator m_Animator;
 	float m_TurnAmount;
 	float m_ForwardAmount;
 	SphereCollider sightRange;
 	UnitStats targetStats;
-	public bool playerMove = false;
-
+	bool playerMove = false;
 	
 	// Use this for initialization
 	void Start () {
@@ -30,7 +25,7 @@ public class PlayerCharacterControl : MonoBehaviour {
 		attackControl = GetComponent<PlayerAttack>();
 		targetBarricade = this.transform;
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 
@@ -61,7 +56,11 @@ public class PlayerCharacterControl : MonoBehaviour {
 		}
 
 		// If there is an available action target move to that otheriwse go to the last choosen barricade. 
-		if (actionTarget != null) agent.SetDestination(actionTarget.position);
+		if (actionTarget != null) 
+		{
+			agent.SetDestination(actionTarget.position);
+			transform.LookAt(actionTarget.position);
+		}
 		else agent.SetDestination(targetBarricade.position);
 	}
 
