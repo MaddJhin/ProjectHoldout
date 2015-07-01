@@ -1694,7 +1694,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 174448}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.31999969, y: 0, z: 1.20000005}
+  m_LocalPosition: {x: 4.40999985, y: 0, z: -24.1700001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 491862}
@@ -2539,8 +2539,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73b6de70f3546124c8a1b696fd494633, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 100
   damagePerHit: 20
-  attackRange: 10
+  attackRange: 7
   timeBetweenAttacks: .150000006
   priorityList:
   - Bob

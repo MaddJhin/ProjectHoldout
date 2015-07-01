@@ -19,7 +19,7 @@ public class BasicAttack : MonoBehaviour
     [SerializeField] public AudioClip punchSound;
 
     private Animator anim;
-    private UnitStats targetHealth;
+//    private UnitStats targetHealth;
     private bool attacking;
     private float attackRange;
 
@@ -30,7 +30,7 @@ public class BasicAttack : MonoBehaviour
 
     public void Punch(GameObject target)
     {
-        targetHealth = target.GetComponent<UnitStats>();
+		UnitStats targetHealth = target.GetComponent<UnitStats>();
         attacking = true;
         targetHealth.TakeDamage(damage);
         PunchEffects();
