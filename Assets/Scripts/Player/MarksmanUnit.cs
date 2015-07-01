@@ -5,6 +5,7 @@ using System.Collections.Generic;
 [RequireComponent(typeof (NavMeshAgent))]
 [RequireComponent(typeof (PlayerCharacterControl))]
 [RequireComponent(typeof (PlayerAttack))]
+[RequireComponent(typeof (UnitStats))]
 
 /* USES:
  * ==============
@@ -23,12 +24,14 @@ using System.Collections.Generic;
 
 public class MarksmanUnit : MonoBehaviour {
 
+	public float health = 100f;
 	public float damagePerHit = 20f;
 	public float attackRange = 100f;
 	public float timeBetweenAttacks = 0.15f;
 	public List<string> priorityList = new List<string>();	// Stores action target priorty (highest first).
 	public Transform attackTarget;							// Target to shoot
 
+	UnitStats stats;								// Unit stat scripts for health assignment
 	Transform actionTarget;							// Current Action target
 	float timer;                                    // A timer between actions.
 	NavMeshAgent agent;								// Nav Agent for moving character
@@ -43,6 +46,7 @@ public class MarksmanUnit : MonoBehaviour {
 		agent = GetComponent<NavMeshAgent>();
 		playerControl = GetComponent<PlayerCharacterControl>();
 		playerAttack = GetComponent<PlayerAttack>();
+		stats = GetComponent<UnitStats>();
 	}
 
 	void Start (){
@@ -50,6 +54,7 @@ public class MarksmanUnit : MonoBehaviour {
 		playerControl.priorityList = priorityList;
 		playerAttack.timeBetweenAttacks = timeBetweenAttacks;
 		originalStoppingDistance = agent.stoppingDistance;
+		stats.health = health;
 	}
 	
 	// Update is called once per frame
