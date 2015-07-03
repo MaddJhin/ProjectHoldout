@@ -22,14 +22,14 @@ using System.Collections.Generic;
  * Authors: 		
  */
 
-public class MarksmanUnit : MonoBehaviour {
+public class MechanicUnit : MonoBehaviour {
 
 	public float health = 100f;
-	public float damagePerHit = 20f;
-	public float attackRange = 100f;
-	public float timeBetweenAttacks = 0.15f;
+	public float healPerHit = 20f;
+	public float healRange = 100f;
+	public float timeBetweenHeals = 0.15f;
 	public List<string> priorityList = new List<string>();	// Stores action target priorty (highest first).
-
+	
 	UnitStats stats;								// Unit stat scripts for health assignment
 	Transform actionTarget;							// Current Action target
 	float timer;                                    // A timer between actions.
@@ -39,19 +39,19 @@ public class MarksmanUnit : MonoBehaviour {
 	bool targetInRange;
 	float effectsDisplayTime = 0.1f;                // The proportion of the timeBetweenBullets that the effects will display for.
 	float originalStoppingDistance;					// Used to store preset agent stopping distance
-
-
+	
+	
 	void Awake(){
 		agent = GetComponent<NavMeshAgent>();
 		playerControl = GetComponent<PlayerCharacterControl>();
 		playerAttack = GetComponent<PlayerAttack>();
 		stats = GetComponent<UnitStats>();
 	}
-
+	
 	void Start (){
-		playerAttack.range = attackRange;
+		playerAttack.range = healRange;
 		playerControl.priorityList = priorityList;
-		playerAttack.timeBetweenAttacks = timeBetweenAttacks;
+		playerAttack.timeBetweenAttacks = timeBetweenHeals;
 		originalStoppingDistance = agent.stoppingDistance;
 		stats.health = health;
 	}
@@ -61,14 +61,7 @@ public class MarksmanUnit : MonoBehaviour {
 		// Add the time since Update was last called to the timer.
 		timer += Time.deltaTime;
 		actionTarget = playerControl.actionTarget;
-
-		// If the timer has exceeded the proportion of timeBetweenBullets that the effects should be displayed for...
-		if(timer >= timeBetweenAttacks * effectsDisplayTime)
-		{
-			// ... disable the effects.
-			playerAttack.DisableEffects ();
-		}
-
+		
 		// If there is nothing to attack, script does nothing.
 		if (actionTarget == null) 
 		{
@@ -77,10 +70,10 @@ public class MarksmanUnit : MonoBehaviour {
 		}
 		
 		// Set if the target is in range
-		if (Vector3.Distance (actionTarget.position, transform.position) <= attackRange)
+		if (Vector3.Distance (actionTarget.position, transform.position) <= healRange)
 		{
 			targetInRange = true;
-			agent.stoppingDistance = attackRange;
+			agent.stoppingDistance = healRange;
 		}
 		else
 		{
@@ -89,10 +82,10 @@ public class MarksmanUnit : MonoBehaviour {
 		}
 		
 		// If the target is in range and enough time has passed between attacks, Attack.
-		if (timer >= timeBetweenAttacks && targetInRange)
+		if (timer >= timeBetweenHeals && targetInRange)
 		{
 			timer = 0f;
-			playerAttack.Shoot(damagePerHit);
+			playerAttack.Heal(healPerHit);
 		}
 	}
 }

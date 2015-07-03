@@ -37,6 +37,12 @@ public class UnitStats : MonoBehaviour
         Debug.Log(health);
     }
 
+	public void Heal(float healAmount)
+	{
+		health += healAmount;
+		Debug.Log(health);
+	}
+
     public void KillUnit()
     {
         Destroy(gameObject);

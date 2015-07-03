@@ -67,6 +67,8 @@
      <Compile Include="Assets\Scripts\Enemy\EnemyMovement.cs" />
      <Compile Include="Assets\Scripts\InputManager.cs" />
      <Compile Include="Assets\Scripts\Player\MarksmanUnit.cs" />
+     <Compile Include="Assets\Scripts\Player\MechanicUnit.cs" />
+     <Compile Include="Assets\Scripts\Player\MedicUnit.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerAttack.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerCharacterControl.cs" />
      <Compile Include="Assets\Scripts\Player\Standard Assets\AICharacterControl.cs" />
