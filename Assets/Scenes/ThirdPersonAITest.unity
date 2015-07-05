@@ -396,20 +396,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 11
       objectReference: {fileID: 0}
-    - target: {fileID: 163548, guid: 2129e1688606b0d48a49e2287b7fc4bc, type: 2}
-      propertyPath: m_TagString
-      value: Barricade
-      objectReference: {fileID: 0}
-    - target: {fileID: 111540, guid: 2129e1688606b0d48a49e2287b7fc4bc, type: 2}
-      propertyPath: m_TagString
-      value: Barricade
-      objectReference: {fileID: 0}
-    - target: {fileID: 161128, guid: 2129e1688606b0d48a49e2287b7fc4bc, type: 2}
-      propertyPath: m_TagString
-      value: Barricade
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 13511010, guid: 2129e1688606b0d48a49e2287b7fc4bc, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2129e1688606b0d48a49e2287b7fc4bc, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &269422966
@@ -488,25 +475,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 269422966}
   m_Mesh: {fileID: 4300002, guid: 61798bdd0f4a95342abfcfb028bcff69, type: 3}
---- !u!1 &355602980
-GameObject:
-  m_PrefabParentObject: {fileID: 189676, guid: 8cc87300df414354482bec4011145aeb, type: 2}
-  m_PrefabInternal: {fileID: 1890485694}
---- !u!114 &355602985
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 355602980}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e63de67a0857d5c44b1756f81dc578dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
-  attackSpeed: 1
-  attackRange: 1
-  armor: 0
 --- !u!1 &360462892
 GameObject:
   m_ObjectHideFlags: 0
@@ -2175,23 +2143,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c11cf535496cc924085bf8cdb80a1355, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1519488992
-GameObject:
-  m_PrefabParentObject: {fileID: 161128, guid: 2129e1688606b0d48a49e2287b7fc4bc, type: 2}
-  m_PrefabInternal: {fileID: 257647050}
---- !u!136 &1519488998
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1519488992}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: .5
-  m_Height: 3
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1572653215
 Prefab:
   m_ObjectHideFlags: 0
@@ -2326,25 +2277,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1589189902}
   m_Mesh: {fileID: 4300002, guid: 61798bdd0f4a95342abfcfb028bcff69, type: 3}
---- !u!1 &1593507813
-GameObject:
-  m_PrefabParentObject: {fileID: 134330, guid: 2129e1688606b0d48a49e2287b7fc4bc, type: 2}
-  m_PrefabInternal: {fileID: 257647050}
---- !u!114 &1593507815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1593507813}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e63de67a0857d5c44b1756f81dc578dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
-  attackSpeed: 1
-  attackRange: 1
-  armor: 0
 --- !u!1 &1712585979
 GameObject:
   m_PrefabParentObject: {fileID: 116988, guid: 8cc87300df414354482bec4011145aeb, type: 2}
@@ -2360,7 +2292,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e63de67a0857d5c44b1756f81dc578dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  maxHealth: 100
+  currentHealth: 0
   attackSpeed: 1
   attackRange: 1
   armor: 0
@@ -2599,25 +2532,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0c1a08f42d5e0f94d921db9f2b1d74be, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1888708308
-GameObject:
-  m_PrefabParentObject: {fileID: 116988, guid: 8cc87300df414354482bec4011145aeb, type: 2}
-  m_PrefabInternal: {fileID: 1890485694}
---- !u!114 &1888708310
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1888708308}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e63de67a0857d5c44b1756f81dc578dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
-  attackSpeed: 1
-  attackRange: 1
-  armor: 0
 --- !u!1001 &1890485694
 Prefab:
   m_ObjectHideFlags: 0
@@ -2660,10 +2574,6 @@ Prefab:
     - target: {fileID: 116988, guid: 8cc87300df414354482bec4011145aeb, type: 2}
       propertyPath: m_Name
       value: Barricade 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 116988, guid: 8cc87300df414354482bec4011145aeb, type: 2}
-      propertyPath: m_TagString
-      value: Barricade
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8cc87300df414354482bec4011145aeb, type: 2}
