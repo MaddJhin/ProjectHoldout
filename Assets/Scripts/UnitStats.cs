@@ -18,29 +18,38 @@ using System.Collections;
 public class UnitStats : MonoBehaviour 
 {
     // Unit attributes
-    [SerializeField] public float health = 100.0f;
-    [SerializeField] public float attackSpeed = 1.0f;
-    [SerializeField] public float attackRange = 1f;
-    [SerializeField] public float armor = 0.0f;
+    public float maxHealth = 100.0f;
+    public float currentHealth;
+    public float attackSpeed = 1.0f;
+    public float attackRange = 1f;
+    public float armor = 0.0f;
 
     public enum statusEffects { stun };
 
+    void Awake()
+    {
+        currentHealth = maxHealth;
+    }
+
 	void Update () 
     {
-        if (health <= 0)
+        if (currentHealth <= 0)
             KillUnit();
 	}
 
     public void TakeDamage(float damageTaken)
     {
-        health -= damageTaken;
-        Debug.Log(health);
+        currentHealth -= damageTaken;
+        Debug.Log(currentHealth);
     }
 
 	public void Heal(float healAmount)
 	{
-		health += healAmount;
-		Debug.Log(health);
+        if (currentHealth < maxHealth)
+        {
+            currentHealth += healAmount;
+            Debug.Log(currentHealth);
+        }
 	}
 
     public void KillUnit()

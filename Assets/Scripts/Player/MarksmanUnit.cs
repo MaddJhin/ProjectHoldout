@@ -53,7 +53,7 @@ public class MarksmanUnit : MonoBehaviour {
 		playerControl.priorityList = priorityList;
 		playerAttack.timeBetweenAttacks = timeBetweenAttacks;
 		originalStoppingDistance = agent.stoppingDistance;
-		stats.health = health;
+		stats.currentHealth = health;
 	}
 	
 	// Update is called once per frame

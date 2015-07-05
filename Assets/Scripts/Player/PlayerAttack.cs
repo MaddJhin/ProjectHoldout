@@ -82,8 +82,9 @@ public class PlayerAttack : MonoBehaviour {
 		enemyHealth.TakeDamage(damage);
 	}
 
-	public void Heal(float damage){
+	public void Heal(float damage)
+    {
 		UnitStats friendlyHealth = attackTarget.gameObject.GetComponent<UnitStats>();
-		friendlyHealth.TakeDamage(damage);
+        friendlyHealth.Heal(damage);
 	}
 }

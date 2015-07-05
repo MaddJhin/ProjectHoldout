@@ -53,7 +53,7 @@ public class MechanicUnit : MonoBehaviour {
 		playerControl.priorityList = priorityList;
 		playerAttack.timeBetweenAttacks = timeBetweenHeals;
 		originalStoppingDistance = agent.stoppingDistance;
-		stats.health = health;
+		stats.currentHealth = health;
 	}
 	
 	// Update is called once per frame
