@@ -2,50 +2,66 @@
 using System.Collections;
 using System.Collections.Generic;
 
-[RequireComponent(typeof (NavMeshAgent))]
-
 public class PlayerCharacterControl : MonoBehaviour {
 
-	public Transform actionTarget; // target to aim for
-	public NavMeshAgent agent;
-	public bool targetInRange;
-	public List<string> priorityList = new List<string>();	// Stores priority of GameObject tags. First element is the highest priority
-	public float targetDistance; // Distance between this object and it's target
+	public Transform actionTarget; 
+	public List<string> priorityList = new List<string>();
 	public Transform targetBarricade;
 
+	NavMeshAgent agent;
 	PlayerAttack attackControl;
 	Animator m_Animator;
 	float m_TurnAmount;
 	float m_ForwardAmount;
 	SphereCollider sightRange;
 	UnitStats targetStats;
-
+	bool playerMove = false;
 	
 	// Use this for initialization
 	void Start () {
 		agent = GetComponentInChildren<NavMeshAgent>();
 		m_Animator = GetComponent<Animator>();
-		sightRange = GetComponent<SphereCollider>();
+		sightRange = GetComponentInChildren<SphereCollider>();
 		attackControl = GetComponent<PlayerAttack>();
 		targetBarricade = this.transform;
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 
 		//Update animation and next target every frame.
 		UpdateAnimator(agent.desiredVelocity);
-		SetTarget();
 
-		// Clear any action target that exceeds sight range.
+		//Set action target. Make sure it is in range.  
+		SetTarget();
 		if (actionTarget != null && Vector3.Distance(actionTarget.position, gameObject.transform.position) > sightRange.radius) 
 		{
 			actionTarget = null;
 		}
 
+		// If the player issues a move command, the playerUnit shoudl continue until destination
+		if (playerMove)
+		{
+			if (!agent.pathPending)
+			{
+				if (agent.remainingDistance <= agent.stoppingDistance)
+				{
+					if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f)
+					{
+						playerMove = false;
+					}
+				}
+			}
+			return; // No more updates until agent reaches player designated destination
+		}
+
 		// If there is an available action target move to that otheriwse go to the last choosen barricade. 
-		if (actionTarget != null) Move();
-		else SetDestination(targetBarricade);
+		if (actionTarget != null) 
+		{
+			agent.SetDestination(actionTarget.position);
+			transform.LookAt(actionTarget.position);
+		}
+		else agent.SetDestination(targetBarricade.position);
 	}
 
 	void Move()
@@ -66,6 +82,7 @@ public class PlayerCharacterControl : MonoBehaviour {
 	public void SetDestination (Transform target){
 		targetBarricade = target;
 		agent.ResetPath();
+		playerMove = true;
 		agent.SetDestination (target.position);
 	}
 

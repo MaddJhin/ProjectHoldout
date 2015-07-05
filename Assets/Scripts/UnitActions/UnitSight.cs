@@ -38,6 +38,7 @@ public class UnitSight : MonoBehaviour
     void Awake()
     {
         sightRange = GetComponent<SphereCollider>();
+		actionTarget = GameObject.FindGameObjectWithTag("Evac Shuttle");
     }
 
     void Update()
