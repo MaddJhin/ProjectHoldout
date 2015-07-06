@@ -25,6 +25,7 @@ public class UnitSight : MonoBehaviour
 {
     [SerializeField] public bool targetInRange;
     [SerializeField] public GameObject actionTarget;
+    public string defaultTarget;
 
     // Stores priority of GameObject tags
     // First element is the highest priority
@@ -38,17 +39,19 @@ public class UnitSight : MonoBehaviour
     void Awake()
     {
         sightRange = GetComponent<SphereCollider>();
-		actionTarget = GameObject.FindGameObjectWithTag("Evac Shuttle");
     }
 
     void Update()
     {
-        // If target doesn't exit, it is not in range
+        // If target doesn't exit, switch to default target
         if (actionTarget == null)
         {
-            targetInRange = false;
-            actionTarget = GameObject.FindGameObjectWithTag("Evac Shuttle");
+            actionTarget = GameObject.Find(defaultTarget);
         }
+
+        // If the target is inactive, set it to null
+        else if (actionTarget.activeInHierarchy == false)
+            actionTarget = null;
 
         // Calculate distance every update
         else
@@ -65,7 +68,7 @@ public class UnitSight : MonoBehaviour
         {
             // If a match is found then that gameObject becomes the new target
             // The first element is first priority etc
-            if (other.gameObject.tag == targetTag && (actionTarget == null || actionTarget == GameObject.FindGameObjectWithTag("Evac Shuttle")))
+            if (other.gameObject.tag == targetTag && (actionTarget == null || actionTarget == GameObject.Find(defaultTarget)))
             {
                 actionTarget = other.gameObject;
                 targetInRange = true;
@@ -78,14 +81,14 @@ public class UnitSight : MonoBehaviour
     // If the current target leaves range, it helps to select a new target
     void OnTriggerStay(Collider other)
     {
-        if (actionTarget == null || actionTarget == GameObject.FindGameObjectWithTag("Evac Shuttle"))
+        if (actionTarget == null || actionTarget == GameObject.Find(defaultTarget))
         {
             // Check each tag considered a priority
             foreach (string targetTag in priorityList)
             {
                 // If a match is found then that gameObject becomes the new target
                 // The first element is first priority etc
-                if (other.gameObject.tag == targetTag && (actionTarget == null ||actionTarget == GameObject.FindGameObjectWithTag("Evac Shuttle")))
+                if (other.gameObject.tag == targetTag && (actionTarget == null ||actionTarget == GameObject.Find(defaultTarget)))
                 {
                     actionTarget = other.gameObject;
                     targetInRange = true;

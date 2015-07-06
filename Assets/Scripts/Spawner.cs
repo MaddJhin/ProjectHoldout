@@ -27,6 +27,9 @@ public class Spawner : MonoBehaviour
     public Wave CurrentWave { get { return m_CurrentWave; } }
     private float m_DelayFactor = 1.0f;
     public int waveCounter;
+    public string targetObject;
+
+    private UnitSight tempSight;        // Temporary UnitSight reference for setting default targets
 
     IEnumerator SpawnLoop()
     {
@@ -50,6 +53,12 @@ public class Spawner : MonoBehaviour
                         {
                             Debug.Log("Spawning " + A.prefab);
                             GameObject obj = GenericPooler.current.GetPooledObject(A.prefab);
+
+                            if (targetObject != null)
+                            {
+                                tempSight = obj.GetComponent<UnitSight>();
+                                tempSight.defaultTarget = targetObject;
+                            }
 
                             if (obj != null)
                             {
