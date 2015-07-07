@@ -1,71 +1,44 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &121458
+--- !u!1 &135186
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 401080}
-  - 20: {fileID: 2009122}
-  - 92: {fileID: 9279746}
-  - 124: {fileID: 12498738}
-  - 81: {fileID: 8189352}
+  - 4: {fileID: 459132}
+  - 20: {fileID: 2078614}
+  - 124: {fileID: 12406150}
+  - 92: {fileID: 9272470}
+  - 81: {fileID: 8110100}
+  - 114: {fileID: 11409198}
+  - 114: {fileID: 11407868}
   m_Layer: 0
-  m_Name: Main Camera
-  m_TagString: MainCamera
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &165852
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 486218}
-  - 114: {fileID: 11411492}
-  m_Layer: 0
-  m_Name: FloatingCamera
+  m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &401080
+--- !u!4 &459132
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 121458}
-  m_LocalRotation: {x: .555570304, y: 0, z: 0, w: .831469595}
-  m_LocalPosition: {x: .0879830047, y: -1.45786095, z: .603863716}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_GameObject: {fileID: 135186}
+  m_LocalRotation: {x: .601081133, y: 0, z: 0, w: .799188018}
+  m_LocalPosition: {x: 39.5, y: 75.5, z: 16.7999992}
+  m_LocalScale: {x: 1.222911, y: 1.222911, z: 1.222911}
   m_Children: []
-  m_Father: {fileID: 486218}
-  m_RootOrder: 0
---- !u!4 &486218
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 165852}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.0879830047, y: 19.0578613, z: -12.7338629}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 401080}
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!20 &2009122
+--- !u!20 &2078614
 Camera:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 121458}
+  m_GameObject: {fileID: 135186}
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
@@ -78,10 +51,10 @@ Camera:
     height: 1
   near clip plane: .300000012
   far clip plane: 1000
-  field of view: 90
+  field of view: 60
   orthographic: 0
   orthographic size: 5
-  m_Depth: -1
+  m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -92,39 +65,53 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: .0219999999
---- !u!81 &8189352
+--- !u!81 &8110100
 AudioListener:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 121458}
+  m_GameObject: {fileID: 135186}
   m_Enabled: 1
---- !u!92 &9279746
+--- !u!92 &9272470
 Behaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 121458}
+  m_GameObject: {fileID: 135186}
   m_Enabled: 1
---- !u!114 &11411492
+--- !u!114 &11407868
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 165852}
+  m_GameObject: {fileID: 135186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b4b9b2bf5c849a45b212f27ab86fac2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  perspectiveZoomSpeed: 20
+  orthoZoomSpeed: .5
+  maxZoom: 179.899994
+  minZoom: .100000001
+--- !u!114 &11409198
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 135186}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 110a27aed7294824b81607bb7cd3d78f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 40
-  rotationSpeed: 200
---- !u!124 &12498738
+  speed: 48.3199997
+--- !u!124 &12406150
 Behaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 121458}
+  m_GameObject: {fileID: 135186}
   m_Enabled: 1
 --- !u!1001 &100100000
 Prefab:
@@ -135,5 +122,5 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 165852}
+  m_RootGameObject: {fileID: 135186}
   m_IsPrefabParent: 1

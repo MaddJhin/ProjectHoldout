@@ -4,14 +4,18 @@ using System.Collections;
 public class CameraScroll : MonoBehaviour {
 
 	public float speed = 10.0F;
-	public float rotationSpeed = 100.0F;
 
 	void Update() {
-		float translation = Input.GetAxis("Vertical") * speed;
-		float rotation = Input.GetAxis("Horizontal") * rotationSpeed;
-		translation *= Time.deltaTime;
-		rotation *= Time.deltaTime;
-		transform.Translate(Vector3.forward * translation);
-		transform.Rotate(0, rotation, 0, Space.World);
+		//Get the Input for the scrolling movement
+		float vertical = Input.GetAxis("Vertical") * speed;
+		float side = Input.GetAxis("Horizontal") * speed;
+
+		// Adjust for framerate differences
+		vertical *= Time.deltaTime;
+		side *= Time.deltaTime;
+
+		// Move camera based on world space to ignore camera rotation
+		transform.Translate(Vector3.forward * vertical, Space.World);
+		transform.Translate(Vector3.right * side, Space.World);
 	}
 }
