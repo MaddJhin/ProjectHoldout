@@ -26,9 +26,12 @@ public class UnitStats : MonoBehaviour
 
     public enum statusEffects { stun };
 
+    private GameManager gm;
+
     void Awake()
     {
         currentHealth = maxHealth;
+        gm = GameObject.FindObjectOfType<GameManager>();
     }
 
 	void Update () 
@@ -56,6 +59,7 @@ public class UnitStats : MonoBehaviour
     {
         // Deactivates the unit
         gameObject.SetActive(false);
+        gm.RemoveObjective();
     }
 
     public void ApplyStatus(statusEffects effect, float duration)

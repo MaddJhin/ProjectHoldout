@@ -30,59 +30,71 @@ public class Spawner : MonoBehaviour
     public string targetObject;
 
     private UnitSight tempSight;        // Temporary UnitSight reference for setting default targets
+    private GameManager gm;
 
     IEnumerator SpawnLoop()
     {
         m_DelayFactor = 1.0f;
         
-            Debug.Log("Checking Waves");
-            foreach (Wave W in waves)
+        Debug.Log("Checking Waves");
+        foreach (Wave W in waves)
+        {
+            m_CurrentWave = W;
+            foreach (WaveAction A in W.actions)
             {
-                m_CurrentWave = W;
-                foreach (WaveAction A in W.actions)
+                if (A.delay > 0)
+                    yield return new WaitForSeconds(A.delay * m_DelayFactor);
+                if (A.message != "")
                 {
-                    if (A.delay > 0)
-                        yield return new WaitForSeconds(A.delay * m_DelayFactor);
-                    if (A.message != "")
+                    Debug.Log(A.message);
+                }
+                if (A.prefab != null && A.spawnCount > 0)
+                {
+                    for (int i = 0; i < A.spawnCount; i++)
                     {
-                        Debug.Log(A.message);
-                    }
-                    if (A.prefab != null && A.spawnCount > 0)
-                    {
-                        for (int i = 0; i < A.spawnCount; i++)
+                        Debug.Log("Spawning " + A.prefab);
+                        GameObject obj = GenericPooler.current.GetPooledObject(A.prefab);
+
+                        if (obj.tag != "Player")
                         {
-                            Debug.Log("Spawning " + A.prefab);
-                            GameObject obj = GenericPooler.current.GetPooledObject(A.prefab);
+                            gm.AddObjective();
+                        }
 
-                            if (targetObject != null)
-                            {
-                                tempSight = obj.GetComponent<UnitSight>();
-                                tempSight.defaultTarget = targetObject;
-                            }
+                        if (targetObject != null)
+                        {
+                            tempSight = obj.GetComponent<UnitSight>();
+                            tempSight.defaultTarget = targetObject;
+                        }
 
-                            if (obj != null)
-                            {
-                                obj.transform.position = transform.position;
-                                obj.transform.rotation = transform.rotation;
-                                obj.SetActive(true);
-                            }
+                        if (obj != null)
+                        {
+                            obj.transform.position = transform.position;
+                            obj.transform.rotation = transform.rotation;
+                            obj.SetActive(true);
                         }
                     }
-                    waveCounter++;
-                    Debug.Log("Wave Counter" + waveCounter);
                 }
-                yield return null;  // prevents crash if all delays are 0
+                    
             }
 
+            waveCounter++;
             Debug.Log("Wave Counter" + waveCounter);
-            //m_DelayFactor *= difficultyFactor;
             yield return null;  // prevents crash if all delays are 0
-        
+        }
+
+        Debug.Log("Spawn Loop Complete");
+        gameObject.SetActive(false);
+        gm.IsSpawnInactive();
+
+        //m_DelayFactor *= difficultyFactor;
+        yield return null;  // prevents crash if all delays are 0        
     }
+
     void Start()
     {
         Debug.Log("Starting spawn loop");
         StartCoroutine(SpawnLoop());
+        gm = GameObject.FindObjectOfType<GameManager>();
     }
 
 }

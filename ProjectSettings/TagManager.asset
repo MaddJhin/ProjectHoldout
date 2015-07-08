@@ -11,6 +11,7 @@ TagManager:
   - Bob
   - Brute
   - Evoker
+  - Enemy Spawn
   layers:
   - Default
   - TransparentFX

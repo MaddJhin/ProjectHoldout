@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 /*
  * USAGE
@@ -16,6 +17,9 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
+    private int objectiveCounter;
+    private List<Spawner> spawnList;
+    private int inactiveSpawns;
 
     #region Singleton
     private static GameManager _instance;
@@ -55,6 +59,22 @@ public class GameManager : MonoBehaviour
                 Destroy(this.gameObject);
             }
         }
+
+        objectiveCounter = 0;
+        inactiveSpawns = 0;
+        spawnList = new List<Spawner>();
+
+        // Get all spawners in the scene and remove the player spawners
+        Debug.Log("Fetching Spawners");
+        Spawner[] temp = GameObject.FindObjectsOfType<Spawner>();
+
+        foreach (var spawn in temp)
+        {
+            if (spawn.tag == "Enemy Spawn")
+                spawnList.Add(spawn);
+        }
+
+        Debug.Log("Spawn List: " + spawnList);
     }
     #endregion
 
@@ -64,6 +84,38 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Switching to " + sceneName);
         Application.LoadLevel(sceneName);
+    }
+
+    public void AddObjective()
+    {
+        objectiveCounter++;
+        Debug.Log("Objective Count: " + objectiveCounter);
+    }
+
+    public void RemoveObjective()
+    {
+        objectiveCounter--;
+        Debug.Log("Objective Count: " + objectiveCounter);
+
+        if (inactiveSpawns == spawnList.Count && objectiveCounter <= 0)
+        {
+            Debug.Log("Level Complete");
+        }
+    }
+
+    public void IsSpawnInactive()
+    {
+        Debug.Log("Checking for inactive Spawners");
+
+        // Check each spawner in the scene to see if it's active and still spawned
+        foreach (var spawn in spawnList)
+        {
+            // If the spawner is finished spawning, add it to the tally of completed spawners
+            if (!spawn.isActiveAndEnabled)
+            {
+                inactiveSpawns++;
+            }
+        }
     }
 
     #endregion
