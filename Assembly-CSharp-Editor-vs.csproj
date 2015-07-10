@@ -46,8 +46,11 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\_Spawner\Editor\SpawnerInspector.cs" />
-     <None Include="Assets\_Spawner\README.txt" />
+     <Compile Include="Assets\Scripts\Editor\AlphaNumericSort.cs" />
+     <Compile Include="Assets\Scripts\Editor\GUIHierarchy.cs" />
+     <None Include="Assets\Shaders\Alpha_Texture.shader" />
+     <None Include="Assets\Shaders\DoubleSided-Light-Spec.shader" />
+     <None Include="Assets\Shaders\Rim Lit Bumped Specular.shader" />
      <None Include="Assets\Shaders\ProjectorLight.shader" />
      <None Include="Assets\ThirdPersonCharacterGuidelines.txt" />
      <None Include="Assets\Shaders\Skybox-Procedural.shader" />

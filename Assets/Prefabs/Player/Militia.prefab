@@ -1991,6 +1991,7 @@ Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
+<<<<<<< HEAD:Assets/Prefabs/Militia.prefab
   m_GameObject: {fileID: 144518}
   m_LocalRotation: {x: 2.81491998e-06, y: -3.29905873e-07, z: -.116402328, w: .99320215}
   m_LocalPosition: {x: -.00313836336, y: .0255156513, z: .0149847884}
@@ -2000,6 +2001,28 @@ Transform:
   m_Father: {fileID: 446926}
   m_RootOrder: 0
 --- !u!4 &469710
+=======
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 430042}
+  - 95: {fileID: 9584090}
+  - 54: {fileID: 5423380}
+  - 136: {fileID: 13698480}
+  - 195: {fileID: 19534576}
+  - 135: {fileID: 13509142}
+  - 114: {fileID: 11494690}
+  - 114: {fileID: 11489324}
+  - 114: {fileID: 11405840}
+  - 114: {fileID: 11408610}
+  m_Layer: 10
+  m_Name: Militia
+  m_TagString: Minion
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &430042
+>>>>>>> 9a24c76a5d44e7253ec5412b70432757e26cc4c2:Assets/Prefabs/Player/Militia.prefab
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
