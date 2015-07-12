@@ -65,10 +65,7 @@
      <Compile Include="Assets\Scripts\Camera\CameraScroll.cs" />
      <Compile Include="Assets\Scripts\Camera\MouseZoom.cs" />
      <Compile Include="Assets\Scripts\Camera\PinchZoom.cs" />
-<<<<<<< HEAD
-=======
      <Compile Include="Assets\Scripts\ChangeColor.cs" />
->>>>>>> 9a24c76a5d44e7253ec5412b70432757e26cc4c2
      <Compile Include="Assets\Scripts\DeltaTimeTest.cs" />
      <Compile Include="Assets\Scripts\DoorOpen.cs" />
      <Compile Include="Assets\Scripts\DragMe.cs" />
