@@ -41,14 +41,15 @@ GameObject:
   m_Component:
   - 4: {fileID: 430042}
   - 95: {fileID: 9584090}
-  - 54: {fileID: 5423380}
-  - 136: {fileID: 13698480}
   - 195: {fileID: 19534576}
   - 135: {fileID: 13509142}
   - 114: {fileID: 11494690}
   - 114: {fileID: 11489324}
   - 114: {fileID: 11405840}
   - 114: {fileID: 11408610}
+  - 143: {fileID: 14362054}
+  - 54: {fileID: 5400480}
+  - 208: {fileID: 20887414}
   m_Layer: 10
   m_Name: Minion
   m_TagString: Minion
@@ -63,7 +64,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 186718}
   m_LocalRotation: {x: 0, y: .999997735, z: 0, w: .00214458792}
-  m_LocalPosition: {x: 56.8846436, y: -.100000001, z: 10.174305}
+  m_LocalPosition: {x: 64.0974426, y: -.100000001, z: -30.3899879}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 482920}
@@ -94,7 +95,7 @@ Transform:
   - {fileID: 475604}
   m_Father: {fileID: 430042}
   m_RootOrder: 0
---- !u!54 &5423380
+--- !u!54 &5400480
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -108,7 +109,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!95 &9584090
 Animator:
   serializedVersion: 3
@@ -213,19 +214,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 3.70000005
   m_Center: {x: 0, y: 1, z: 0}
---- !u!136 &13698480
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 186718}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: .439999998
-  m_Height: 2.51999998
-  m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!137 &13715914
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -262,6 +250,23 @@ SkinnedMeshRenderer:
     m_Center: {x: -.753364205, y: .14181754, z: .084738791}
     m_Extent: {x: .927979112, y: .801833987, z: .540792048}
   m_DirtyAABB: 0
+--- !u!143 &14362054
+CharacterController:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 186718}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: .5
+  m_SlopeLimit: 45
+  m_StepOffset: .300000012
+  m_SkinWidth: .0799999982
+  m_MinMoveDistance: .00100000005
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!195 &19534576
 NavMeshAgent:
   m_ObjectHideFlags: 1
@@ -269,7 +274,7 @@ NavMeshAgent:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 186718}
   m_Enabled: 1
-  m_Radius: .5
+  m_Radius: .829999983
   m_Speed: 3.5
   m_Acceleration: 20
   avoidancePriority: 50
@@ -282,6 +287,21 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!208 &20887414
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 186718}
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: .5, y: .5, z: .5}
+  m_MoveThreshold: .100000001
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: .5
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

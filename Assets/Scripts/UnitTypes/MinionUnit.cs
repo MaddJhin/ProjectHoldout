@@ -57,7 +57,6 @@ public class MinionUnit : MonoBehaviour
             agent.enabled = false;
             obstacle.enabled = true;
 
-
             if (stats.attackSpeed < elapsedTime)
             {
                 elapsedTime = 0f;
