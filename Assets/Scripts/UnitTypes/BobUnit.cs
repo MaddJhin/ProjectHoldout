@@ -32,6 +32,9 @@ public class BobUnit : MonoBehaviour
     private float elapsedTime;
     private Vector3 targetLoc;
 
+    [SerializeField] public ParticleSystem explosionFX;
+    
+
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -41,6 +44,7 @@ public class BobUnit : MonoBehaviour
         action = GetComponent<SelfDestruct>();
         vision = GetComponent<UnitSight>();
         elapsedTime = 0f;
+        
     }
 
     void Update()
@@ -64,11 +68,17 @@ public class BobUnit : MonoBehaviour
     }
 
     void Attack()
-    {
+    {        
         agent.Stop();
         Debug.Log(vision.actionTarget);
         action.Explode(vision.actionTarget);
-        Destroy(gameObject);
+
+        //ParticleSystem explosion = Instantiate(explosionFX);            // Instantiate the explosion emitter
+        //explosion.transform.position = transform.position;              // Set it's position to the unit's 
+        //explosion.Play();                                               // Play emission
+        //Destroy(explosion);                                             // Deactivate when done
+
+        gameObject.SetActive(false);
     }
 
     void Move()
