@@ -57,6 +57,7 @@ public class UnitSight : MonoBehaviour
         else
         {
             targetDistance = Vector3.Distance(actionTarget.transform.position, gameObject.transform.position);
+
         }
     }
 
