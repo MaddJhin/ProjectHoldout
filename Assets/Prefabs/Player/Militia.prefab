@@ -1673,7 +1673,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 186718}
   m_LocalRotation: {x: 0, y: .999997735, z: 0, w: .00214458792}
-  m_LocalPosition: {x: 56.8846436, y: -.100000001, z: 10.174305}
+  m_LocalPosition: {x: .159999996, y: 0, z: 2.45000005}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 455048}
@@ -2495,10 +2495,10 @@ MonoBehaviour:
   actionTarget: {fileID: 0}
   defaultTarget: 
   priorityList:
-  - Bob
+  - Minion
   - Brute
   - Evoker
-  - Minion
+  - Bob
   targetDistance: 0
 --- !u!135 &13509142
 SphereCollider:

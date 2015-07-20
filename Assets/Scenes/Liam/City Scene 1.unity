@@ -1010,6 +1010,64 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 429338031}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &441119716
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 423556, guid: b4cd5428b662de841af40c0577009d1a, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 59.6714783
+      objectReference: {fileID: 0}
+    - target: {fileID: 423556, guid: b4cd5428b662de841af40c0577009d1a, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -.100000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 423556, guid: b4cd5428b662de841af40c0577009d1a, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -17.5220833
+      objectReference: {fileID: 0}
+    - target: {fileID: 423556, guid: b4cd5428b662de841af40c0577009d1a, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 423556, guid: b4cd5428b662de841af40c0577009d1a, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 423556, guid: b4cd5428b662de841af40c0577009d1a, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 423556, guid: b4cd5428b662de841af40c0577009d1a, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 423556, guid: b4cd5428b662de841af40c0577009d1a, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 494048, guid: b4cd5428b662de841af40c0577009d1a, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: .532675147
+      objectReference: {fileID: 0}
+    - target: {fileID: 494048, guid: b4cd5428b662de841af40c0577009d1a, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: .0703404471
+      objectReference: {fileID: 0}
+    - target: {fileID: 494048, guid: b4cd5428b662de841af40c0577009d1a, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: .836132646
+      objectReference: {fileID: 0}
+    - target: {fileID: 494048, guid: b4cd5428b662de841af40c0577009d1a, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: -.110415131
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: b4cd5428b662de841af40c0577009d1a, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &479358112
 GameObject:
   m_ObjectHideFlags: 0
@@ -1444,7 +1502,7 @@ Transform:
   - {fileID: 1674165146}
   - {fileID: 35086816}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
 --- !u!1 &737261202
 GameObject:
   m_ObjectHideFlags: 0
@@ -1590,7 +1648,7 @@ Transform:
   m_LocalScale: {x: 17, y: 20, z: 17}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 8
 --- !u!1 &892046039
 GameObject:
   m_ObjectHideFlags: 0
@@ -2134,8 +2192,25 @@ MonoBehaviour:
   - name: Test Wave
     actions:
     - name: Minion
-      delay: 5
+      delay: 2
       prefab: Minion
+      spawnCount: 3
+      message: Spawning Minions!
+    - name: Minion
+      delay: 0
+      prefab: Brute
+      spawnCount: 1
+      message: Spawning Minions!
+  - name: Test Wave
+    actions:
+    - name: Minion
+      delay: 2
+      prefab: Minion
+      spawnCount: 3
+      message: Spawning Minions!
+    - name: Minion
+      delay: 2
+      prefab: Brute
       spawnCount: 1
       message: Spawning Minions!
   waveCounter: 0
@@ -2151,7 +2226,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
 --- !u!1 &1065532860
 GameObject:
   m_ObjectHideFlags: 0
@@ -3221,7 +3296,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!1 &1895902815
 GameObject:
   m_ObjectHideFlags: 0
@@ -3530,7 +3605,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
 --- !u!1001 &2018923715
 Prefab:
   m_ObjectHideFlags: 0
