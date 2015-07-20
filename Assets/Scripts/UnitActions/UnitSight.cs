@@ -69,7 +69,7 @@ public class UnitSight : MonoBehaviour
         {
             // If a match is found then that gameObject becomes the new target
             // The first element is first priority etc
-            if (other.gameObject.tag == targetTag && (actionTarget == null || actionTarget == GameObject.Find(defaultTarget)))
+            if (other.gameObject.tag == targetTag && (actionTarget == null || actionTarget == GameObject.Find(defaultTarget)) && other.isTrigger == false)
             {
                 actionTarget = other.gameObject;
                 targetInRange = true;
@@ -91,9 +91,24 @@ public class UnitSight : MonoBehaviour
                 // The first element is first priority etc
                 if (other.gameObject.tag == targetTag && (actionTarget == null ||actionTarget == GameObject.Find(defaultTarget)))
                 {
-                    actionTarget = other.gameObject;
-                    targetInRange = true;
-                    targetDistance = Vector3.Distance(actionTarget.transform.position, gameObject.transform.position);
+
+                    Debug.Log(gameObject + " checking isTrigger");
+
+                    // Checks if the target collider is a trigger
+                    // If it's not, then the collider is valid for targetting
+                    // Trigger colliders are used to represent a target's vision, thus are ignored
+                    if (other.isTrigger == false)
+                    {
+                        Debug.Log(gameObject + " found no trigger. Assigning target");
+                        actionTarget = other.gameObject;
+                        targetInRange = true;
+                        targetDistance = Vector3.Distance(actionTarget.transform.position, gameObject.transform.position);
+                    }
+
+                    else
+                    {
+                        Debug.Log(gameObject + " found trigger. Ignoring target");
+                    }
                 }
             }  
         }
