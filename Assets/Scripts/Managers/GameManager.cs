@@ -17,6 +17,8 @@ using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
+    public List<GameObject> playerLoadout;
+
     private int objectiveCounter;
     private List<Spawner> spawnList;
     private int inactiveSpawns;

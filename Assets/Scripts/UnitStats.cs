@@ -43,7 +43,7 @@ public class UnitStats : MonoBehaviour
     public void TakeDamage(float damageTaken)
     {
         currentHealth -= damageTaken;
-        Debug.Log(currentHealth);
+        Debug.Log(gameObject.name + " HP: " + currentHealth);
     }
 
 	public void Heal(float healAmount)

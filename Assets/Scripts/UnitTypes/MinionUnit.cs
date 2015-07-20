@@ -31,6 +31,7 @@ public class MinionUnit : MonoBehaviour
     private UnitSight vision;
     private float elapsedTime;
     private Vector3 targetLoc;
+    private NavMeshObstacle obstacle;
 
     void Awake()
     {
@@ -40,6 +41,7 @@ public class MinionUnit : MonoBehaviour
         stats = GetComponent<UnitStats>();
         action = GetComponent<BasicAttack>();
         vision = GetComponent<UnitSight>();
+        obstacle = GetComponent<NavMeshObstacle>();
         elapsedTime = 0f;
     }
 
@@ -48,14 +50,26 @@ public class MinionUnit : MonoBehaviour
         // Update the target location
         targetLoc = vision.actionTarget.transform.position;
 
-        if (stats.attackSpeed < elapsedTime && vision.targetDistance < agent.stoppingDistance)
+        // If unit as at the target, stop moving and block other units
+        if (vision.targetDistance <= agent.stoppingDistance)
         {
-            elapsedTime = 0f;
-            Attack();
+            agent.Stop();
+            agent.enabled = false;
+            obstacle.enabled = true;
+
+            if (stats.attackSpeed < elapsedTime)
+            {
+                elapsedTime = 0f;
+                Attack();
+            }
         }
 
         else
+        {
+            obstacle.enabled = false;
+            agent.enabled = true;
             Move();
+        }
 
         elapsedTime += Time.deltaTime;
     }

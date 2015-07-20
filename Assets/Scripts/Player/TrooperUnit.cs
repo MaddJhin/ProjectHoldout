@@ -74,6 +74,7 @@ public class TrooperUnit : MonoBehaviour {
 			targetInRange = true;
 			agent.stoppingDistance = attackRange;
 		}
+
 		else
 		{
 			targetInRange = false;
