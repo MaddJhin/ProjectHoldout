@@ -64,7 +64,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 186718}
   m_LocalRotation: {x: 0, y: .999997735, z: 0, w: .00214458792}
+<<<<<<< HEAD
+  m_LocalPosition: {x: .00999999978, y: 0, z: -44.3400002}
+=======
   m_LocalPosition: {x: 64.0974426, y: -.100000001, z: -30.3899879}
+>>>>>>> 387364eabfb7eda8e2074da269af8995b1055762
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 482920}
@@ -197,7 +201,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetInRange: 0
   actionTarget: {fileID: 0}
-  defaultTarget: 
+  defaultTarget: Evac Shuttle
   priorityList:
   - Player
   - Barricade

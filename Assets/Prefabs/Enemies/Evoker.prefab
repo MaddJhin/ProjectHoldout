@@ -63,7 +63,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 107854}
   m_LocalRotation: {x: 0, y: .0421157628, z: 0, w: -.999112785}
-  m_LocalPosition: {x: 59.2486572, y: 0, z: -32.526741}
+  m_LocalPosition: {x: .209999993, y: 0, z: -17.3400002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 439598}
@@ -154,7 +154,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e63de67a0857d5c44b1756f81dc578dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  maxHealth: 100
+  currentHealth: 0
   attackSpeed: 1
   attackRange: 1
   armor: 0
@@ -195,6 +196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetInRange: 0
   actionTarget: {fileID: 0}
+  defaultTarget: Evac Shuttle
   priorityList:
   - Player
   - Barricade

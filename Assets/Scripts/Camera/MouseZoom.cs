@@ -19,7 +19,7 @@ public class MouseZoom : MonoBehaviour {
 
 	void Update () {
 
-		cam.fieldOfView += Input.GetAxis("Mouse ScrollWheel") * perspectiveZoomSpeed;
+		cam.fieldOfView -= Input.GetAxis("Mouse ScrollWheel") * perspectiveZoomSpeed;
 		
 		// Clamp the field of view to make sure it's between 0 and 180.
 		cam.fieldOfView = Mathf.Clamp(cam.fieldOfView, minZoom, maxZoom);
