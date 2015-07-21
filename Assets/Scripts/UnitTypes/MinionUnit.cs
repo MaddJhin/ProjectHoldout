@@ -42,6 +42,8 @@ public class MinionUnit : MonoBehaviour
         action = GetComponent<BasicAttack>();
         vision = GetComponent<UnitSight>();
         obstacle = GetComponent<NavMeshObstacle>();
+        obstacle.enabled = false;
+        agent.enabled = true;
         elapsedTime = 0f;
     }
 
