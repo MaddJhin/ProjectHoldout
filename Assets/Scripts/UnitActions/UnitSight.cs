@@ -23,8 +23,8 @@ using System.Collections.Generic;
 
 public class UnitSight : MonoBehaviour 
 {
-    [SerializeField] public bool targetInRange;
-    [SerializeField] public GameObject actionTarget;
+    public bool targetInRange;
+	public GameObject actionTarget;
     public string defaultTarget;
 
     // Stores priority of GameObject tags
@@ -38,7 +38,7 @@ public class UnitSight : MonoBehaviour
 
     void Awake()
     {
-        sightRange = GetComponent<SphereCollider>();
+        sightRange = GetComponentInChildren<SphereCollider>();
     }
 
     void Update()

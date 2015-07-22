@@ -23,15 +23,14 @@ public class InputManager : MonoBehaviour {
 			return;
 		}
 
-//		// Grab the player script component of the player selected
-//		if (hit.collider.tag == "Player")
-//		{
-//			setTargetOn = hit.transform.gameObject.GetComponent<PlayerCharacterControl>();
-//		}
-//
-//		// If player selects barricade, call SetTarget on the selected player character, checking for null.
-//		else 
-		if (hit.collider.tag == "Barricade" && setTargetOn != null)
+		// Grab the player script component of the player selected
+		if (hit.collider.tag == "Player")
+		{
+			setTargetOn = hit.transform.gameObject.GetComponent<PlayerCharacterControl>();
+		}
+
+		// If player selects barricade, call SetTarget on the selected player character, checking for null.
+		else if (hit.collider.tag == "Barricade" && setTargetOn != null)
 		{
 			setTargetOn.SetDestination(hit.transform);
 		}

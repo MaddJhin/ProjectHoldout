@@ -1,11 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+
+[RequireComponent(typeof (NavMeshAgent))]
+[RequireComponent(typeof (NavMeshObstacle))]
+[RequireComponent(typeof (UnitSight))]
+[RequireComponent(typeof (BruteStun))]
+[RequireComponent(typeof (UnitStats))]
 
 public class BruteUnit : MonoBehaviour 
 {
+	public float maxHealth = 100.0f;
+	public float attackSpeed = 1.0f;
+	public float attackRange = 1f;
+	public float armor = 0.0f;
+	public string defaultTarget;
+	public List<string> priorityList = new List<string>();
+
     private NavMeshAgent agent;
-    private SphereCollider actionRadius;
-    private Animator anim;
     private UnitStats stats;
     private BruteStun action;
     private UnitSight vision;
@@ -16,14 +28,23 @@ public class BruteUnit : MonoBehaviour
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-        actionRadius = GetComponent<SphereCollider>();
-        anim = GetComponent<Animator>();
         stats = GetComponent<UnitStats>();
         action = GetComponent<BruteStun>();
         vision = GetComponent<UnitSight>();
         obstacle = GetComponent<NavMeshObstacle>();
-        elapsedTime = 0f;
     }
+
+	void Start (){
+		elapsedTime = 0f;
+
+		// Set values for dependant scripts. Only modify values in one script in inspector
+		vision.defaultTarget = defaultTarget;
+		vision.priorityList = priorityList;
+		stats.maxHealth = maxHealth;
+		stats.attackSpeed = attackSpeed;
+		stats.attackRange = attackRange;
+		stats.armor = armor;
+	}
 
     void Update()
     {

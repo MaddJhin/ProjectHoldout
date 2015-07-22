@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: ZombunnyMaterial
+  m_Name: ZombunnyMaterialEvoker
   m_Shader: {fileID: 4800000, guid: 799a72a7e5f5bec4ca234fd03e089e65, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
@@ -49,4 +49,4 @@ Material:
       data:
         first:
           name: _RimColor
-        second: {r: .152681664, g: .150519043, b: .213235319, a: 0}
+        second: {r: 1, g: 0, b: 0, a: 0}
