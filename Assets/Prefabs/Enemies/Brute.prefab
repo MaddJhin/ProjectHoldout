@@ -33,7 +33,7 @@ GameObject:
   - 114: {fileID: 11468632}
   - 114: {fileID: 11460200}
   - 114: {fileID: 11497332}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Brute
   m_TagString: Brute
   m_Icon: {fileID: 0}

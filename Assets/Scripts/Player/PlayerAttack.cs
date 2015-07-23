@@ -36,7 +36,8 @@ public class PlayerAttack : MonoBehaviour {
 	}
 	
 	public void Shoot (float damage)
-	{		
+	{	
+		Debug.Log("Shot at");
 		// Set the shootRay so that it starts at the end of the shoot point and points forward from the barrel.
 		shootRay.origin = shootPoint.position;
 		shootRay.direction = transform.forward;

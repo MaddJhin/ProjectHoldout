@@ -39,6 +39,14 @@ public class PlayerCharacterControl : MonoBehaviour {
 			actionTarget = null;
 		}
 
+		// If the attack target isn't active, it's considered null
+		else if (actionTarget != null && actionTarget.gameObject.activeInHierarchy == false)
+		{
+			Debug.Log("Inactive Found");
+			actionTarget = null;
+			Debug.Log(actionTarget);
+		}
+
 		// If the player issues a move command, the playerUnit shoudl continue until destination
 		if (playerMove)
 		{

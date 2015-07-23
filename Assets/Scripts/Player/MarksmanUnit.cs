@@ -36,7 +36,7 @@ public class MarksmanUnit : MonoBehaviour {
 	NavMeshAgent agent;								// Nav Agent for moving character
 	PlayerCharacterControl playerControl;			// Sets attack target based on priority
 	PlayerAttack playerAttack;						// Script containg player attacks
-	bool targetInRange;
+	public bool targetInRange;
 	float effectsDisplayTime = 0.1f;                // The proportion of the timeBetweenBullets that the effects will display for.
 	float originalStoppingDistance;					// Used to store preset agent stopping distance
 
@@ -87,12 +87,14 @@ public class MarksmanUnit : MonoBehaviour {
 			targetInRange = false;
 			agent.stoppingDistance = originalStoppingDistance;
 		}
-		
+
+		Debug.Log("Try to shoot");
 		// If the target is in range and enough time has passed between attacks, Attack.
 		if (timer >= timeBetweenAttacks && targetInRange)
 		{
 			timer = 0f;
 			playerAttack.Shoot(damagePerHit);
+			Debug.Log("Shot");
 		}
 	}
 }

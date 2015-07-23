@@ -62,22 +62,21 @@ public class TrooperUnit : MonoBehaviour {
 		attackTarget = playerControl.actionTarget;
 
 		// If there is nothing to attack, script does nothing.
-
-        Debug.Log("Checking for Null");
+        //Debug.Log("Checking for Null");
         if (attackTarget == null)
         {
-            Debug.Log("Null found");
+            //Debug.Log("Null found");
             agent.stoppingDistance = originalStoppingDistance;
             return;
         }
 
-        // If the attack target isn't active, it's considered null
-        else if (attackTarget.gameObject.activeInHierarchy == false)
-        {
-            Debug.Log("Inactive Found");
-            attackTarget = null;
-            Debug.Log(attackTarget);
-        }
+//        // If the attack target isn't active, it's considered null
+//        else if (attackTarget.gameObject.activeInHierarchy == false)
+//        {
+//            Debug.Log("Inactive Found");
+//            attackTarget = null;
+//            Debug.Log(attackTarget);
+//        }
 
         // Otherwise, if there is a valid target...
         else
