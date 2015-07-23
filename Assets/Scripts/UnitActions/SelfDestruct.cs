@@ -3,27 +3,16 @@ using System.Collections;
 
 public class SelfDestruct : MonoBehaviour 
 {
-    [SerializeField]
     public float damage = 5f;
-    public AudioClip attackSound;
     public float radius = 5f;
     public ParticleSystem explosionParticles;           // Stores prefab of Particle System for the explosion
 
-    private Animator anim;
-    private UnitStats targetHealth;
     private bool attacking;
-    private float attackRange;
     private ParticleSystem explosionFX;                 // Stores the instance of the explosion Particle System
 
     void Awake()
     {
-        anim = GetComponent<Animator>();
         explosionFX = Instantiate(explosionParticles);
-    }
-
-    void Update()
-    {
-
     }
 
     public void Explode(GameObject target)

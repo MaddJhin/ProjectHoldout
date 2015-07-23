@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 /* USES:
  * ==============
@@ -21,38 +22,60 @@ using System.Collections;
  * Authors: Andrew Tully
  */
 
+[RequireComponent(typeof (NavMeshAgent))]
+[RequireComponent(typeof (NavMeshObstacle))]
+[RequireComponent(typeof (UnitSight))]
+[RequireComponent(typeof (SelfDestruct))]
+[RequireComponent(typeof (UnitStats))]
+
 public class BobUnit : MonoBehaviour
 {
+	public float maxHealth = 100.0f;
+	public float attackSpeed = 1.0f;
+	public float attackRange = 1f;
+	public float armor = 0.0f;
+	public string defaultTarget;
+	public List<string> priorityList = new List<string>();
+
     private NavMeshAgent agent;
-    private SphereCollider actionRadius;
-    private Animator anim;
     private UnitStats stats;
     private SelfDestruct action;
     private UnitSight vision;
     private float elapsedTime;
     private Vector3 targetLoc;
+	private NavMeshObstacle obstacle;
 
-    [SerializeField] public ParticleSystem explosionFX;
-    
 
     void Awake()
     {
-        agent = GetComponent<NavMeshAgent>();
-        actionRadius = GetComponent<SphereCollider>();
-        anim = GetComponent<Animator>();
-        stats = GetComponent<UnitStats>();
-        action = GetComponent<SelfDestruct>();
-        vision = GetComponent<UnitSight>();
-        elapsedTime = 0f;
-        
-    }
+		agent = GetComponent<NavMeshAgent>();
+		stats = GetComponent<UnitStats>();
+		action = GetComponent<SelfDestruct>();
+		vision = GetComponent<UnitSight>();
+		obstacle = GetComponent<NavMeshObstacle>();
+	}
+	
+	void Start(){
+		obstacle.enabled = false;
+		agent.enabled = true;
+		elapsedTime = 0f;
+		
+		// Set values for dependant scripts. Only modify values in one script in inspector
+		vision.defaultTarget = defaultTarget;
+		vision.priorityList = priorityList;
+		stats.maxHealth = maxHealth;
+		stats.attackSpeed = attackSpeed;
+		stats.attackRange = attackRange;
+		stats.armor = armor;
+	}
 
     void Update()
     {
+		if (vision.actionTarget != null)
+		{
+			targetLoc = vision.actionTarget.transform.position;
+		}
         // Update the target location
-        targetLoc = vision.actionTarget.transform.position;
-
-        Debug.Log("Current target: " + vision.actionTarget);
 
         if (stats.attackSpeed < elapsedTime && vision.targetDistance < agent.stoppingDistance)
         {
@@ -72,11 +95,6 @@ public class BobUnit : MonoBehaviour
         agent.Stop();
         Debug.Log(vision.actionTarget);
         action.Explode(vision.actionTarget);
-
-        //ParticleSystem explosion = Instantiate(explosionFX);            // Instantiate the explosion emitter
-        //explosion.transform.position = transform.position;              // Set it's position to the unit's 
-        //explosion.Play();                                               // Play emission
-        //Destroy(explosion);                                             // Deactivate when done
 
         gameObject.SetActive(false);
     }

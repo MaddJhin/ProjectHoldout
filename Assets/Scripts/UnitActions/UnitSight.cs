@@ -30,7 +30,7 @@ public class UnitSight : MonoBehaviour
     // Stores priority of GameObject tags
     // First element is the highest priority
     // E.G: if element[0] contains the string "Player", the "Player" tag is highest priority
-    [SerializeField] public List<string> priorityList = new List<string>();
+	 public List<string> priorityList = new List<string>();
 
     public float targetDistance; // Distance between this object and it's target
     private SphereCollider sightRange;
@@ -39,6 +39,7 @@ public class UnitSight : MonoBehaviour
     void Awake()
     {
         sightRange = GetComponentInChildren<SphereCollider>();
+		actionTarget = GameObject.Find(defaultTarget);
     }
 
     void Update()
