@@ -17,7 +17,7 @@ using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
-    public List<GameObject> playerLoadout;
+    public GameObject[] playerLoadout = new GameObject[7];
 
     private int objectiveCounter;
     private List<Spawner> spawnList;
@@ -77,6 +77,8 @@ public class GameManager : MonoBehaviour
         }
 
         Debug.Log("Spawn List: " + spawnList);
+
+        SpawnPlayerUnits();
     }
     #endregion
 
@@ -117,6 +119,25 @@ public class GameManager : MonoBehaviour
             {
                 inactiveSpawns++;
             }
+        }
+    }
+
+    // Assigns a string to an element of the playerLoadout array
+    // String is used for dictionary lookup within the ObjectPool when spawning units
+    public void AssignLoadoutSlot(string unitName, int slot_no)
+    {
+        playerLoadout[slot_no] = GenericPooler.current.GetPooledObject(unitName);
+    }
+
+    // Spawn each player unit from the object pool
+    public void SpawnPlayerUnits()
+    {
+        foreach (var unit in playerLoadout)
+        {
+            GameObject spawnLoc = GameObject.Find("Evac Shuttle");
+
+            unit.transform.position = spawnLoc.transform.position;
+            unit.SetActive(true);
         }
     }
 
