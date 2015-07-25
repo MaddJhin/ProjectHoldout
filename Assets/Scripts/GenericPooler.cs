@@ -18,10 +18,7 @@ public class GenericPooler : MonoBehaviour
         current = this;
         poolDict = new Dictionary<string, List<GameObject>>();
         objPool = new List<GameObject>();
-    }
 
-    void Start()
-    {
         foreach (var poolObj in pooledObjects)
         {
             // Clear the temporary list
@@ -36,7 +33,7 @@ public class GenericPooler : MonoBehaviour
 
             poolDict.Add(poolObj.name, tempPool);
             Debug.Log(poolObj.name);
-        }       
+        }  
     }
 
     public GameObject GetPooledObject(string objType)
@@ -53,11 +50,14 @@ public class GenericPooler : MonoBehaviour
 
             for (int i = 0; i < iterList.Count; i++)
             {
-            
+
                 if (!iterList[i].activeInHierarchy)
                     return iterList[i];
             }
-        } 
+        }
+
+        else
+            Debug.Log("Key not found");
 
         return null;
     }

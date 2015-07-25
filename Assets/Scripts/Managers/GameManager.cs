@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -22,6 +23,9 @@ public class GameManager : MonoBehaviour
     private int objectiveCounter;
     private List<Spawner> spawnList;
     private int inactiveSpawns;
+    private GameObject UI_canvas;
+    private InputManager IM;
+    GameObject test;
 
     #region Singleton
     private static GameManager _instance;
@@ -66,6 +70,8 @@ public class GameManager : MonoBehaviour
         inactiveSpawns = 0;
         spawnList = new List<Spawner>();
 
+        UI_canvas = GameObject.Find("Canvas");
+
         // Get all spawners in the scene and remove the player spawners
         Debug.Log("Fetching Spawners");
         Spawner[] temp = GameObject.FindObjectsOfType<Spawner>();
@@ -78,7 +84,14 @@ public class GameManager : MonoBehaviour
 
         Debug.Log("Spawn List: " + spawnList);
 
-        SpawnPlayerUnits();
+        for (int i = 0; i < 7; i++)
+        {
+            AssignLoadoutSlot("PlayerCharacter_Marksman", i);
+        }
+
+        //AssignLoadoutSlot("PlayerCharacter_Marksman", 0);
+        //SpawnPlayerUnits();
+        AssignLoadoutUI();
     }
     #endregion
 
@@ -127,17 +140,38 @@ public class GameManager : MonoBehaviour
     public void AssignLoadoutSlot(string unitName, int slot_no)
     {
         playerLoadout[slot_no] = GenericPooler.current.GetPooledObject(unitName);
+        //test = GenericPooler.current.GetPooledObject(unitName);
     }
 
     // Spawn each player unit from the object pool
     public void SpawnPlayerUnits()
     {
+
+        Debug.Log("Number of Units to Spawn: " + playerLoadout.Length);
         foreach (var unit in playerLoadout)
         {
             GameObject spawnLoc = GameObject.Find("Evac Shuttle");
 
             unit.transform.position = spawnLoc.transform.position;
             unit.SetActive(true);
+            Debug.Log("Spawning: " + unit);
+        }
+    }
+
+    public void AssignLoadoutUI()
+    {
+        Button[] b = UI_canvas.GetComponentsInChildren<Button>();
+        Debug.Log("Game Manager button refs: ");
+        int i = 0;
+
+        foreach (GameObject unit in playerLoadout)
+        {
+            Debug.Log(b[i]);
+
+            Debug.Log("Adding Listener for: " + unit);
+            b[i].onClick.AddListener(() => IM.SetTarget(unit.GetComponent<PlayerCharacterControl>()));
+
+            i++;
         }
     }
 
