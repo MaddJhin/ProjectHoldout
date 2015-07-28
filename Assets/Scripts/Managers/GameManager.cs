@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     private List<Spawner> spawnList;
     private int inactiveSpawns;
     private GameObject UI_canvas;
-    private InputManager IM;
+    private InputManager IM;    // **GET REFERENCE TO THIS**
     GameObject test;
 
     #region Singleton
@@ -84,18 +84,28 @@ public class GameManager : MonoBehaviour
 
         Debug.Log("Spawn List: " + spawnList);
 
-        for (int i = 0; i < 7; i++)
-        {
-            AssignLoadoutSlot("PlayerCharacter_Marksman", i);
-        }
 
-        //AssignLoadoutSlot("PlayerCharacter_Marksman", 0);
-        //SpawnPlayerUnits();
-        AssignLoadoutUI();
+        AssignLoadoutSlot("PlayerCharacter_Marksman", 0);
+        AssignLoadoutSlot("PlayerCharacter_Trooper", 1);
+        AssignLoadoutSlot("PlayerCharacter_Medic", 2);
+        AssignLoadoutSlot("PlayerCharacter_Mechanic", 3);
+        AssignLoadoutSlot("PlayerCharacter_Trooper", 4);
+        AssignLoadoutSlot("PlayerCharacter_Medic", 5);
+        AssignLoadoutSlot("PlayerCharacter_Trooper", 6);
+        
+
+        SpawnPlayerUnits();
+        
     }
     #endregion
 
-    #region Functionality
+    void Start()
+    {
+        IM = GameObject.FindObjectOfType<InputManager>();
+        AssignLoadoutUI();
+    }
+
+    #region Objectives & Transitions
 
     public void SwitchScene(string sceneName)
     {
@@ -134,13 +144,17 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+    #endregion 
+
+    #region Player Unit Management
 
     // Assigns a string to an element of the playerLoadout array
     // String is used for dictionary lookup within the ObjectPool when spawning units
     public void AssignLoadoutSlot(string unitName, int slot_no)
     {
         playerLoadout[slot_no] = GenericPooler.current.GetPooledObject(unitName);
-        //test = GenericPooler.current.GetPooledObject(unitName);
+        playerLoadout[slot_no].SetActive(true);
+        Debug.Log("Slot " + slot_no + ": " + playerLoadout[slot_no]);
     }
 
     // Spawn each player unit from the object pool
@@ -148,12 +162,12 @@ public class GameManager : MonoBehaviour
     {
 
         Debug.Log("Number of Units to Spawn: " + playerLoadout.Length);
+   
         foreach (var unit in playerLoadout)
         {
             GameObject spawnLoc = GameObject.Find("Evac Shuttle");
 
             unit.transform.position = spawnLoc.transform.position;
-            unit.SetActive(true);
             Debug.Log("Spawning: " + unit);
         }
     }
@@ -162,16 +176,18 @@ public class GameManager : MonoBehaviour
     {
         Button[] b = UI_canvas.GetComponentsInChildren<Button>();
         Debug.Log("Game Manager button refs: ");
-        int i = 0;
+        int i;
 
-        foreach (GameObject unit in playerLoadout)
+        for (i = 0; i < playerLoadout.Length; i++)
         {
             Debug.Log(b[i]);
 
-            Debug.Log("Adding Listener for: " + unit);
-            b[i].onClick.AddListener(() => IM.SetTarget(unit.GetComponent<PlayerCharacterControl>()));
+            Debug.Log("Adding Listener for: " + playerLoadout[i] + " at position " + i);
 
-            i++;
+            PlayerCharacterControl param = playerLoadout[i].GetComponent<PlayerCharacterControl>();
+
+            b[i].onClick.RemoveAllListeners();
+            b[i].onClick.AddListener(delegate { IM.SetTarget(param); });
         }
     }
 
