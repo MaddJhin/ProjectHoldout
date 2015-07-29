@@ -60,7 +60,6 @@
      <Compile Include="Assets\Level Menu 2D\SingletonPerfect\Singleton.cs" />
      <Compile Include="Assets\Scripts\ActiveStateToggler.cs" />
      <Compile Include="Assets\Scripts\AnimatorSetup.cs" />
-     <Compile Include="Assets\Scripts\ApplicationManager.cs" />
      <Compile Include="Assets\Scripts\AreaOfEffect.cs" />
      <Compile Include="Assets\Scripts\Camera\CameraScroll.cs" />
      <Compile Include="Assets\Scripts\Camera\MouseZoom.cs" />
@@ -68,9 +67,6 @@
      <Compile Include="Assets\Scripts\ChangeColor.cs" />
      <Compile Include="Assets\Scripts\DeltaTimeTest.cs" />
      <Compile Include="Assets\Scripts\DoorOpen.cs" />
-     <Compile Include="Assets\Scripts\DragMe.cs" />
-     <Compile Include="Assets\Scripts\DragPanel.cs" />
-     <Compile Include="Assets\Scripts\DropMe.cs" />
      <Compile Include="Assets\Scripts\Enemy\EnemyHealth.cs" />
      <Compile Include="Assets\Scripts\Enemy\EnemyMovement.cs" />
      <Compile Include="Assets\Scripts\GenericPooler.cs" />
@@ -78,7 +74,7 @@
      <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
      <Compile Include="Assets\Scripts\Managers\LevelManager.cs" />
      <Compile Include="Assets\Scripts\Managers\LoadoutManager.cs" />
-     <Compile Include="Assets\Scripts\PanelManager.cs" />
+     <Compile Include="Assets\Scripts\Managers\WorldSelectManager.cs" />
      <Compile Include="Assets\Scripts\Player\MarksmanUnit.cs" />
      <Compile Include="Assets\Scripts\Player\MechanicUnit.cs" />
      <Compile Include="Assets\Scripts\Player\MedicUnit.cs" />
@@ -95,7 +91,12 @@
      <Compile Include="Assets\Scripts\ShowSliderValue.cs" />
      <Compile Include="Assets\Scripts\SimpleTestSpawner.cs" />
      <Compile Include="Assets\Scripts\Spawner.cs" />
-     <Compile Include="Assets\Scripts\TiltWindow.cs" />
+     <Compile Include="Assets\Scripts\UI\ApplicationManager.cs" />
+     <Compile Include="Assets\Scripts\UI\DragMe.cs" />
+     <Compile Include="Assets\Scripts\UI\DragPanel.cs" />
+     <Compile Include="Assets\Scripts\UI\DropMe.cs" />
+     <Compile Include="Assets\Scripts\UI\PanelManager.cs" />
+     <Compile Include="Assets\Scripts\UI\TiltWindow.cs" />
      <Compile Include="Assets\Scripts\UnitActions\BasicAttack.cs" />
      <Compile Include="Assets\Scripts\UnitActions\BruteStun.cs" />
      <Compile Include="Assets\Scripts\UnitActions\SelfDestruct.cs" />
