@@ -6,6 +6,8 @@ public class InputManager : MonoBehaviour {
 	public float surfaceOffset = 1.5f;
 	public PlayerCharacterControl setTargetOn;
 
+    private BarricadeWaypoint waypoint_cache;
+
     #region Singleton
     private static InputManager _instance;
 
@@ -59,28 +61,31 @@ public class InputManager : MonoBehaviour {
 		RaycastHit hit;
 
 		// Return if nothing was hit
-		if (!Physics.Raycast(ray, out hit))
-		{
-			return;
-		}
+        if (!Physics.Raycast(ray, out hit))
+        {
+            return;
+        }
 
-		// Grab the player script component of the player selected
-		if (hit.collider.tag == "Player")
-		{
-			setTargetOn = hit.transform.gameObject.GetComponent<PlayerCharacterControl>();
-		}
+        // If player selects barricade, call SetTarget on the selected player character, checking for null.
+        else
+        {
+            waypoint_cache = hit.collider.gameObject.GetComponent<BarricadeWaypoint>();
 
-		// If player selects barricade, call SetTarget on the selected player character, checking for null.
-		else if (hit.collider.tag == "Barricade" && setTargetOn != null)
-		{
-			setTargetOn.SetDestination(hit.transform);
-		}
+            if (hit.collider.tag == "Waypoint" && setTargetOn != null)
+            {
+                Debug.Log("Waypoint Found");
+                setTargetOn.SetDestination(hit.transform);
+                waypoint_cache.sCollider.isTrigger = true;
+            }
+        }
 
 		// Place target reticule 
 		//transform.position = hit.point + hit.normal*surfaceOffset;
 	}
 
-	public void SetTarget (PlayerCharacterControl player){
+	public void SetTarget (PlayerCharacterControl player)
+    {
+        Debug.Log("Target set to: " + player);
 		setTargetOn = player;
 	}
 }
