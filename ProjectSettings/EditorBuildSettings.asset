@@ -13,3 +13,5 @@ EditorBuildSettings:
     path: Assets/Scenes/Francisco/CityF2.unity
   - enabled: 1
     path: Assets/Scenes/Francisco/CityF3.unity
+  - enabled: 1
+    path: Assets/Scenes/TestScenes/Prototype_Test_Level.unity
