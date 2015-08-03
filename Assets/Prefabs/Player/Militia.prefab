@@ -2004,7 +2004,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 144140}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 25.3208122, y: 4.35553818e-16, z: -16.6732597}
+  m_LocalPosition: {x: -1.71000004, y: 0, z: -33.3300018}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 409476}
@@ -2524,8 +2524,12 @@ MonoBehaviour:
   attackSpeed: 1
   attackRange: 1
   armor: 0
-  defaultTarget: Evac Shuttle
-  priorityList: []
+  defaultTarget: 
+  priorityList:
+  - Minion
+  - Bob
+  - Brute
+  - Evoker
 --- !u!114 &11477090
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2540,7 +2544,11 @@ MonoBehaviour:
   targetInRange: 0
   actionTarget: {fileID: 0}
   defaultTarget: 
-  priorityList: []
+  priorityList:
+  - Minion
+  - Bob
+  - Brute
+  - Evoker
   targetDistance: 0
 --- !u!114 &11498090
 MonoBehaviour:
