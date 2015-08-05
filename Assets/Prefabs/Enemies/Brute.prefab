@@ -145,6 +145,7 @@ MonoBehaviour:
   priorityList:
   - Player
   - Barricade
+  - Evac Shuttle
 --- !u!114 &11460200
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -262,7 +263,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 156858}
   m_Enabled: 1
   m_Radius: .5
-  m_Speed: 3.5
+  m_Speed: 3
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

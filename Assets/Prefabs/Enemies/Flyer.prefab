@@ -211,7 +211,8 @@ MonoBehaviour:
   attackRange: 1
   armor: 0
   defaultTarget: Evac Shuttle
-  priorityList: []
+  priorityList:
+  - Evac Shuttle
 --- !u!114 &11431040
 MonoBehaviour:
   m_ObjectHideFlags: 1

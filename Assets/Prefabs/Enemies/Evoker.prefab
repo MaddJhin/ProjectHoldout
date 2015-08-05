@@ -88,7 +88,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 180882}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.00999999978, y: 0, z: -5.57000017}
+  m_LocalPosition: {x: 1.14827323, y: -5.64173283e-16, z: 21.5968895}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 465660}
@@ -210,7 +210,10 @@ MonoBehaviour:
   targetInRange: 0
   actionTarget: {fileID: 0}
   defaultTarget: 
-  priorityList: []
+  priorityList:
+  - Player
+  - Barricade
+  - Evac Shuttle
   targetDistance: 0
 --- !u!114 &11467258
 MonoBehaviour:
@@ -239,7 +242,7 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   attackSpeed: 1
-  attackRange: 1
+  attackRange: 5
   armor: 0
 --- !u!114 &11481894
 MonoBehaviour:
@@ -254,10 +257,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   attackSpeed: 1
-  attackRange: 1
+  attackRange: 5
   armor: 0
   defaultTarget: Evac Shuttle
-  priorityList: []
+  priorityList:
+  - Player
+  - Barricade
+  - Evac Shuttle
 --- !u!135 &13561476
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -268,7 +274,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 3
+  m_Radius: 8
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!136 &13681138
 CapsuleCollider:
