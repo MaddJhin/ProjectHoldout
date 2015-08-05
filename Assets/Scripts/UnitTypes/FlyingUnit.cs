@@ -2,6 +2,26 @@
 using System.Collections;
 using System.Collections.Generic;
 
+/* USES:
+ * ==============
+ * 
+ * 
+ * 
+ * ==============
+ * 
+ * USAGE:
+ * ======================================
+ * 
+ * 
+ * 
+ * 
+ * ======================================
+ * 
+ * Date Created:
+ * Last Modified:
+ * Authors:
+ */
+
 [RequireComponent(typeof (NavMeshAgent))]
 [RequireComponent(typeof (UnitSight))]
 [RequireComponent(typeof (UnitStats))]

@@ -58,8 +58,8 @@ public class UnitStats : MonoBehaviour
     public void KillUnit()
     {
         // Deactivates the unit
+		gm.RemoveObjective();
         gameObject.SetActive(false);
-        gm.RemoveObjective();
     }
 
     public void ApplyStatus(statusEffects effect, float duration)

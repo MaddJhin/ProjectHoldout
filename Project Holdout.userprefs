@@ -1,11 +1,13 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\Learning\UI Tutorial\Assets\Scripts\TiltWindow.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\UnitStats.cs">
     <Files>
-      <File FileName="..\Learning\UI Tutorial\Assets\Scripts\TiltWindow.cs" Line="18" Column="3" />
-      <File FileName="..\Learning\UI Tutorial\Assets\Scripts\PanelManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Level Menu 2D\Scripts\LevelMenu2D.cs" Line="94" Column="2" />
-      <File FileName="Assets\Scripts\Managers\WorldSelectManager.cs" Line="10" Column="1" />
+      <File FileName="Assets\Scripts\UnitTypes\MinionUnit.cs" Line="82" Column="5" />
+      <File FileName="Assets\Scripts\Player\MarksmanUnit.cs" Line="39" Column="2" />
+      <File FileName="Assets\Scripts\UnitActions\UnitSight.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Enemy\EnemyAttack.cs" Line="7" Column="1" />
+      <File FileName="Assets\Scripts\UnitTypes\BruteUnit.cs" Line="50" Column="38" />
+      <File FileName="Assets\Scripts\UnitStats.cs" Line="61" Column="21" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

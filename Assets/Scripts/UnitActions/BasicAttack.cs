@@ -20,7 +20,6 @@ public class BasicAttack : MonoBehaviour
 
     private Animator anim;
 //    private UnitStats targetHealth;
-    private bool attacking;
     private float attackRange;
 
     void Awake()
@@ -31,10 +30,8 @@ public class BasicAttack : MonoBehaviour
     public void Punch(GameObject target)
     {
 		UnitStats targetHealth = target.GetComponent<UnitStats>();
-        attacking = true;
         targetHealth.TakeDamage(damage);
         PunchEffects();
-        attacking = false;
         Debug.Log("Punch!");
     }
 

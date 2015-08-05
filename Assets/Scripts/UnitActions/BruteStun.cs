@@ -9,7 +9,7 @@ public class BruteStun : MonoBehaviour {
     [SerializeField] public float radius = 5f;
 
     private Animator anim;
-    private UnitStats targetHealth;
+ //   private UnitStats targetHealth;
     public bool attacking;
     private float attackRange;
 
