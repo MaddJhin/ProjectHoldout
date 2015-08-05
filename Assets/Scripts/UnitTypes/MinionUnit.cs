@@ -25,7 +25,7 @@ using System.Collections.Generic;
 [RequireComponent(typeof (NavMeshAgent))]
 [RequireComponent(typeof (NavMeshObstacle))]
 [RequireComponent(typeof (UnitSight))]
-[RequireComponent(typeof (BasicAttack))]
+[RequireComponent(typeof (EnemyAttack))]
 [RequireComponent(typeof (UnitStats))]
 
 public class MinionUnit : MonoBehaviour 
@@ -39,7 +39,7 @@ public class MinionUnit : MonoBehaviour
 	
 	private NavMeshAgent agent;
     private UnitStats stats;
-    private BasicAttack action;
+	private EnemyAttack action;
     private UnitSight vision;
     private float elapsedTime;
     private Vector3 targetLoc;
@@ -49,7 +49,7 @@ public class MinionUnit : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         stats = GetComponent<UnitStats>();
-        action = GetComponent<BasicAttack>();
+        action = GetComponent<EnemyAttack>();
         vision = GetComponent<UnitSight>();
         obstacle = GetComponent<NavMeshObstacle>();
     }
@@ -74,9 +74,12 @@ public class MinionUnit : MonoBehaviour
 		targetLoc = vision.actionTarget.transform.position;
 		
 		// If unit as at the target, stop moving and block other units
-        if (vision.targetDistance <= agent.stoppingDistance)
+        if (vision.targetDistance <= attackRange)
         {
-            agent.Stop();
+			if(agent.enabled == true)
+			{
+				agent.Stop();
+			}
             agent.enabled = false;
             obstacle.enabled = true;
 
@@ -99,7 +102,7 @@ public class MinionUnit : MonoBehaviour
 
     void Attack()
     {
-        agent.Stop();
+        //agent.Stop();
         Debug.Log(vision.actionTarget);
         action.Punch(vision.actionTarget);
     }

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 [RequireComponent(typeof (NavMeshAgent))]
 [RequireComponent(typeof (NavMeshObstacle))]
 [RequireComponent(typeof (UnitSight))]
-[RequireComponent(typeof (BruteStun))]
+[RequireComponent(typeof (EnemyAttack))]
 [RequireComponent(typeof (UnitStats))]
 
 public class BruteUnit : MonoBehaviour 
@@ -14,12 +14,14 @@ public class BruteUnit : MonoBehaviour
 	public float attackSpeed = 1.0f;
 	public float attackRange = 1f;
 	public float armor = 0.0f;
+	public float stunDuration = 1f;
+	public float attackRadius = 5f;
 	public string defaultTarget;
 	public List<string> priorityList = new List<string>();
 
     private NavMeshAgent agent;
     private UnitStats stats;
-    private BruteStun action;
+    private EnemyAttack action;
     private UnitSight vision;
     private float elapsedTime;
     private Vector3 targetLoc;
@@ -29,7 +31,7 @@ public class BruteUnit : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         stats = GetComponent<UnitStats>();
-        action = GetComponent<BruteStun>();
+        action = GetComponent<EnemyAttack>();
         vision = GetComponent<UnitSight>();
         obstacle = GetComponent<NavMeshObstacle>();
     }
@@ -44,6 +46,8 @@ public class BruteUnit : MonoBehaviour
 		stats.attackSpeed = attackSpeed;
 		stats.attackRange = attackRange;
 		stats.armor = armor;
+		action.stunDuration = stunDuration;
+		action.attackRadius = attackRadius;
 	}
 
     void Update()
@@ -52,9 +56,12 @@ public class BruteUnit : MonoBehaviour
         targetLoc = vision.actionTarget.transform.position;
 
         // If unit as at the target, stop moving and block other units
-        if (vision.targetDistance <= agent.stoppingDistance)
+        if (vision.targetDistance <= attackRange)
         {
-            agent.Stop();
+			if(agent.enabled == true)
+			{
+				agent.Stop();
+			}
             agent.enabled = false;
             obstacle.enabled = true;
 
@@ -77,7 +84,7 @@ public class BruteUnit : MonoBehaviour
 
     void Attack()
     {
-        agent.Stop();
+        //agent.Stop();
         Debug.Log(vision.actionTarget);
         action.Slam(vision.actionTarget);
     }

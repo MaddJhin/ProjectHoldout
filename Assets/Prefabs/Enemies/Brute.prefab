@@ -31,8 +31,8 @@ GameObject:
   - 208: {fileID: 20884390}
   - 114: {fileID: 11445360}
   - 114: {fileID: 11468632}
-  - 114: {fileID: 11460200}
   - 114: {fileID: 11497332}
+  - 114: {fileID: 11441420}
   m_Layer: 10
   m_Name: Brute
   m_TagString: Brute
@@ -75,7 +75,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 156858}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.62, y: 0, z: -7.13999987}
+  m_LocalPosition: {x: -1.71000004, y: -0, z: -97.6399994}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 402432}
@@ -107,7 +107,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 84
   m_CollisionDetection: 0
 --- !u!95 &9586804
 Animator:
@@ -126,6 +126,21 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 0
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11441420
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 156858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4474954401d6a7e4f95e130455ffe7d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5
+  stunDuration: 1
+  attackRadius: 5
+  explosionParticles: {fileID: 19864828, guid: c719e6f341e76b044a06fae2cbf3dd1c, type: 2}
 --- !u!114 &11445360
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -141,26 +156,12 @@ MonoBehaviour:
   attackSpeed: 1
   attackRange: 2
   armor: 0
+  stunDuration: 1
+  attackRadius: 5
   defaultTarget: Evac Shuttle
   priorityList:
   - Player
   - Barricade
---- !u!114 &11460200
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 156858}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d12ed3b0025424541b3129d0d97cfff8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 5
-  attackSound: {fileID: 0}
-  duration: 3
-  radius: 5
-  attacking: 0
 --- !u!114 &11468632
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -214,10 +215,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: .5
-  m_Height: 2
+  m_Radius: .409999996
+  m_Height: 1.25
   m_Direction: 1
-  m_Center: {x: 0, y: .5, z: 0}
+  m_Center: {x: 0, y: .639999986, z: 0}
 --- !u!137 &13701524
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

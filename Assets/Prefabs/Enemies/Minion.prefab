@@ -48,8 +48,8 @@ GameObject:
   - 82: {fileID: 8268362}
   - 114: {fileID: 11402554}
   - 114: {fileID: 11473786}
-  - 114: {fileID: 11482620}
   - 114: {fileID: 11453834}
+  - 114: {fileID: 11432760}
   m_Layer: 10
   m_Name: Minion
   m_TagString: Minion
@@ -88,7 +88,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 135072}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .670000017, y: 0, z: -40.2599983}
+  m_LocalPosition: {x: -.629999995, y: -0, z: -95.6100006}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 410088}
@@ -209,12 +209,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   attackSpeed: 1
-  attackRange: 1
+  attackRange: 2
   armor: 0
   defaultTarget: Evac Shuttle
   priorityList:
   - Player
+  - Barricade
   - Evac Shuttle
+--- !u!114 &11432760
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 135072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4474954401d6a7e4f95e130455ffe7d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5
+  stunDuration: 1
+  attackRadius: 5
+  explosionParticles: {fileID: 19864828, guid: c719e6f341e76b044a06fae2cbf3dd1c, type: 2}
 --- !u!114 &11453834
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -247,19 +263,6 @@ MonoBehaviour:
   defaultTarget: 
   priorityList: []
   targetDistance: 0
---- !u!114 &11482620
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 135072}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 911d6138cd63c704391455651647b861, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 5
-  punchSound: {fileID: 0}
 --- !u!135 &13544908
 SphereCollider:
   m_ObjectHideFlags: 1
