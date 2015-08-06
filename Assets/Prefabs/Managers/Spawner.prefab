@@ -23,7 +23,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 133740}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.0199999996, y: 0, z: -39.9700012}
+  m_LocalPosition: {x: -.024100244, y: 1.185462e-15, z: -45.3801842}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -48,36 +48,7 @@ MonoBehaviour:
       prefab: Minion
       spawnCount: 4
       message: Spawning Minions!
-    - name: Brute
-      delay: .100000001
-      prefab: Brute
-      spawnCount: 1
-      message: Spawning Minions!
-  - name: Wave 2
-    actions:
-    - name: Minion
-      delay: 12
-      prefab: Minion
-      spawnCount: 3
-      message: Spawning Minions!
-    - name: Evoker
-      delay: .600000024
-      prefab: Evoker
-      spawnCount: 2
-      message: Spawning Minions!
-  - name: Wave 3
-    actions:
-    - name: Minion
-      delay: 12
-      prefab: Minion
-      spawnCount: 4
-      message: Spawning Minions!
-    - name: Bob
-      delay: .600000024
-      prefab: Bob
-      spawnCount: 1
-      message: Spawning Minions!
-  waveCounter: 1
+  waveCounter: 5
   targetObject: Evac Shuttle
 --- !u!1001 &100100000
 Prefab:

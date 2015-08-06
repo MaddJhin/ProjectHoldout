@@ -1551,7 +1551,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 143706}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.479999989, y: 0, z: 5.17000008}
+  m_LocalPosition: {x: 57.7172928, y: -.100000001, z: 9.13151836}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 485962}
@@ -2257,7 +2257,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 185320}
-  m_LocalRotation: {x: .532675207, y: .0703404546, z: .836132765, w: -.110415146}
+  m_LocalRotation: {x: .532675147, y: .0703404471, z: .836132646, w: -.110415131}
   m_LocalPosition: {x: 2.22714643e-05, y: -6.1504652e-05, z: .0260270257}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2537,7 +2537,7 @@ MonoBehaviour:
   health: 100
   damagePerHit: 20
   attackRange: 2
-  timeBetweenAttacks: 1
+  timeBetweenAttacks: .150000006
   priorityList:
   - Brute
   - Evoker
@@ -2557,10 +2557,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionTarget: {fileID: 0}
   priorityList:
+  - Bob
   - Brute
   - Evoker
   - Minion
-  - Bob
   targetBarricade: {fileID: 0}
 --- !u!135 &13520222
 SphereCollider:
@@ -2572,7 +2572,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 8
+  m_Radius: 12.3400002
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &13630732
 CapsuleCollider:

@@ -208,6 +208,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
+  attackSound: {fileID: 0}
   radius: 5
   explosionParticles: {fileID: 19864828, guid: c719e6f341e76b044a06fae2cbf3dd1c, type: 2}
 --- !u!114 &11479928
@@ -226,9 +227,8 @@ MonoBehaviour:
   attackRange: 1
   armor: 0
   defaultTarget: Evac Shuttle
-  priorityList:
-  - Barricade
-  - Evac Shuttle
+  priorityList: []
+  explosionFX: {fileID: 19864828, guid: c719e6f341e76b044a06fae2cbf3dd1c, type: 2}
 --- !u!114 &11490664
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -243,9 +243,7 @@ MonoBehaviour:
   targetInRange: 0
   actionTarget: {fileID: 0}
   defaultTarget: 
-  priorityList:
-  - Barricade
-  - Evac Shuttle
+  priorityList: []
   targetDistance: 0
 --- !u!114 &11491734
 MonoBehaviour:
@@ -332,7 +330,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 139698}
   m_Enabled: 1
   m_Radius: 1.20000005
-  m_Speed: 3
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

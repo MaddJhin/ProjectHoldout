@@ -214,7 +214,6 @@ MonoBehaviour:
   defaultTarget: Evac Shuttle
   priorityList:
   - Player
-  - Barricade
   - Evac Shuttle
 --- !u!114 &11432760
 MonoBehaviour:
