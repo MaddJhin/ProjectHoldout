@@ -48,8 +48,8 @@ GameObject:
   - 82: {fileID: 8288136}
   - 114: {fileID: 11481894}
   - 114: {fileID: 11403142}
+  - 114: {fileID: 11467258}
   - 114: {fileID: 11477820}
-  - 114: {fileID: 11422568}
   m_Layer: 10
   m_Name: Evoker
   m_TagString: Evoker
@@ -88,7 +88,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 180882}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .379999995, y: 0, z: -57.7400017}
+  m_LocalPosition: {x: -.00999999978, y: 0, z: -5.57000017}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 465660}
@@ -210,10 +210,9 @@ MonoBehaviour:
   targetInRange: 0
   actionTarget: {fileID: 0}
   defaultTarget: 
-  priorityList:
-  - 
+  priorityList: []
   targetDistance: 0
---- !u!114 &11422568
+--- !u!114 &11467258
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -221,13 +220,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 180882}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4474954401d6a7e4f95e130455ffe7d9, type: 3}
+  m_Script: {fileID: 11500000, guid: 911d6138cd63c704391455651647b861, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
-  stunDuration: 1
-  attackRadius: 5
-  explosionParticles: {fileID: 19864828, guid: c719e6f341e76b044a06fae2cbf3dd1c, type: 2}
+  punchSound: {fileID: 0}
 --- !u!114 &11477820
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -257,12 +254,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   attackSpeed: 1
-  attackRange: 7
+  attackRange: 1
   armor: 0
   defaultTarget: Evac Shuttle
-  priorityList:
-  - Player
-  - Barricade
+  priorityList: []
 --- !u!135 &13561476
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -273,7 +268,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 9.88000011
+  m_Radius: 3
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!136 &13681138
 CapsuleCollider:
@@ -336,7 +331,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 2
+  m_StoppingDistance: 1
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -353,7 +348,7 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: .25, y: .774999976, z: .25}
+  m_Extents: {x: .5, y: .75, z: .5}
   m_MoveThreshold: .100000001
   m_Carve: 0
   m_CarveOnlyStationary: 1
