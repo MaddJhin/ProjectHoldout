@@ -33,6 +33,7 @@ public class MinionUnit : MonoBehaviour
 	public float maxHealth = 100.0f;
 	public float attackSpeed = 1.0f;
 	public float attackRange = 1f;
+	public float damage = 5;
 	public float armor = 0.0f;
 	public string defaultTarget;
 	public List<string> priorityList = new List<string>();
@@ -66,6 +67,7 @@ public class MinionUnit : MonoBehaviour
 		stats.attackSpeed = attackSpeed;
 		stats.attackRange = attackRange;
 		stats.armor = armor;
+		action.damage = damage;
 	}
 	
 	void Update()
