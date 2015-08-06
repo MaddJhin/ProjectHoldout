@@ -5,7 +5,6 @@ using System.Collections.Generic;
 public class GenericPooler : MonoBehaviour 
 {
     public static GenericPooler current;
-    public GameObject pooledObject;
     public int pooledAmount = 40;
     public Dictionary<string, List<GameObject>> poolDict;
     public List<GameObject> pooledObjects; // List of objects that will be pooled

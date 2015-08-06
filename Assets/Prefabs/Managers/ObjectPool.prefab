@@ -39,7 +39,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 200a79ffde46b33498cf45ce068c6b74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pooledObject: {fileID: 135072, guid: 0711b4b95f080d74c8ee2f3986d0fea0, type: 2}
   pooledAmount: 40
   pooledObjects:
   - {fileID: 139698, guid: c0dfe13a7ad90ec4b875cc42c8bc267b, type: 2}
@@ -47,6 +46,11 @@ MonoBehaviour:
   - {fileID: 180882, guid: edd40797be2c18d4c9d16207446a4975, type: 2}
   - {fileID: 166900, guid: eba01e585927006478e21a0f5ee3c171, type: 2}
   - {fileID: 135072, guid: 0711b4b95f080d74c8ee2f3986d0fea0, type: 2}
+  - {fileID: 174448, guid: c11cf535496cc924085bf8cdb80a1355, type: 2}
+  - {fileID: 144622, guid: bb0def9263e0bb74d8686fe966bda6bf, type: 2}
+  - {fileID: 132448, guid: 99a4ff4a15a28be48b246aba4c4dca2b, type: 2}
+  - {fileID: 143706, guid: b4cd5428b662de841af40c0577009d1a, type: 2}
+  - {fileID: 144140, guid: 384aee69ff645674e9a4de559e75885e, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
