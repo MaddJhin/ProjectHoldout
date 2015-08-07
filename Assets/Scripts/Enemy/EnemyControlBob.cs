@@ -2,20 +2,38 @@
 using System.Collections;
 using System.Collections.Generic;
 
+/* USES:
+ * ==============
+ * UnitSight.cs
+ * UnitStats.cs
+ * MinionPunch.cs
+ * ==============
+ * 
+ * USAGE:
+ * ======================================
+ * Acts as the "brain" of the minion unit
+ * Uses other scripts to perform actions, E.G: seeing the player, attacking
+ * Makes calls to other scripts to perform attacks, or to utilise stats
+ * Enables modularity
+ * ======================================
+ * 
+ * Date Created: 27 May 2015
+ * Last Modified: 29 May 2015
+ * Authors: Andrew Tully
+ */
+
 [RequireComponent(typeof (NavMeshAgent))]
 [RequireComponent(typeof (NavMeshObstacle))]
 [RequireComponent(typeof (UnitSight))]
 [RequireComponent(typeof (EnemyAttack))]
 [RequireComponent(typeof (UnitStats))]
 
-public class BruteUnit : MonoBehaviour 
+public class EnemyControlBob : MonoBehaviour
 {
 	public float maxHealth = 100.0f;
 	public float attackSpeed = 1.0f;
 	public float attackRange = 1f;
 	public float armor = 0.0f;
-	public float stunDuration = 1f;
-	public float attackRadius = 5f;
 	public string defaultTarget;
 	public List<string> priorityList = new List<string>();
 
@@ -25,20 +43,23 @@ public class BruteUnit : MonoBehaviour
     private UnitSight vision;
     private float elapsedTime;
     private Vector3 targetLoc;
-    private NavMeshObstacle obstacle;
+	private NavMeshObstacle obstacle;
+
 
     void Awake()
     {
-        agent = GetComponent<NavMeshAgent>();
-        stats = GetComponent<UnitStats>();
-        action = GetComponent<EnemyAttack>();
-        vision = GetComponent<UnitSight>();
-        obstacle = GetComponent<NavMeshObstacle>();
-    }
-
-	void Start (){
+		agent = GetComponent<NavMeshAgent>();
+		stats = GetComponent<UnitStats>();
+		action = GetComponent<EnemyAttack>();
+		vision = GetComponent<UnitSight>();
+		obstacle = GetComponent<NavMeshObstacle>();
+	}
+	
+	void Start(){
+		obstacle.enabled = false;
+		agent.enabled = true;
 		elapsedTime = 0f;
-
+		
 		// Set values for dependant scripts. Only modify values in one script in inspector
 		vision.defaultTarget = defaultTarget;
 		vision.priorityList = priorityList;
@@ -46,47 +67,36 @@ public class BruteUnit : MonoBehaviour
 		stats.attackSpeed = attackSpeed;
 		stats.attackRange = attackRange;
 		stats.armor = armor;
-		action.stunDuration = stunDuration;
-		action.attackRadius = attackRadius;
 	}
 
     void Update()
     {
-        // Update target location
-        targetLoc = vision.actionTarget.transform.position;
+		if (vision.actionTarget != null)
+		{
+			targetLoc = vision.actionTarget.transform.position;
+		}
+        // Update the target location
 
-        // If unit as at the target, stop moving and block other units
-        if (vision.targetDistance <= attackRange)
+        if (stats.attackSpeed < elapsedTime && vision.targetDistance < agent.stoppingDistance)
         {
-			if(agent.enabled == true)
-			{
-				agent.Stop();
-			}
-            agent.enabled = false;
-            obstacle.enabled = true;
-
-            if (stats.attackSpeed < elapsedTime)
-            {
-                elapsedTime = 0f;
-                Attack();
-            }
+            Debug.Log("Attacking");
+            elapsedTime = 0f;
+            Attack();
         }
 
         else
-        {
-            obstacle.enabled = false;
-            agent.enabled = true;
             Move();
-        }
 
         elapsedTime += Time.deltaTime;
     }
 
     void Attack()
-    {
-        //agent.Stop();
+    {        
+        agent.Stop();
         Debug.Log(vision.actionTarget);
-        action.Slam(vision.actionTarget);
+        action.Explode(vision.actionTarget);
+
+        gameObject.SetActive(false);
     }
 
     void Move()

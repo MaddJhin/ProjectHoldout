@@ -1,13 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\UnitTypes\MinionUnit.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Enemy\EnemyControlFlyer.cs">
     <Files>
-      <File FileName="Assets\Scripts\UnitTypes\MinionUnit.cs" Line="36" Column="26" />
-      <File FileName="Assets\Scripts\Player\MarksmanUnit.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\UnitActions\UnitSight.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Enemy\EnemyAttack.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\UnitTypes\BruteUnit.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\UnitStats.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Player\MarksmanUnit.cs" Line="4" Column="1" />
+      <File FileName="Assets\Scripts\Enemy\EnemyControlFlyer.cs" Line="29" Column="31" />
+      <File FileName="Assets\Scripts\Enemy\EnemyControlMinion.cs" Line="31" Column="32" />
+      <File FileName="Assets\Scripts\Enemy\EnemyControlBrute.cs" Line="12" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

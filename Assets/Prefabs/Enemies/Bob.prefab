@@ -33,7 +33,7 @@ GameObject:
   - 114: {fileID: 11479928}
   - 114: {fileID: 11491734}
   - 114: {fileID: 11490664}
-  - 114: {fileID: 11420414}
+  - 114: {fileID: 11497482}
   m_Layer: 10
   m_Name: Bob
   m_TagString: Flyer
@@ -196,21 +196,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 0
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11420414
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 139698}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6af85621be8c9d34a8e955e68de9f409, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 5
-  attackSound: {fileID: 0}
-  radius: 5
-  explosionParticles: {fileID: 19864828, guid: c719e6f341e76b044a06fae2cbf3dd1c, type: 2}
 --- !u!114 &11479928
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -227,8 +212,8 @@ MonoBehaviour:
   attackRange: 1
   armor: 0
   defaultTarget: Evac Shuttle
-  priorityList: []
-  explosionFX: {fileID: 19864828, guid: c719e6f341e76b044a06fae2cbf3dd1c, type: 2}
+  priorityList:
+  - Barricade
 --- !u!114 &11490664
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -261,6 +246,21 @@ MonoBehaviour:
   attackSpeed: 1
   attackRange: 1
   armor: 0
+--- !u!114 &11497482
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 139698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4474954401d6a7e4f95e130455ffe7d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5
+  stunDuration: 1
+  attackRadius: 5
+  explosionParticles: {fileID: 19864828, guid: c719e6f341e76b044a06fae2cbf3dd1c, type: 2}
 --- !u!135 &13583134
 SphereCollider:
   m_ObjectHideFlags: 1
