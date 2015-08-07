@@ -2004,7 +2004,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 144140}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.71000004, y: 0, z: -33.3300018}
+  m_LocalPosition: {x: 2.56999993, y: 0, z: -.730000019}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 409476}
@@ -2504,7 +2504,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e63de67a0857d5c44b1756f81dc578dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 60
   currentHealth: 0
   attackSpeed: 1
   attackRange: 1
@@ -2521,8 +2521,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  attackSpeed: 1
+  attackSpeed: .600000024
   attackRange: 1
+  damage: 5
   armor: 0
   defaultTarget: 
   priorityList:
@@ -2573,7 +2574,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 3
+  m_Radius: 6
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!136 &13647772
 CapsuleCollider:

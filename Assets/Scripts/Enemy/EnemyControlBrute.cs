@@ -2,45 +2,26 @@
 using System.Collections;
 using System.Collections.Generic;
 
-/* USES:
- * ==============
- * UnitSight.cs
- * UnitStats.cs
- * MinionPunch.cs
- * ==============
- * 
- * USAGE:
- * ======================================
- * Acts as the "brain" of the minion unit
- * Uses other scripts to perform actions, E.G: seeing the player, attacking
- * Makes calls to other scripts to perform attacks, or to utilise stats
- * Enables modularity
- * ======================================
- * 
- * Date Created: 27 May 2015
- * Last Modified: 22 July 2015
- * Authors: Andrew Tully
- */
-
 [RequireComponent(typeof (NavMeshAgent))]
 [RequireComponent(typeof (NavMeshObstacle))]
 [RequireComponent(typeof (UnitSight))]
 [RequireComponent(typeof (EnemyAttack))]
 [RequireComponent(typeof (UnitStats))]
 
-public class MinionUnit : MonoBehaviour 
+public class EnemyControlBrute : MonoBehaviour 
 {
 	public float maxHealth = 100.0f;
 	public float attackSpeed = 1.0f;
 	public float attackRange = 1f;
-	public float damage = 5;
 	public float armor = 0.0f;
+	public float stunDuration = 1f;
+	public float attackRadius = 5f;
 	public string defaultTarget;
 	public List<string> priorityList = new List<string>();
-	
-	private NavMeshAgent agent;
+
+    private NavMeshAgent agent;
     private UnitStats stats;
-	private EnemyAttack action;
+    private EnemyAttack action;
     private UnitSight vision;
     private float elapsedTime;
     private Vector3 targetLoc;
@@ -55,9 +36,7 @@ public class MinionUnit : MonoBehaviour
         obstacle = GetComponent<NavMeshObstacle>();
     }
 
-	void Start(){
-		obstacle.enabled = false;
-		agent.enabled = true;
+	void Start (){
 		elapsedTime = 0f;
 
 		// Set values for dependant scripts. Only modify values in one script in inspector
@@ -67,15 +46,16 @@ public class MinionUnit : MonoBehaviour
 		stats.attackSpeed = attackSpeed;
 		stats.attackRange = attackRange;
 		stats.armor = armor;
-		action.damage = damage;
+		action.stunDuration = stunDuration;
+		action.attackRadius = attackRadius;
 	}
-	
-	void Update()
+
+    void Update()
     {
-        // Update the target location
-		targetLoc = vision.actionTarget.transform.position;
-		
-		// If unit as at the target, stop moving and block other units
+        // Update target location
+        targetLoc = vision.actionTarget.transform.position;
+
+        // If unit as at the target, stop moving and block other units
         if (vision.targetDistance <= attackRange)
         {
 			if(agent.enabled == true)
@@ -106,7 +86,7 @@ public class MinionUnit : MonoBehaviour
     {
         //agent.Stop();
         Debug.Log(vision.actionTarget);
-        action.Punch(vision.actionTarget);
+        action.Slam(vision.actionTarget);
     }
 
     void Move()

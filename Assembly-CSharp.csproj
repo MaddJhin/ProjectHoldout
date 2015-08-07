@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{71505822-3FDA-93FC-7D89-411C558F94AD}</ProjectGuid>
+	<ProjectGuid>{97125959-A3CA-7F35-51AA-7067509FDE3D}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -19,7 +19,11 @@
 	<DebugType>full</DebugType>
 	<Optimize>false</Optimize>
 	<OutputPath>Temp\bin\Debug\</OutputPath>
-	<DefineConstants>DEBUG;TRACE;UNITY_5_0_1;UNITY_5_0;UNITY_5;ENABLE_LICENSE_RENAME;ENABLE_NEW_BUGREPORTER;ENABLE_2D_PHYSICS;ENABLE_4_6_FEATURES;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_NEW_HIERARCHY;ENABLE_PHYSICS;ENABLE_PHYSICS_PHYSX3;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_AUDIOMIXER_SUSPEND;ENABLE_NONPRO;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_MONO;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;CROSS_PLATFORM_INPUT</DefineConstants>
+<<<<<<< HEAD
+	<DefineConstants>DEBUG;TRACE;UNITY_5_0_0;UNITY_5_0;UNITY_5;ENABLE_LICENSE_RENAME;ENABLE_NEW_BUGREPORTER;ENABLE_2D_PHYSICS;ENABLE_4_6_FEATURES;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_NEW_HIERARCHY;ENABLE_PHYSICS;ENABLE_PHYSICS_PHYSX3;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_AUDIOMIXER_SUSPEND;ENABLE_NONPRO;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_MONO;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;CROSS_PLATFORM_INPUT</DefineConstants>
+=======
+	<DefineConstants>DEBUG;TRACE;UNITY_5_0_1;UNITY_5_0;UNITY_5;ENABLE_LICENSE_RENAME;ENABLE_NEW_BUGREPORTER;ENABLE_2D_PHYSICS;ENABLE_4_6_FEATURES;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_NEW_HIERARCHY;ENABLE_PHYSICS;ENABLE_PHYSICS_PHYSX3;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_AUDIOMIXER_SUSPEND;ENABLE_NONPRO;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;UNITY_STANDALONE_OSX;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_GAMECENTER;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_MONO;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_OSX;CROSS_PLATFORM_INPUT</DefineConstants>
+>>>>>>> 5895542373611787e5ed88995148c65c6ff7f145
 	<ErrorReport>prompt</ErrorReport>
 	<WarningLevel>4</WarningLevel>
 	<NoWarn>0169</NoWarn>
@@ -39,10 +43,17 @@
 	<Reference Include="System.Core" />
 	<Reference Include="System.Xml.Linq" />
 	<Reference Include="UnityEngine">
-	  <HintPath>D:/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+<<<<<<< HEAD
+	  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
-	  <HintPath>D:/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+=======
+	  <HintPath>/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEngine.dll</HintPath>
+	</Reference>
+	<Reference Include="UnityEditor">
+	  <HintPath>/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEditor.dll</HintPath>
+>>>>>>> 5895542373611787e5ed88995148c65c6ff7f145
 	</Reference>
   </ItemGroup>
   <ItemGroup>
@@ -66,17 +77,23 @@
      <Compile Include="Assets\Scripts\Camera\MouseZoom.cs" />
      <Compile Include="Assets\Scripts\Camera\PinchZoom.cs" />
      <Compile Include="Assets\Scripts\ChangeColor.cs" />
-     <Compile Include="Assets\Scripts\DeltaTimeTest.cs" />
      <Compile Include="Assets\Scripts\DoorOpen.cs" />
      <Compile Include="Assets\Scripts\Enemy\EnemyAttack.cs" />
-     <Compile Include="Assets\Scripts\Enemy\EnemyHealth.cs" />
-     <Compile Include="Assets\Scripts\Enemy\EnemyMovement.cs" />
+     <Compile Include="Assets\Scripts\Enemy\EnemyControlBob.cs" />
+     <Compile Include="Assets\Scripts\Enemy\EnemyControlBrute.cs" />
+     <Compile Include="Assets\Scripts\Enemy\EnemyControlFlyer.cs" />
+     <Compile Include="Assets\Scripts\Enemy\EnemyControlMinion.cs" />
+     <Compile Include="Assets\Scripts\Enemy\StandardAssets\EnemyHealth.cs" />
+     <Compile Include="Assets\Scripts\Enemy\StandardAssets\EnemyMovement.cs" />
      <Compile Include="Assets\Scripts\GenericPooler.cs" />
-     <Compile Include="Assets\Scripts\InputManager.cs" />
      <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
+     <Compile Include="Assets\Scripts\Managers\InputManager.cs" />
      <Compile Include="Assets\Scripts\Managers\LevelManager.cs" />
      <Compile Include="Assets\Scripts\Managers\LoadoutManager.cs" />
      <Compile Include="Assets\Scripts\Managers\WorldSelectManager.cs" />
+     <Compile Include="Assets\Scripts\OldScripts\BasicAttack.cs" />
+     <Compile Include="Assets\Scripts\OldScripts\BruteStun.cs" />
+     <Compile Include="Assets\Scripts\OldScripts\SelfDestruct.cs" />
      <Compile Include="Assets\Scripts\Player\MarksmanUnit.cs" />
      <Compile Include="Assets\Scripts\Player\MechanicUnit.cs" />
      <Compile Include="Assets\Scripts\Player\MedicUnit.cs" />
@@ -87,10 +104,6 @@
      <Compile Include="Assets\Scripts\Player\Standard Assets\ThirdPersonCharacter.cs" />
      <Compile Include="Assets\Scripts\Player\Standard Assets\ThirdPersonUserControl.cs" />
      <Compile Include="Assets\Scripts\Player\TrooperUnit.cs" />
-     <Compile Include="Assets\Scripts\PlayerDrop.cs" />
-     <Compile Include="Assets\Scripts\ResizePanel.cs" />
-     <Compile Include="Assets\Scripts\ScrollDetailTexture.cs" />
-     <Compile Include="Assets\Scripts\ShowSliderValue.cs" />
      <Compile Include="Assets\Scripts\SimpleTestSpawner.cs" />
      <Compile Include="Assets\Scripts\Spawner.cs" />
      <Compile Include="Assets\Scripts\UI\ApplicationManager.cs" />
@@ -98,16 +111,13 @@
      <Compile Include="Assets\Scripts\UI\DragPanel.cs" />
      <Compile Include="Assets\Scripts\UI\DropMe.cs" />
      <Compile Include="Assets\Scripts\UI\PanelManager.cs" />
+     <Compile Include="Assets\Scripts\UI\PlayerDrop.cs" />
+     <Compile Include="Assets\Scripts\UI\ResizePanel.cs" />
+     <Compile Include="Assets\Scripts\UI\ScrollDetailTexture.cs" />
+     <Compile Include="Assets\Scripts\UI\ShowSliderValue.cs" />
      <Compile Include="Assets\Scripts\UI\TiltWindow.cs" />
-     <Compile Include="Assets\Scripts\UnitActions\BasicAttack.cs" />
-     <Compile Include="Assets\Scripts\UnitActions\BruteStun.cs" />
-     <Compile Include="Assets\Scripts\UnitActions\SelfDestruct.cs" />
-     <Compile Include="Assets\Scripts\UnitActions\UnitSight.cs" />
-     <Compile Include="Assets\Scripts\UnitStats.cs" />
-     <Compile Include="Assets\Scripts\UnitTypes\BobUnit.cs" />
-     <Compile Include="Assets\Scripts\UnitTypes\BruteUnit.cs" />
-     <Compile Include="Assets\Scripts\UnitTypes\FlyingUnit.cs" />
-     <Compile Include="Assets\Scripts\UnitTypes\MinionUnit.cs" />
+     <Compile Include="Assets\Scripts\UnitScripts\UnitSight.cs" />
+     <Compile Include="Assets\Scripts\UnitScripts\UnitStats.cs" />
      <None Include="Assets\Shaders\Alpha_Texture.shader" />
      <None Include="Assets\Shaders\DoubleSided-Light-Spec.shader" />
      <None Include="Assets\Shaders\Rim Lit Bumped Specular.shader" />
@@ -115,10 +125,14 @@
      <None Include="Assets\ThirdPersonCharacterGuidelines.txt" />
      <None Include="Assets\Shaders\Skybox-Procedural.shader" />
  <Reference Include="UnityEngine.UI">
- <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+<<<<<<< HEAD
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+=======
+ <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
- <HintPath>D:/Unity/Editor/Data/PlaybackEngines/iossupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+ <HintPath>/Applications/Unity/Unity.app/Contents/PlaybackEngines/iossupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+>>>>>>> 5895542373611787e5ed88995148c65c6ff7f145
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

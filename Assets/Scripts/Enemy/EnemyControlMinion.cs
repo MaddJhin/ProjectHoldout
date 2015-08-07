@@ -18,48 +18,48 @@ using System.Collections.Generic;
  * ======================================
  * 
  * Date Created: 27 May 2015
- * Last Modified: 29 May 2015
+ * Last Modified: 22 July 2015
  * Authors: Andrew Tully
  */
 
 [RequireComponent(typeof (NavMeshAgent))]
 [RequireComponent(typeof (NavMeshObstacle))]
 [RequireComponent(typeof (UnitSight))]
-[RequireComponent(typeof (SelfDestruct))]
+[RequireComponent(typeof (EnemyAttack))]
 [RequireComponent(typeof (UnitStats))]
 
-public class BobUnit : MonoBehaviour
+public class EnemyControlMinion : MonoBehaviour 
 {
 	public float maxHealth = 100.0f;
 	public float attackSpeed = 1.0f;
 	public float attackRange = 1f;
+	public float damage = 5;
 	public float armor = 0.0f;
 	public string defaultTarget;
 	public List<string> priorityList = new List<string>();
-
-    private NavMeshAgent agent;
+	
+	private NavMeshAgent agent;
     private UnitStats stats;
-    private SelfDestruct action;
+	private EnemyAttack action;
     private UnitSight vision;
     private float elapsedTime;
     private Vector3 targetLoc;
-	private NavMeshObstacle obstacle;
-
+    private NavMeshObstacle obstacle;
 
     void Awake()
     {
-		agent = GetComponent<NavMeshAgent>();
-		stats = GetComponent<UnitStats>();
-		action = GetComponent<SelfDestruct>();
-		vision = GetComponent<UnitSight>();
-		obstacle = GetComponent<NavMeshObstacle>();
-	}
-	
+        agent = GetComponent<NavMeshAgent>();
+        stats = GetComponent<UnitStats>();
+        action = GetComponent<EnemyAttack>();
+        vision = GetComponent<UnitSight>();
+        obstacle = GetComponent<NavMeshObstacle>();
+    }
+
 	void Start(){
 		obstacle.enabled = false;
 		agent.enabled = true;
 		elapsedTime = 0f;
-		
+
 		// Set values for dependant scripts. Only modify values in one script in inspector
 		vision.defaultTarget = defaultTarget;
 		vision.priorityList = priorityList;
@@ -67,36 +67,46 @@ public class BobUnit : MonoBehaviour
 		stats.attackSpeed = attackSpeed;
 		stats.attackRange = attackRange;
 		stats.armor = armor;
+		action.damage = damage;
 	}
-
-    void Update()
+	
+	void Update()
     {
-		if (vision.actionTarget != null)
-		{
-			targetLoc = vision.actionTarget.transform.position;
-		}
         // Update the target location
-
-        if (stats.attackSpeed < elapsedTime && vision.targetDistance < agent.stoppingDistance)
+		targetLoc = vision.actionTarget.transform.position;
+		
+		// If unit as at the target, stop moving and block other units
+        if (vision.targetDistance <= attackRange)
         {
-            Debug.Log("Attacking");
-            elapsedTime = 0f;
-            Attack();
+			if(agent.enabled == true)
+			{
+				agent.Stop();
+			}
+            agent.enabled = false;
+            obstacle.enabled = true;
+
+            if (stats.attackSpeed < elapsedTime)
+            {
+                elapsedTime = 0f;
+                Attack();
+            }
         }
 
         else
+        {
+            obstacle.enabled = false;
+            agent.enabled = true;
             Move();
+        }
 
         elapsedTime += Time.deltaTime;
     }
 
     void Attack()
-    {        
-        agent.Stop();
+    {
+        //agent.Stop();
         Debug.Log(vision.actionTarget);
-        action.Explode(vision.actionTarget);
-
-        gameObject.SetActive(false);
+        action.Punch(vision.actionTarget);
     }
 
     void Move()

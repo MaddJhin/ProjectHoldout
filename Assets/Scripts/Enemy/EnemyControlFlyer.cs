@@ -26,7 +26,7 @@ using System.Collections.Generic;
 [RequireComponent(typeof (UnitSight))]
 [RequireComponent(typeof (UnitStats))]
 
-public class FlyingUnit : MonoBehaviour 
+public class EnemyControlFlyer : MonoBehaviour 
 {
 	public float height = 30f;
 	public float maxHealth = 100.0f;
