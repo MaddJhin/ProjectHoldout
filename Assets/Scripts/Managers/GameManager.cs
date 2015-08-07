@@ -24,9 +24,11 @@ public class GameManager : MonoBehaviour
     private List<Spawner> spawnList;
     private int inactiveSpawns;
     private GameObject UI_canvas;
-    private InputManager IM;    // **GET REFERENCE TO THIS**
+    private InputManager IM;
     GameObject test;
 
+
+    // Following region ensures that there is only ever one game manager
     #region Singleton
     private static GameManager _instance;
 
@@ -66,16 +68,16 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        objectiveCounter = 0;
+        objectiveCounter = 0;                                       
         inactiveSpawns = 0;
         spawnList = new List<Spawner>();
 
         UI_canvas = GameObject.Find("Canvas");
 
-        // Get all spawners in the scene and remove the player spawners
         Debug.Log("Fetching Spawners");
-        Spawner[] temp = GameObject.FindObjectsOfType<Spawner>();
+        Spawner[] temp = GameObject.FindObjectsOfType<Spawner>();   // Get all spawners in scene
 
+        // Ignore Player tagged spawners
         foreach (var spawn in temp)
         {
             if (spawn.tag == "Enemy Spawn")
@@ -84,7 +86,8 @@ public class GameManager : MonoBehaviour
 
         Debug.Log("Spawn List: " + spawnList);
 
-
+        // Temporary
+        // Used for testing purposes
         AssignLoadoutSlot("PlayerCharacter_Marksman", 0);
         AssignLoadoutSlot("PlayerCharacter_Trooper", 1);
         AssignLoadoutSlot("PlayerCharacter_Medic", 2);
@@ -94,7 +97,7 @@ public class GameManager : MonoBehaviour
         AssignLoadoutSlot("PlayerCharacter_Trooper", 6);
         
 
-        SpawnPlayerUnits();
+        SpawnPlayerUnits();                                     
         
     }
     #endregion
@@ -105,6 +108,7 @@ public class GameManager : MonoBehaviour
         AssignLoadoutUI();
     }
 
+    // Following region handles the tracking of objectives and transition conditions
     #region Objectives & Transitions
 
     public void SwitchScene(string sceneName)
@@ -146,23 +150,29 @@ public class GameManager : MonoBehaviour
     }
     #endregion 
 
+    // Following region allows for units to be assigned to a loadout, and spawned
     #region Player Unit Management
 
-    // Assigns a string to an element of the playerLoadout array
-    // String is used for dictionary lookup within the ObjectPool when spawning units
+    /* Function: Assigns a unit to the appropriate loadout slot
+     * Parameters: The name of the unit to be spawned, The slow position
+     * Returns: void
+     */
     public void AssignLoadoutSlot(string unitName, int slot_no)
     {
-        playerLoadout[slot_no] = GenericPooler.current.GetPooledObject(unitName);
-        playerLoadout[slot_no].SetActive(true);
+        playerLoadout[slot_no] = GenericPooler.current.GetPooledObject(unitName);   // Get the unit from the pool
+        playerLoadout[slot_no].SetActive(true);                                     // Activate it
         Debug.Log("Slot " + slot_no + ": " + playerLoadout[slot_no]);
     }
 
-    // Spawn each player unit from the object pool
+    /* Function: Spawns all units in the loadout into the scene
+     * Parameters: None
+     * Returns: None
+     */
     public void SpawnPlayerUnits()
     {
-
         Debug.Log("Number of Units to Spawn: " + playerLoadout.Length);
    
+        // Sets the player units' location to a specific point on the map
         foreach (var unit in playerLoadout)
         {
             GameObject spawnLoc = GameObject.Find("Evac Shuttle");
@@ -172,9 +182,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /* Function: Gives each element of the control UI a reference to it's relevant unit
+     * Parameters: None
+     * Returns: None
+     */
     public void AssignLoadoutUI()
     {
-        Button[] b = UI_canvas.GetComponentsInChildren<Button>();
+        Button[] b = UI_canvas.GetComponentsInChildren<Button>();                                       // Gets each button in the canvas
         Debug.Log("Game Manager button refs: ");
         int i;
 
@@ -184,10 +198,10 @@ public class GameManager : MonoBehaviour
 
             Debug.Log("Adding Listener for: " + playerLoadout[i] + " at position " + i);
 
-            PlayerCharacterControl param = playerLoadout[i].GetComponent<PlayerCharacterControl>();
+            PlayerCharacterControl param = playerLoadout[i].GetComponent<PlayerCharacterControl>();     // Cache the character controller to be added
 
-            b[i].onClick.RemoveAllListeners();
-            b[i].onClick.AddListener(delegate { IM.SetTarget(param); });
+            b[i].onClick.RemoveAllListeners();                                                          // Remove all previous listeners
+            b[i].onClick.AddListener(delegate { IM.SetTarget(param); });                                // Add a new listener with the cached controller
         }
     }
 

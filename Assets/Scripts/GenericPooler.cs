@@ -35,22 +35,28 @@ public class GenericPooler : MonoBehaviour
         }  
     }
 
+
+    /* Function: Fetches an object from the pool
+     * Parameters: string
+     * Returns: GameObject
+     */
     public GameObject GetPooledObject(string objType)
     {
         Debug.Log("Pool arg: " + objType);
-        List<GameObject> iterList;
 
-        if (poolDict.ContainsKey(objType))
+        List<GameObject> iterList;                                      // Temp list to grab all objects of requested type
+
+        if (poolDict.ContainsKey(objType))                              // Check if the requested object is in the pool 
         {
             Debug.Log("Key " + objType + " was found");
             Debug.Log("Fetching value " + poolDict[objType]);
 
-            iterList = poolDict[objType];
+            iterList = poolDict[objType];                               // Grab all objects of requested type
 
-            for (int i = 0; i < iterList.Count; i++)
+            for (int i = 0; i < iterList.Count; i++)                    // Iterate through requested types
             {
 
-                if (!iterList[i].activeInHierarchy)
+                if (!iterList[i].activeInHierarchy)                     // If an inactive one is found return it
                     return iterList[i];
             }
         }
