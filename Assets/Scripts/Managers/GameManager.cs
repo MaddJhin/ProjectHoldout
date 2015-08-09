@@ -88,16 +88,11 @@ public class GameManager : MonoBehaviour
 
         // Temporary
         // Used for testing purposes
-        AssignLoadoutSlot("PlayerCharacter_Marksman", 0);
-        AssignLoadoutSlot("PlayerCharacter_Trooper", 1);
-        AssignLoadoutSlot("PlayerCharacter_Medic", 2);
-        AssignLoadoutSlot("PlayerCharacter_Mechanic", 3);
-        AssignLoadoutSlot("PlayerCharacter_Trooper", 4);
-        AssignLoadoutSlot("PlayerCharacter_Medic", 5);
-        AssignLoadoutSlot("PlayerCharacter_Trooper", 6);
         
 
-        SpawnPlayerUnits();                                     
+        Debug.Log("Preparing to Spawn Units");
+        
+        Debug.Log("Spawn attempted complete");                             
         
     }
     #endregion
@@ -105,7 +100,17 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         IM = GameObject.FindObjectOfType<InputManager>();
+
+        AssignLoadoutSlot("PlayerCharacter_Marksman", 0);
+        AssignLoadoutSlot("PlayerCharacter_Trooper", 1);
+        AssignLoadoutSlot("PlayerCharacter_Medic", 2);
+        AssignLoadoutSlot("PlayerCharacter_Mechanic", 3);
+        AssignLoadoutSlot("PlayerCharacter_Trooper", 4);
+        AssignLoadoutSlot("PlayerCharacter_Medic", 5);
+        AssignLoadoutSlot("PlayerCharacter_Trooper", 6);
+
         AssignLoadoutUI();
+        SpawnPlayerUnits();
     }
 
     // Following region handles the tracking of objectives and transition conditions
