@@ -4,7 +4,7 @@ using System.Collections;
 public class InputManager : MonoBehaviour {
 
 	public float surfaceOffset = 1.5f;
-	public PlayerCharacterControl setTargetOn;
+	public PlayerMovement setTargetOn;
 
     private BarricadeWaypoint waypoint_cache;
 
@@ -83,7 +83,7 @@ public class InputManager : MonoBehaviour {
 		//transform.position = hit.point + hit.normal*surfaceOffset;
 	}
 
-	public void SetTarget (PlayerCharacterControl player)
+	public void SetTarget (PlayerMovement player)
     {
         Debug.Log("Target set to: " + player);
 		setTargetOn = player;

@@ -1,12 +1,34 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Enemy\EnemyControlFlyer.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Player\PlayerMovement.cs">
     <Files>
-      <File FileName="Assets\Scripts\Player\MarksmanUnit.cs" Line="4" Column="1" />
-      <File FileName="Assets\Scripts\Enemy\EnemyControlFlyer.cs" Line="29" Column="31" />
-      <File FileName="Assets\Scripts\Enemy\EnemyControlMinion.cs" Line="31" Column="32" />
-      <File FileName="Assets\Scripts\Enemy\EnemyControlBrute.cs" Line="12" Column="2" />
+      <File FileName="Assets\Scripts\Player\PlayerControlMarksman.cs" Line="38" Column="24" />
+      <File FileName="Assets\Scripts\Player\PlayerControlMechanic.cs" Line="68" Column="36" />
+      <File FileName="Assets\Scripts\Player\PlayerControlMedic.cs" Line="67" Column="11" />
+      <File FileName="Assets\Scripts\Player\PlayerControlTrooper.cs" Line="36" Column="2" />
+      <File FileName="Assets\Scripts\Enemy\EnemyControlMinion.cs" Line="83" Column="15" />
+      <File FileName="Assets\Scripts\Player\PlayerMovement.cs" Line="150" Column="31" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="Assembly-CSharp" expanded="True">
+            <Node name="Level Menu 2D" expanded="True">
+              <Node name="SingletonPerfect" expanded="True" />
+            </Node>
+            <Node name="Scripts" expanded="True">
+              <Node name="Enemy" expanded="True" />
+              <Node name="Managers" expanded="True" />
+              <Node name="OldScripts" expanded="True" />
+              <Node name="Player" expanded="True">
+                <Node name="PlayerAttack.cs" selected="True" />
+              </Node>
+              <Node name="UI" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />

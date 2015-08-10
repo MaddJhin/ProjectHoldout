@@ -32,6 +32,7 @@ GameObject:
   - 114: {fileID: 11408320}
   - 114: {fileID: 11431040}
   - 114: {fileID: 11467338}
+  - 114: {fileID: 11483322}
   m_Layer: 10
   m_Name: Flyer
   m_TagString: Flyer
@@ -207,9 +208,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   height: 30
   maxHealth: 100
+  armor: 0
   attackSpeed: 1
   attackRange: 1
-  armor: 0
+  damage: 5
   defaultTarget: Evac Shuttle
   priorityList: []
 --- !u!114 &11431040
@@ -244,6 +246,21 @@ MonoBehaviour:
   defaultTarget: 
   priorityList: []
   targetDistance: 0
+--- !u!114 &11483322
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 166900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4474954401d6a7e4f95e130455ffe7d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5
+  stunDuration: 1
+  attackRadius: 5
+  explosionParticles: {fileID: 19864828, guid: c719e6f341e76b044a06fae2cbf3dd1c, type: 2}
 --- !u!135 &13519672
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -331,7 +348,12 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: explosionParticles
+      value: 
+      objectReference: {fileID: 19864828, guid: c719e6f341e76b044a06fae2cbf3dd1c,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 166900}

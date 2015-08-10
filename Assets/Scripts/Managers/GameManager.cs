@@ -203,7 +203,7 @@ public class GameManager : MonoBehaviour
 
             Debug.Log("Adding Listener for: " + playerLoadout[i] + " at position " + i);
 
-            PlayerCharacterControl param = playerLoadout[i].GetComponent<PlayerCharacterControl>();     // Cache the character controller to be added
+			PlayerMovement param = playerLoadout[i].GetComponent<PlayerMovement>();     // Cache the character controller to be added
 
             b[i].onClick.RemoveAllListeners();                                                          // Remove all previous listeners
             b[i].onClick.AddListener(delegate { IM.SetTarget(param); });                                // Add a new listener with the cached controller

@@ -4,35 +4,37 @@ using System.Collections.Generic;
 
 /* USES:
  * ==============
- * 
- * 
- * 
+ * UnitSight.cs
+ * UnitStats.cs
+ * EnemyAttack.cs
  * ==============
  * 
  * USAGE:
  * ======================================
- * 
- * 
- * 
- * 
+ * Acts as the "brain" of the Flyer unit
+ * Uses other scripts to perform actions, E.G: seeing the player, attacking
+ * Makes calls to other scripts to perform attacks, or to utilise stats
+ * Enables modularity
  * ======================================
  * 
- * Date Created:
- * Last Modified:
- * Authors:
+ * Date Created: 27 May 2015
+ * Last Modified: 8 Aug 2015
+ * Authors: Andrew Tully, Francisco Carrera
  */
 
 [RequireComponent(typeof (NavMeshAgent))]
 [RequireComponent(typeof (UnitSight))]
 [RequireComponent(typeof (UnitStats))]
+[RequireComponent(typeof (EnemyAttack))]
 
 public class EnemyControlFlyer : MonoBehaviour 
 {
 	public float height = 30f;
 	public float maxHealth = 100.0f;
+	public float armor = 0.0f;
 	public float attackSpeed = 1.0f;
 	public float attackRange = 1f;
-	public float armor = 0.0f;
+	public float damage = 5f;
 	public string defaultTarget;
 	public List<string> priorityList = new List<string>();
 
@@ -40,12 +42,14 @@ public class EnemyControlFlyer : MonoBehaviour
     private UnitStats stats;
     private UnitSight vision;
     private Vector3 targetLoc;
+	private EnemyAttack action;
 
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         stats = GetComponent<UnitStats>();
         vision = GetComponent<UnitSight>();
+		action = GetComponent<EnemyAttack>();
     }
 
 	void Start (){		
@@ -56,6 +60,7 @@ public class EnemyControlFlyer : MonoBehaviour
 		stats.attackSpeed = attackSpeed;
 		stats.attackRange = attackRange;
 		stats.armor = armor;
+		action.damage = damage;
 	}
 
     void Update()

@@ -2,19 +2,40 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class PlayerCharacterControl : MonoBehaviour {
+/* USED BY:
+ * ==============
+ * PlayerControlMarksman.cs
+ * PlayerControlTrooper.cs
+ * PlayerControlMedic.cs
+ * PlayerControlMechanic.cs
+ * ==============
+ * 
+ * USAGE:
+ * ======================================
+ * Targets and moves player characters
+ * Takes it's values from control script
+ * Enables modularity
+ * ======================================
+ * 
+ * Date Created: 27 Jul 2015
+ * Last Modified: 	8 Aug 2015
+ * Authors: Francisco Carrera
+ */
+
+public class PlayerMovement : MonoBehaviour {
 
 	public Transform actionTarget; 
 	public List<string> priorityList = new List<string>();
 	public Transform targetBarricade;
 
 	NavMeshAgent agent;
-	PlayerAttack attackControl;
+	PlayerAction actionControl;
 	Animator m_Animator;
 	float m_TurnAmount;
 	float m_ForwardAmount;
 	SphereCollider sightRange;
 	UnitStats targetStats;
+	Transform self;
 	bool playerMove = false;
 	
 	// Use this for initialization
@@ -22,8 +43,9 @@ public class PlayerCharacterControl : MonoBehaviour {
 		agent = GetComponentInChildren<NavMeshAgent>();
 		m_Animator = GetComponent<Animator>();
 		sightRange = GetComponentInChildren<SphereCollider>();
-		attackControl = GetComponent<PlayerAttack>();
+		actionControl = GetComponent<PlayerAction>();
 		targetBarricade = this.transform;
+		self = this.GetComponent<Transform>();
 	}
 
 	// Update is called once per frame
@@ -66,10 +88,13 @@ public class PlayerCharacterControl : MonoBehaviour {
 		// If there is an available action target move to that otheriwse go to the last choosen barricade. 
 		if (actionTarget != null) 
 		{
-			agent.SetDestination(actionTarget.position);
+			if(agent.enabled)agent.SetDestination(actionTarget.position);
 			transform.LookAt(actionTarget.position);
 		}
-		else agent.SetDestination(targetBarricade.position);
+		else
+		{
+			if(agent.enabled)agent.SetDestination(targetBarricade.position);
+		} 
 	}
 
 	void Move()
@@ -81,7 +106,7 @@ public class PlayerCharacterControl : MonoBehaviour {
 			{
 				if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f)
 				{
-					agent.SetDestination (actionTarget.position);
+					if(agent.enabled)agent.SetDestination (actionTarget.position);
 				}
 			}
 		}
@@ -91,7 +116,7 @@ public class PlayerCharacterControl : MonoBehaviour {
 		targetBarricade = target;
 		agent.ResetPath();
 		playerMove = true;
-		agent.SetDestination (target.position);
+		if(agent.enabled)agent.SetDestination (target.position);
 	}
 
 	void SetTarget (){
@@ -110,8 +135,11 @@ public class PlayerCharacterControl : MonoBehaviour {
 					float distance = Vector3.Distance(possibleTarget.transform.position, transform.position);
 					if (distance < curDistance)
 					{
-						curDistance = distance;
-						actionTarget = possibleTarget.transform;
+						if(possibleTarget.transform != self)
+						{
+							curDistance = distance;
+							actionTarget = possibleTarget.transform;
+						}
 					}
 				}
 			}
@@ -119,7 +147,7 @@ public class PlayerCharacterControl : MonoBehaviour {
 			// Assign target to attack script, return to not continue down priority list.
 			if (actionTarget != null) 
 			{
-				attackControl.attackTarget = actionTarget;
+				actionControl.actionTarget = actionTarget;
 				return;
 			}
 

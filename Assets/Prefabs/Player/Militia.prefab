@@ -556,9 +556,9 @@ GameObject:
   - 208: {fileID: 20831362}
   - 82: {fileID: 8234392}
   - 114: {fileID: 11477090}
-  - 114: {fileID: 11498090}
   - 114: {fileID: 11437352}
   - 114: {fileID: 11470954}
+  - 114: {fileID: 11421726}
   m_Layer: 10
   m_Name: Militia
   m_TagString: Player
@@ -1665,7 +1665,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 124496}
-  m_LocalRotation: {x: .532675207, y: .0703404546, z: .836132765, w: -.110415146}
+  m_LocalRotation: {x: .532675147, y: .0703404471, z: .836132646, w: -.110415131}
   m_LocalPosition: {x: 2.22714643e-05, y: -6.1504652e-05, z: .0260270257}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2493,6 +2493,21 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 0
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11421726
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 144140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4474954401d6a7e4f95e130455ffe7d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5
+  stunDuration: 1
+  attackRadius: 5
+  explosionParticles: {fileID: 19864828, guid: c719e6f341e76b044a06fae2cbf3dd1c, type: 2}
 --- !u!114 &11437352
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2521,10 +2536,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  armor: 0
   attackSpeed: .600000024
   attackRange: 1
   damage: 5
-  armor: 0
   defaultTarget: 
   priorityList:
   - Minion
@@ -2551,19 +2566,6 @@ MonoBehaviour:
   - Brute
   - Evoker
   targetDistance: 0
---- !u!114 &11498090
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 144140}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 911d6138cd63c704391455651647b861, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 5
-  punchSound: {fileID: 0}
 --- !u!135 &13503532
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -2782,7 +2784,12 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: explosionParticles
+      value: 
+      objectReference: {fileID: 19864828, guid: c719e6f341e76b044a06fae2cbf3dd1c,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 144140}

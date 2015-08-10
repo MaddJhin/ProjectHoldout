@@ -328,10 +328,11 @@ GameObject:
   - 54: {fileID: 5447436}
   - 136: {fileID: 13685346}
   - 195: {fileID: 19522312}
+  - 208: {fileID: 20863684}
+  - 82: {fileID: 8228914}
   - 114: {fileID: 11490630}
   - 114: {fileID: 11451582}
   - 114: {fileID: 11404088}
-  - 82: {fileID: 8228914}
   - 114: {fileID: 11485422}
   m_Layer: 0
   m_Name: PlayerCharacter_Medic
@@ -1359,7 +1360,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 132448}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.9399996, y: 0, z: 1.16999996}
+  m_LocalPosition: {x: -8.19673729, y: 2.62972463e-07, z: -1.69420314}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 425918}
@@ -2579,7 +2580,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: .300000012
+  m_Radius: .25
   m_Height: 1.60000002
   m_Direction: 1
   m_Center: {x: 0, y: .800000012, z: 0}
@@ -2755,6 +2756,21 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!208 &20863684
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 132448}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: .25, y: .75, z: .25}
+  m_MoveThreshold: .100000001
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: .75, z: 0}
+  m_TimeToStationary: .5
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

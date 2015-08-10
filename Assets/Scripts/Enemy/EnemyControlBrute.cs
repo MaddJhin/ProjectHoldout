@@ -2,6 +2,26 @@
 using System.Collections;
 using System.Collections.Generic;
 
+/* USES:
+ * ==============
+ * UnitSight.cs
+ * UnitStats.cs
+ * EnemyAttack.cs
+ * ==============
+ * 
+ * USAGE:
+ * ======================================
+ * Acts as the "brain" of the brute unit
+ * Uses other scripts to perform actions, E.G: seeing the player, attacking
+ * Makes calls to other scripts to perform attacks, or to utilise stats
+ * Enables modularity
+ * ======================================
+ * 
+ * Date Created: 27 May 2015
+ * Last Modified: 8 Aug 2015
+ * Authors: Andrew Tully
+ */
+
 [RequireComponent(typeof (NavMeshAgent))]
 [RequireComponent(typeof (NavMeshObstacle))]
 [RequireComponent(typeof (UnitSight))]

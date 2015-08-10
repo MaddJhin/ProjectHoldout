@@ -2,27 +2,31 @@
 using System.Collections;
 using System.Collections.Generic;
 
-[RequireComponent(typeof (NavMeshAgent))]
-[RequireComponent(typeof (PlayerCharacterControl))]
-[RequireComponent(typeof (PlayerAttack))]
-[RequireComponent(typeof (UnitStats))]
-
 /* USES:
  * ==============
-
+ * PlayerCharacterMovement
+ * PlayerAttack.cs
  * ==============
  * 
  * USAGE:
  * ======================================
-
+ * Acts as the control for the marksman player Character
+ * Uses other scripts to attack and move 
+ * Enables modularity
  * ======================================
  * 
- * Date Created: 	
- * Last Modified: 	
- * Authors: 		
+ * Date Created: 27 Jul 2015
+ * Last Modified: 	8 Aug 2015
+ * Authors: Francisco Carrera
  */
 
-public class MarksmanUnit : MonoBehaviour {
+[RequireComponent(typeof (NavMeshAgent))]
+[RequireComponent(typeof (PlayerMovement))]
+[RequireComponent(typeof (PlayerAction))]
+[RequireComponent(typeof (UnitStats))]
+[RequireComponent(typeof (NavMeshObstacle))]
+
+public class PlayerControlMarksman : MonoBehaviour {
 
 	public float health = 100f;
 	public float damagePerHit = 20f;
@@ -34,24 +38,26 @@ public class MarksmanUnit : MonoBehaviour {
 	Transform actionTarget;							// Current Action target
 	float timer;                                    // A timer between actions.
 	NavMeshAgent agent;								// Nav Agent for moving character
-	PlayerCharacterControl playerControl;			// Sets attack target based on priority
-	PlayerAttack playerAttack;						// Script containg player attacks
-	bool targetInRange;
+	PlayerMovement playerControl;					// Sets attack target based on priority
+	PlayerAction playerAction;						// Script containg player attacks
+	bool targetInRange;								// Tracks when target enters and leaves range
 	float effectsDisplayTime = 0.1f;                // The proportion of the timeBetweenBullets that the effects will display for.
 	float originalStoppingDistance;					// Used to store preset agent stopping distance
+	NavMeshObstacle obstacle;						// Used to indicate other units to avoid this one
 
 
 	void Awake(){
 		agent = GetComponent<NavMeshAgent>();
-		playerControl = GetComponent<PlayerCharacterControl>();
-		playerAttack = GetComponent<PlayerAttack>();
+		playerControl = GetComponent<PlayerMovement>();
+		playerAction = GetComponent<PlayerAction>();
 		stats = GetComponent<UnitStats>();
+		obstacle = GetComponent<NavMeshObstacle>();
 	}
 
 	void Start (){
-		playerAttack.range = attackRange;
+		playerAction.range = attackRange;
 		playerControl.priorityList = priorityList;
-		playerAttack.timeBetweenAttacks = timeBetweenAttacks;
+		playerAction.timeBetweenAttacks = timeBetweenAttacks;
 		originalStoppingDistance = agent.stoppingDistance;
 		stats.currentHealth = health;
 	}
@@ -66,7 +72,7 @@ public class MarksmanUnit : MonoBehaviour {
 		if(timer >= timeBetweenAttacks * effectsDisplayTime)
 		{
 			// ... disable the effects.
-			playerAttack.DisableEffects ();
+			playerAction.DisableEffects ();
 		}
 
 		// If there is nothing to attack, script does nothing.
@@ -76,25 +82,45 @@ public class MarksmanUnit : MonoBehaviour {
 			return;
 		}
 		
+		// Otherwise, if there is a valid target...
 		// Set if the target is in range
 		if (Vector3.Distance (actionTarget.position, transform.position) <= attackRange)
 		{
-			targetInRange = true;
-			agent.stoppingDistance = attackRange;
+			Stop();
 		}
 		else
 		{
-			targetInRange = false;
-			agent.stoppingDistance = originalStoppingDistance;
+			Move();
 		}
-
-		Debug.Log("Try to shoot");
+		
 		// If the target is in range and enough time has passed between attacks, Attack.
 		if (timer >= timeBetweenAttacks && targetInRange)
 		{
-			timer = 0f;
-			playerAttack.Shoot(damagePerHit);
-			Debug.Log("Shot");
+			Shoot();
 		}
+	}
+	
+	void Stop(){
+		targetInRange = true;
+		
+		if(agent.enabled)
+		{
+			agent.Stop();
+		}
+		agent.enabled = false;
+		obstacle.enabled = true;
+	}
+	
+	void Shoot(){
+		timer = 0f;
+		playerAction.Shoot(damagePerHit);
+	}
+	
+	void Move (){
+		targetInRange = false;
+		
+		obstacle.enabled = false;
+		agent.enabled = true;
+		agent.Resume();
 	}
 }

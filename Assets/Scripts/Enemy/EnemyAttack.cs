@@ -1,6 +1,26 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/* USED BY:
+ * ==============
+ * EnemyControlBob.cs
+ * EnemyControlFlyer.cs
+ * EnemyControlMinion.cs
+ * EnemyControlBrute.cs
+ * ==============
+ * 
+ * USAGE:
+ * ======================================
+ * Contains the attack methods used by the different
+ * enemy control scripts. 
+ * Enables modularity
+ * ======================================
+ * 
+ * Date Created: 6 Aug 2015
+ * Last Modified: 8 Aug 2015
+ * Authors: Francisco Carrera, Andrew Tully
+ */
+
 public class EnemyAttack : MonoBehaviour {
 
 	public float damage = 5f;

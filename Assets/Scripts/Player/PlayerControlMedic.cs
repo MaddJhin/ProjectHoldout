@@ -2,27 +2,31 @@
 using System.Collections;
 using System.Collections.Generic;
 
-[RequireComponent(typeof (NavMeshAgent))]
-[RequireComponent(typeof (PlayerCharacterControl))]
-[RequireComponent(typeof (PlayerAttack))]
-[RequireComponent(typeof (UnitStats))]
-
 /* USES:
  * ==============
-
+ * PlayerCharacterMovement
+ * PlayerAttack.cs
  * ==============
  * 
  * USAGE:
  * ======================================
-
+ * Acts as the control for the medic player Character
+ * Uses other scripts to attack and move 
+ * Enables modularity
  * ======================================
  * 
- * Date Created: 	
- * Last Modified: 	
- * Authors: 		
+ * Date Created: 27 Jul 2015
+ * Last Modified: 	8 Aug 2015
+ * Authors: Francisco Carrera
  */
 
-public class MechanicUnit : MonoBehaviour {
+[RequireComponent(typeof (NavMeshAgent))]
+[RequireComponent(typeof (PlayerMovement))]
+[RequireComponent(typeof (PlayerAction))]
+[RequireComponent(typeof (UnitStats))]
+[RequireComponent(typeof (NavMeshObstacle))]
+
+public class PlayerControlMedic : MonoBehaviour {
 
 	public float health = 100f;
 	public float healPerHit = 20f;
@@ -34,24 +38,24 @@ public class MechanicUnit : MonoBehaviour {
 	Transform actionTarget;							// Current Action target
 	float timer;                                    // A timer between actions.
 	NavMeshAgent agent;								// Nav Agent for moving character
-	PlayerCharacterControl playerControl;			// Sets attack target based on priority
-	PlayerAttack playerAttack;						// Script containg player attacks
-	bool targetInRange;
-	float effectsDisplayTime = 0.1f;                // The proportion of the timeBetweenBullets that the effects will display for.
+	PlayerMovement playerControl;					// Sets attack target based on priority
+	PlayerAction playerAction;						// Script containg player attacks
+	bool targetInRange;								// Tracks when target enters and leaves range
 	float originalStoppingDistance;					// Used to store preset agent stopping distance
-	
+	NavMeshObstacle obstacle;						// Used to indicate other units to avoid this one
 	
 	void Awake(){
 		agent = GetComponent<NavMeshAgent>();
-		playerControl = GetComponent<PlayerCharacterControl>();
-		playerAttack = GetComponent<PlayerAttack>();
+		playerControl = GetComponent<PlayerMovement>();
+		playerAction = GetComponent<PlayerAction>();
 		stats = GetComponent<UnitStats>();
+		obstacle = GetComponent<NavMeshObstacle>();
 	}
 	
 	void Start (){
-		playerAttack.range = healRange;
+		playerAction.range = healRange;
 		playerControl.priorityList = priorityList;
-		playerAttack.timeBetweenAttacks = timeBetweenHeals;
+		playerAction.timeBetweenAttacks = timeBetweenHeals;
 		originalStoppingDistance = agent.stoppingDistance;
 		stats.currentHealth = health;
 	}
@@ -72,20 +76,41 @@ public class MechanicUnit : MonoBehaviour {
 		// Set if the target is in range
 		if (Vector3.Distance (actionTarget.position, transform.position) <= healRange)
 		{
-			targetInRange = true;
-			agent.stoppingDistance = healRange;
+			Stop();
 		}
 		else
 		{
-			targetInRange = false;
-			agent.stoppingDistance = originalStoppingDistance;
+			Move();
 		}
 		
 		// If the target is in range and enough time has passed between attacks, Attack.
-		if (timer >= timeBetweenHeals && targetInRange)
+		if (timer >= timeBetweenHeals && targetInRange && actionTarget.tag == "Player")
 		{
-			timer = 0f;
-			playerAttack.Heal(healPerHit);
+			Heal();
 		}
+	}
+
+	void Stop(){
+		targetInRange = true;
+		
+//		if(agent.enabled)
+//		{
+//			agent.Stop();
+//		}
+//		agent.enabled = false;
+//		obstacle.enabled = true;
+	}
+
+	void Move (){
+		targetInRange = false;
+		
+//		obstacle.enabled = false;
+//		agent.enabled = true;
+//		agent.Resume();
+	}
+	
+	void Heal(){
+		timer = 0f;
+		playerAction.Heal(healPerHit);
 	}
 }

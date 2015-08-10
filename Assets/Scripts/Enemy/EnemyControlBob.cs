@@ -6,19 +6,19 @@ using System.Collections.Generic;
  * ==============
  * UnitSight.cs
  * UnitStats.cs
- * MinionPunch.cs
+ * EnemyAttack.cs
  * ==============
  * 
  * USAGE:
  * ======================================
- * Acts as the "brain" of the minion unit
+ * Acts as the "brain" of the bob unit
  * Uses other scripts to perform actions, E.G: seeing the player, attacking
  * Makes calls to other scripts to perform attacks, or to utilise stats
  * Enables modularity
  * ======================================
  * 
  * Date Created: 27 May 2015
- * Last Modified: 29 May 2015
+ * Last Modified: 8 Aug 2015
  * Authors: Andrew Tully
  */
 
@@ -31,9 +31,10 @@ using System.Collections.Generic;
 public class EnemyControlBob : MonoBehaviour
 {
 	public float maxHealth = 100.0f;
+	public float armor = 0.0f;
 	public float attackSpeed = 1.0f;
 	public float attackRange = 1f;
-	public float armor = 0.0f;
+	public float damage = 5;
 	public string defaultTarget;
 	public List<string> priorityList = new List<string>();
 
@@ -67,6 +68,7 @@ public class EnemyControlBob : MonoBehaviour
 		stats.attackSpeed = attackSpeed;
 		stats.attackRange = attackRange;
 		stats.armor = armor;
+		action.damage = damage;
 	}
 
     void Update()

@@ -6,7 +6,7 @@ using System.Collections.Generic;
  * ==============
  * UnitSight.cs
  * UnitStats.cs
- * MinionPunch.cs
+ * EnemyAttack.cs
  * ==============
  * 
  * USAGE:
@@ -18,7 +18,7 @@ using System.Collections.Generic;
  * ======================================
  * 
  * Date Created: 27 May 2015
- * Last Modified: 22 July 2015
+ * Last Modified: 8 Aug 2015
  * Authors: Andrew Tully
  */
 
@@ -31,10 +31,10 @@ using System.Collections.Generic;
 public class EnemyControlMinion : MonoBehaviour 
 {
 	public float maxHealth = 100.0f;
+	public float armor = 0.0f;
 	public float attackSpeed = 1.0f;
 	public float attackRange = 1f;
 	public float damage = 5;
-	public float armor = 0.0f;
 	public string defaultTarget;
 	public List<string> priorityList = new List<string>();
 	

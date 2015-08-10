@@ -1,11 +1,31 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerAttack : MonoBehaviour {
+/* USED BY:
+ * ==============
+ * PlayerControlMarksman.cs
+ * PlayerControlTrooper.cs
+ * PlayerControlMedic.cs
+ * PlayerControlMechanic.cs
+ * ==============
+ * 
+ * USAGE:
+ * ======================================
+ * Contains all the attack methods used by player control scripts
+ * Takes it's value from control script
+ * Enables modularity
+ * ======================================
+ * 
+ * Date Created: 27 Jul 2015
+ * Last Modified: 	8 Aug 2015
+ * Authors: Francisco Carrera
+ */
+
+public class PlayerAction : MonoBehaviour {
 	
 	public float timeBetweenAttacks;        // The time between each shot.
 	public float range;                     // The distance the gun can fire.
-	public Transform attackTarget;			// Target to shoot
+	public Transform actionTarget;			// Target to shoot
 	public Transform shootPoint;
 
 	Ray shootRay;                                   // A ray from the gun end forwards.
@@ -60,7 +80,7 @@ public class PlayerAttack : MonoBehaviour {
 			gunLine.SetPosition (0, shootPoint.position);
 
 			// Try and find an EnemyHealth script on the gameobject hit.
-			UnitStats enemyHealth = attackTarget.gameObject.GetComponent<UnitStats>();
+			UnitStats enemyHealth = actionTarget.gameObject.GetComponent<UnitStats>();
 			
 			// If the EnemyHealth component exist...
 			if(enemyHealth != null)
@@ -79,13 +99,13 @@ public class PlayerAttack : MonoBehaviour {
 	
 	public void Attack(float damage)
 	{
-		UnitStats enemyHealth = attackTarget.gameObject.GetComponent<UnitStats>();
+		UnitStats enemyHealth = actionTarget.gameObject.GetComponent<UnitStats>();
 		enemyHealth.TakeDamage(damage);
 	}
 
 	public void Heal(float damage)
     {
-		UnitStats friendlyHealth = attackTarget.gameObject.GetComponent<UnitStats>();
+		UnitStats friendlyHealth = actionTarget.gameObject.GetComponent<UnitStats>();
         friendlyHealth.Heal(damage);
 	}
 }
