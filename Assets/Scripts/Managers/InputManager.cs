@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class InputManager : MonoBehaviour {
 
@@ -7,6 +8,8 @@ public class InputManager : MonoBehaviour {
 	public PlayerMovement setTargetOn;
 
     private BarricadeWaypoint waypoint_cache;
+    private BarricadeWaypoint[] waypointList;
+    private List<Light> waypointMarkerList;
 
     #region Singleton
     private static InputManager _instance;
@@ -46,8 +49,21 @@ public class InputManager : MonoBehaviour {
                 Destroy(this.gameObject);
             }
         }
+
+        waypointMarkerList = new List<Light>();
     }
     #endregion
+
+    void Start()
+    {
+        waypointList = FindObjectsOfType<BarricadeWaypoint>();
+
+        foreach (var waypoint in waypointList)
+        {
+            waypointMarkerList.Add(waypoint.GetComponent<Light>());
+            Debug.Log(waypoint);
+        }
+    }
 
     void Update () {
 		// Run when user clicks
@@ -73,6 +89,8 @@ public class InputManager : MonoBehaviour {
 
             if (hit.collider.tag == "Waypoint" && setTargetOn != null)
             {
+
+                StartCoroutine("DisableWaypointLights");
                 Debug.Log("Waypoint Found");
                 setTargetOn.SetDestination(hit.transform);
                 waypoint_cache.sCollider.isTrigger = true;
@@ -85,7 +103,28 @@ public class InputManager : MonoBehaviour {
 
 	public void SetTarget (PlayerMovement player)
     {
+        StartCoroutine("EnableWaypointLights");
         Debug.Log("Target set to: " + player);
 		setTargetOn = player;
 	}
+
+    IEnumerator EnableWaypointLights()
+    {
+        foreach (var waypoint in waypointMarkerList)
+        {
+            waypoint.enabled = true;
+        }
+
+        yield return null;
+    }
+
+    IEnumerator DisableWaypointLights()
+    {
+        foreach (var waypoint in waypointMarkerList)
+        {
+            waypoint.enabled = false;
+        }
+
+        yield return null;
+    }
 }
