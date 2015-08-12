@@ -4,6 +4,7 @@ using System.Collections;
 public class AreaOfEffect : MonoBehaviour
 {
     private int colliderIndex;
+    private UnitStats cache;
 
     public void AreaStun(Vector3 center, float radius, float damage, float duration, GameObject source)
     {
@@ -14,12 +15,14 @@ public class AreaOfEffect : MonoBehaviour
 
         while (colliderIndex < hitColliders.Length)
         {
-            if (hitColliders[colliderIndex].gameObject.layer != source.layer &&
-                hitColliders[colliderIndex].gameObject.GetComponent<UnitStats>())
+            if ((hitColliders[colliderIndex].gameObject.layer != source.layer) &&
+                (cache = hitColliders[colliderIndex].gameObject.GetComponent<UnitStats>()))
             {
                 Debug.Log("Valid Target" + hitColliders[colliderIndex]);
-                hitColliders[colliderIndex].gameObject.GetComponent<UnitStats>().TakeDamage(damage);
-                hitColliders[colliderIndex].gameObject.GetComponent<UnitStats>().ApplyStatus(UnitStats.statusEffects.stun, duration);
+                //hitColliders[colliderIndex].gameObject.GetComponent<UnitStats>().TakeDamage(damage);
+                //hitColliders[colliderIndex].gameObject.GetComponent<UnitStats>().ApplyStatus(UnitStats.statusEffects.stun, duration);
+                cache.TakeDamage(damage);
+                cache.ApplyStatus(UnitStats.statusEffects.stun, duration);
                 Debug.Log("Target Attacked");
             }
 
@@ -32,15 +35,18 @@ public class AreaOfEffect : MonoBehaviour
         Collider[] hitColliders = Physics.OverlapSphere(center, radius);
         colliderIndex = 0;
 
+        
+
         Debug.Log("Potential Targets: " + hitColliders.Length);
 
         while (colliderIndex < hitColliders.Length)
         {
-            if (hitColliders[colliderIndex].gameObject.layer != source.layer &&
-                hitColliders[colliderIndex].gameObject.GetComponent<UnitStats>())
+            if ((hitColliders[colliderIndex].gameObject.layer != source.layer) &&
+                (cache = hitColliders[colliderIndex].gameObject.GetComponent<UnitStats>()))
             {
                 Debug.Log("Valid Target" + hitColliders[colliderIndex]);
-                hitColliders[colliderIndex].gameObject.GetComponent<UnitStats>().TakeDamage(damage);
+                //hitColliders[colliderIndex].gameObject.GetComponent<UnitStats>().TakeDamage(damage);
+                cache.TakeDamage(damage);
                 Debug.Log("Target Attacked");
             }
 
