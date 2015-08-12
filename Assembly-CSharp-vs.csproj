@@ -99,6 +99,8 @@
      <Compile Include="Assets\Scripts\UI\DragMe.cs" />
      <Compile Include="Assets\Scripts\UI\DragPanel.cs" />
      <Compile Include="Assets\Scripts\UI\DropMe.cs" />
+     <Compile Include="Assets\Scripts\UI\HorizontalScrollSnap.cs" />
+     <Compile Include="Assets\Scripts\UI\LevelMenu2DUI.cs" />
      <Compile Include="Assets\Scripts\UI\PanelManager.cs" />
      <Compile Include="Assets\Scripts\UI\PlayerDrop.cs" />
      <Compile Include="Assets\Scripts\UI\ResizePanel.cs" />
