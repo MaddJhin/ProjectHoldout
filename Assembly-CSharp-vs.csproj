@@ -105,6 +105,7 @@
      <Compile Include="Assets\Scripts\UI\PlayerDrop.cs" />
      <Compile Include="Assets\Scripts\UI\ResizePanel.cs" />
      <Compile Include="Assets\Scripts\UI\ScrollDetailTexture.cs" />
+     <Compile Include="Assets\Scripts\UI\ScrollRectSnap.cs" />
      <Compile Include="Assets\Scripts\UI\ShowSliderValue.cs" />
      <Compile Include="Assets\Scripts\UI\TiltWindow.cs" />
      <Compile Include="Assets\Scripts\UnitScripts\UnitSight.cs" />

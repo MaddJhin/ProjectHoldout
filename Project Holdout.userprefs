@@ -1,10 +1,6 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\Test\Assets\unity-ui-extensions\Scripts\Editor\UIExtensionsMenuOptions.cs">
-    <Files>
-      <File FileName="..\Test\Assets\unity-ui-extensions\Scripts\Editor\UIExtensionsMenuOptions.cs" Line="8" Column="5" />
-    </Files>
-  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
