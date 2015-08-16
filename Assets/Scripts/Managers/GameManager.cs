@@ -177,10 +177,15 @@ public class GameManager : MonoBehaviour
     public void SpawnPlayerUnits()
     {
         Debug.Log("Number of Units to Spawn: " + playerLoadout.Length);
-   
+        float spawnOffset = 0.5f;
+
         // Sets the player units' location to a specific point on the map
         foreach (var unit in playerLoadout)
         {
+            spawnPoint.transform.position = new Vector3(spawnPoint.transform.position.x + spawnOffset, 
+                                                        spawnPoint.transform.position.y, 
+                                                        spawnPoint.transform.position.z);
+
             unit.transform.position = spawnPoint.transform.position;
             Debug.Log("Spawning: " + unit);
         }
