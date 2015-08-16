@@ -19,6 +19,7 @@ using System.Collections.Generic;
 public class GameManager : MonoBehaviour
 {
     public GameObject[] playerLoadout = new GameObject[7];
+    public GameObject spawnPoint;
 
     private int objectiveCounter;
     private List<Spawner> spawnList;
@@ -180,9 +181,7 @@ public class GameManager : MonoBehaviour
         // Sets the player units' location to a specific point on the map
         foreach (var unit in playerLoadout)
         {
-            GameObject spawnLoc = GameObject.Find("Evac Shuttle");
-
-            unit.transform.position = spawnLoc.transform.position;
+            unit.transform.position = spawnPoint.transform.position;
             Debug.Log("Spawning: " + unit);
         }
     }
