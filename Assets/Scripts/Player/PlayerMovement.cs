@@ -27,13 +27,14 @@ public class PlayerMovement : MonoBehaviour {
 	public Transform actionTarget; 
 	public List<string> priorityList = new List<string>();
 	public Transform targetBarricade;
+	public float maxBarricadeDistance = 10f;
+	public float sightDistance = 10;
 
 	NavMeshAgent agent;
 	PlayerAction actionControl;
 	Animator m_Animator;
 	float m_TurnAmount;
 	float m_ForwardAmount;
-	SphereCollider sightRange;
 	UnitStats targetStats;
 	Transform self;
 	bool playerMove = false;
@@ -42,7 +43,6 @@ public class PlayerMovement : MonoBehaviour {
 	void Start () {
 		agent = GetComponentInChildren<NavMeshAgent>();
 		m_Animator = GetComponent<Animator>();
-		sightRange = GetComponentInChildren<SphereCollider>();
 		actionControl = GetComponent<PlayerAction>();
 		targetBarricade = this.transform;
 		self = this.GetComponent<Transform>();
@@ -56,7 +56,7 @@ public class PlayerMovement : MonoBehaviour {
 
 		//Set action target. Make sure it is in range.  
 		SetTarget();
-		if (actionTarget != null && Vector3.Distance(actionTarget.position, gameObject.transform.position) > sightRange.radius) 
+		if (actionTarget != null && Vector3.Distance(actionTarget.position, gameObject.transform.position) > sightDistance) 
 		{
 			actionTarget = null;
 		}
@@ -67,6 +67,12 @@ public class PlayerMovement : MonoBehaviour {
 			Debug.Log("Inactive Found");
 			actionTarget = null;
 			Debug.Log(actionTarget);
+		}
+
+		if ( Vector3.Distance (targetBarricade.position, transform.position) > maxBarricadeDistance)
+		{
+			Debug.Log("Tether reached. Returning to barricade");
+			SetDestination(targetBarricade);
 		}
 
 		// If the player issues a move command, the playerUnit shoudl continue until destination
@@ -114,15 +120,18 @@ public class PlayerMovement : MonoBehaviour {
 
 	public void SetDestination (Transform target){
 		targetBarricade = target;
-		agent.ResetPath();
+		if(agent.enabled)
+		{
+			agent.ResetPath();
+			agent.SetDestination (target.position);
+		}
 		playerMove = true;
-		if(agent.enabled)agent.SetDestination (target.position);
 	}
 
 	void SetTarget (){
-		float curDistance = sightRange.radius;
+		float curDistance = sightDistance;
 		// Grab all available targets around character
-		Collider[] possibleTargets = Physics.OverlapSphere (transform.position, sightRange.radius);
+		Collider[] possibleTargets = Physics.OverlapSphere (transform.position, sightDistance);
 
 		// Search possible targets, choose clossest one with highest priority first.
 		// Stop searching after getting the closest target avaialble of the highest priority is found

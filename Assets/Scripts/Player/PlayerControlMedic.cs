@@ -29,9 +29,12 @@ using System.Collections.Generic;
 public class PlayerControlMedic : MonoBehaviour {
 
 	public float health = 100f;
+	public float armor = 0f;
+	public float sightRange = 10;
 	public float healPerHit = 20f;
 	public float healRange = 100f;
 	public float timeBetweenHeals = 0.15f;
+	public float barricadeMaxThether = 10f;
 	public List<string> priorityList = new List<string>();	// Stores action target priorty (highest first).
 	
 	UnitStats stats;								// Unit stat scripts for health assignment
@@ -58,6 +61,9 @@ public class PlayerControlMedic : MonoBehaviour {
 		playerAction.timeBetweenAttacks = timeBetweenHeals;
 		originalStoppingDistance = agent.stoppingDistance;
 		stats.currentHealth = health;
+		playerControl.maxBarricadeDistance = barricadeMaxThether;
+		stats.armor = armor;
+		playerControl.sightDistance = sightRange;
 	}
 	
 	// Update is called once per frame

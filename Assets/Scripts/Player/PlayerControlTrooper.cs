@@ -29,9 +29,12 @@ using System.Collections.Generic;
 public class PlayerControlTrooper : MonoBehaviour {
 
 	public float health = 100f;
+	public float armor = 0f;
+	public float sightRange = 10;
 	public float damagePerHit = 20f;
 	public float attackRange = 2f;
 	public float timeBetweenAttacks = 0.15f;
+	public float barricadeMaxThether = 10f;
 	public List<string> priorityList = new List<string>();	// Stores action target priorty (highest first).
 
 	Transform actionTarget;							// Target to shoot
@@ -58,6 +61,9 @@ public class PlayerControlTrooper : MonoBehaviour {
 		playerAction.timeBetweenAttacks = timeBetweenAttacks;
 		originalStoppingDistance = agent.stoppingDistance;
 		stats.currentHealth = health;
+		playerControl.maxBarricadeDistance = barricadeMaxThether;
+		stats.armor = armor;
+		playerControl.sightDistance = sightRange;
 	}
 	
 	// Update is called once per frame
