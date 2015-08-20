@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
 {
     public GameObject[] playerLoadout = new GameObject[7];
     public GameObject spawnPoint;
+    public float spawnOffset = 1f;                                     // Distance between player units being spawned
 
     private int objectiveCounter;
     private List<Spawner> spawnList;
@@ -177,7 +178,7 @@ public class GameManager : MonoBehaviour
     public void SpawnPlayerUnits()
     {
         Debug.Log("Number of Units to Spawn: " + playerLoadout.Length);
-        float spawnOffset = 0.5f;
+        
 
         // Sets the player units' location to a specific point on the map
         foreach (var unit in playerLoadout)
