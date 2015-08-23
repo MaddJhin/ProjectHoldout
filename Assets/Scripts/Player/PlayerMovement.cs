@@ -38,6 +38,12 @@ public class PlayerMovement : MonoBehaviour {
 	UnitStats targetStats;
 	Transform self;
 	bool playerMove = false;
+    int enemyMask;
+
+    void Awake()
+    {
+        enemyMask = LayerMask.GetMask("Enemy");
+    }
 	
 	// Use this for initialization
 	void Start () {
@@ -131,7 +137,7 @@ public class PlayerMovement : MonoBehaviour {
 	void SetTarget (){
 		float curDistance = sightDistance;
 		// Grab all available targets around character
-		Collider[] possibleTargets = Physics.OverlapSphere (transform.position, sightDistance);
+		Collider[] possibleTargets = Physics.OverlapSphere (transform.position, sightDistance, enemyMask);
 
 		// Search possible targets, choose clossest one with highest priority first.
 		// Stop searching after getting the closest target avaialble of the highest priority is found

@@ -21,29 +21,36 @@ using System.Collections.Generic;
  * Authors: Andrew Tully
  */
 
-public class UnitSight : MonoBehaviour 
+public class UnitSight : MonoBehaviour
 {
     public bool targetInRange;
-	public GameObject actionTarget;
+    public GameObject actionTarget;
     public string defaultTarget;
+    public float sightDistance = 10f;
 
     // Stores priority of GameObject tags
     // First element is the highest priority
     // E.G: if element[0] contains the string "Player", the "Player" tag is highest priority
-	 public List<string> priorityList = new List<string>();
+    public List<string> priorityList = new List<string>();
 
     public float targetDistance; // Distance between this object and it's target
     private SphereCollider sightRange;
     private UnitStats targetStats;
 
+    // Setting up LayerMask for Player and Barricades
+    private int playerMask;
+
     void Awake()
     {
         sightRange = GetComponentInChildren<SphereCollider>();
-		actionTarget = GameObject.Find(defaultTarget);
+        actionTarget = GameObject.Find(defaultTarget);
+        playerMask = LayerMask.GetMask("Player");
     }
 
     void Update()
     {
+        SetTarget();
+
         // If target doesn't exit, switch to default target
         if (actionTarget == null)
         {
@@ -54,6 +61,12 @@ public class UnitSight : MonoBehaviour
         else if (actionTarget.activeInHierarchy == false)
             actionTarget = null;
 
+        else if ((actionTarget.tag == "Player") &
+                    (Vector3.Distance(actionTarget.transform.position, gameObject.transform.position) > sightDistance))
+        {
+            actionTarget = null;
+        }
+
         // Calculate distance every update
         else
         {
@@ -62,6 +75,42 @@ public class UnitSight : MonoBehaviour
         }
     }
 
+    void SetTarget()
+    {
+        float curDistance = sightDistance;
+        GameObject tempTarget = null;
+
+        // Grab all available targets around the unit
+        Collider[] possibleTargets = Physics.OverlapSphere(transform.position, sightDistance, playerMask);
+
+        foreach (string targetTag in priorityList)
+        {
+            foreach (Collider possibleTarget in possibleTargets)
+            {
+                if (possibleTarget.gameObject.tag == targetTag)
+                {
+                    float distance = Vector3.Distance(possibleTarget.transform.position, transform.position);
+                    if (distance < curDistance)
+                    {
+                        if (possibleTarget.gameObject != gameObject)
+                        {
+                            curDistance = distance;
+                            tempTarget = possibleTarget.gameObject;
+                        }
+                    }
+                }
+            }
+            // If actionTarget is not null, target found
+            // Assign target to attack script, return to not continue down priority list.
+            if (tempTarget != null)
+            {
+                actionTarget = tempTarget;
+                return;
+            }
+        }
+    }
+
+    /*
     // Checks if a potential target enters range
     void OnTriggerEnter(Collider other)
     {
@@ -122,5 +171,5 @@ public class UnitSight : MonoBehaviour
             actionTarget = null;
             targetInRange = false;
         }
-    }
+    }*/
 }
