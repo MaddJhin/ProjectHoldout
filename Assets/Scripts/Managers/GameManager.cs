@@ -20,7 +20,8 @@ public class GameManager : MonoBehaviour
 {
     public GameObject[] playerLoadout = new GameObject[7];
     public GameObject spawnPoint;
-    public float spawnOffset = 1f;                                     // Distance between player units being spawned
+    public float spawnOffset = 1f;                                      // Distance between player units being spawned
+    public List<GameObject> availableUnits;                             // List of units available to the player
 
     private int objectiveCounter;
     private List<Spawner> spawnList;
@@ -94,8 +95,7 @@ public class GameManager : MonoBehaviour
 
         Debug.Log("Preparing to Spawn Units");
         
-        Debug.Log("Spawn attempted complete");                             
-        
+        Debug.Log("Spawn attempted complete");
     }
     #endregion
 
@@ -103,13 +103,15 @@ public class GameManager : MonoBehaviour
     {
         IM = GameObject.FindObjectOfType<InputManager>();
 
-        AssignLoadoutSlot("PlayerCharacter_Marksman", 0);
-        AssignLoadoutSlot("PlayerCharacter_Trooper", 1);
-        AssignLoadoutSlot("PlayerCharacter_Medic", 2);
-        AssignLoadoutSlot("PlayerCharacter_Mechanic", 3);
-        AssignLoadoutSlot("PlayerCharacter_Trooper", 4);
-        AssignLoadoutSlot("PlayerCharacter_Medic", 5);
-        AssignLoadoutSlot("PlayerCharacter_Trooper", 6);
+        
+        AssignLoadoutSlot(1, 0);
+        AssignLoadoutSlot(1, 1);
+        AssignLoadoutSlot(1, 2);
+        AssignLoadoutSlot(1, 3);
+        AssignLoadoutSlot(1, 4);
+        AssignLoadoutSlot(1, 5);
+        AssignLoadoutSlot(1, 6);
+        
 
         AssignLoadoutUI();
         SpawnPlayerUnits();
@@ -164,11 +166,10 @@ public class GameManager : MonoBehaviour
      * Parameters: The name of the unit to be spawned, The slow position
      * Returns: void
      */
-    public void AssignLoadoutSlot(string unitName, int slot_no)
+    public void AssignLoadoutSlot(int unit_id, int slot_no)
     {
-        playerLoadout[slot_no] = GenericPooler.current.GetPooledObject(unitName);   // Get the unit from the pool
-        playerLoadout[slot_no].SetActive(true);                                     // Activate it
-        Debug.Log("Slot " + slot_no + ": " + playerLoadout[slot_no]);
+        playerLoadout[slot_no] = Instantiate(availableUnits[unit_id]);
+        playerLoadout[slot_no].SetActive(false);
     }
 
     /* Function: Spawns all units in the loadout into the scene
@@ -182,13 +183,13 @@ public class GameManager : MonoBehaviour
 
         // Sets the player units' location to a specific point on the map
         foreach (var unit in playerLoadout)
-        {
+        {            
             spawnPoint.transform.position = new Vector3(spawnPoint.transform.position.x + spawnOffset, 
                                                         spawnPoint.transform.position.y, 
                                                         spawnPoint.transform.position.z);
 
             unit.transform.position = spawnPoint.transform.position;
-            Debug.Log("Spawning: " + unit);
+            unit.SetActive(true);
         }
     }
 
