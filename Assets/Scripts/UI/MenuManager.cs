@@ -53,10 +53,7 @@ public class MenuManager : MonoBehaviour {
 		if (currentMenu != null) currentMenu.IsOpen = false;
 
 		// Set new menu and set IsOpen to true
-		if (currentMenu != null)
-		{
-			currentMenu = menu;
-			currentMenu.IsOpen = true;
-		}
+		currentMenu = menu;
+		currentMenu.IsOpen = true;
 	}
 }
