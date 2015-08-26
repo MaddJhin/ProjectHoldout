@@ -61,8 +61,8 @@ public class InputManager : MonoBehaviour {
 
     void Start()
     {
-		thirdPersonCam = GameObject.FindGameObjectWithTag("MainCamera");
-		tacticalCam = GameObject.FindGameObjectWithTag("TacticalCamera");
+		thirdPersonCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+		tacticalCam = GameObject.FindGameObjectWithTag("TacticalCamera").GetComponent<Camera>();
         waypointList = FindObjectsOfType<BarricadeWaypoint>();
 
         foreach (var waypoint in waypointList)
