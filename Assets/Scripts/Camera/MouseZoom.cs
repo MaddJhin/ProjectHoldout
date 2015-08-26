@@ -18,6 +18,8 @@ public class MouseZoom : MonoBehaviour {
 	}
 
 	void Update () {
+		// If the camera is disabled, do nothing
+		if (!cam.enabled)return;
 
 		cam.fieldOfView -= Input.GetAxis("Mouse ScrollWheel") * perspectiveZoomSpeed;
 		

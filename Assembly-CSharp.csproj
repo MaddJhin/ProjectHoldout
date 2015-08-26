@@ -78,6 +78,7 @@
      <Compile Include="Assets\Scripts\GenericPooler.cs" />
      <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
      <Compile Include="Assets\Scripts\Managers\InputManager.cs" />
+     <Compile Include="Assets\Scripts\Managers\InputManagerCopy.cs" />
      <Compile Include="Assets\Scripts\Managers\LevelManager.cs" />
      <Compile Include="Assets\Scripts\Managers\LoadoutManager.cs" />
      <Compile Include="Assets\Scripts\Managers\WorldSelectManager.cs" />
