@@ -17,6 +17,9 @@ public class PinchZoom : MonoBehaviour
 	}
 
 	void Update() {
+		// If the camera is disabled, do nothing
+		if (!cam.enabled)return;
+
 		// If there are two touches on the device...
 		if (Input.touchCount == 2)
 		{

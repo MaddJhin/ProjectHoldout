@@ -4,9 +4,12 @@ using System.Collections.Generic;
 
 public class InputManager : MonoBehaviour {
 
-	public float surfaceOffset = 1.5f;
+	public Camera thirdPersonCam; 				// Holds the main camera used in third person view
+	public Camera tacticalCam;					// Hold the secondary ortographic camera for tactical view
 	public PlayerMovement setTargetOn;
 
+	private bool thirdPerson;
+	private Camera activeCam;
     private BarricadeWaypoint waypoint_cache;
     private BarricadeWaypoint[] waypointList;
     private List<Light> waypointMarkerList;
@@ -51,11 +54,15 @@ public class InputManager : MonoBehaviour {
         }
 
         waypointMarkerList = new List<Light>();
+
+
     }
     #endregion
 
     void Start()
     {
+		thirdPersonCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+		tacticalCam = GameObject.FindGameObjectWithTag("TacticalCamera").GetComponent<Camera>();
         waypointList = FindObjectsOfType<BarricadeWaypoint>();
 
         foreach (var waypoint in waypointList)
@@ -63,7 +70,12 @@ public class InputManager : MonoBehaviour {
             waypointMarkerList.Add(waypoint.GetComponent<Light>());
             Debug.Log(waypoint);
         }
-    }
+
+		thirdPersonCam.enabled = true;
+		tacticalCam.enabled = false;
+		thirdPerson = true;
+		activeCam = thirdPersonCam;
+	}
 
     void Update () {
 		// Run when user clicks
@@ -73,17 +85,17 @@ public class InputManager : MonoBehaviour {
 		}
 
 		// Raycast to mouse
-		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+		Ray ray = activeCam.ScreenPointToRay(Input.mousePosition);
 		RaycastHit hit;
 
 		// Return if nothing was hit
         if (!Physics.Raycast(ray, out hit))
         {
-            return;
+            setTargetOn = null;
         }
 
         // If player selects barricade, call SetTarget on the selected player character, checking for null.
-        else
+        else if (thirdPerson)
         {
             waypoint_cache = hit.collider.gameObject.GetComponent<BarricadeWaypoint>();
 
@@ -96,9 +108,13 @@ public class InputManager : MonoBehaviour {
                 waypoint_cache.sCollider.isTrigger = true;
             }
         }
+		else if (!thirdPerson)
+		{
+			Vector3 location = new Vector3 (hit.point.x, thirdPersonCam.transform.parent.position.y, hit.point.z);
+			thirdPersonCam.transform.parent.position = location;
 
-		// Place target reticule 
-		//transform.position = hit.point + hit.normal*surfaceOffset;
+			ChangePerspective();
+		}
 	}
 
 	public void SetTarget (PlayerMovement player)
@@ -127,4 +143,18 @@ public class InputManager : MonoBehaviour {
 
         yield return null;
     }
+
+	public void ChangePerspective (){
+		thirdPersonCam.enabled = !thirdPersonCam.enabled;
+		tacticalCam.enabled = !tacticalCam.enabled;
+		thirdPerson = !thirdPerson;
+		if (thirdPerson)
+		{
+			activeCam = thirdPersonCam;
+		}
+		else
+		{
+			activeCam = tacticalCam;
+		}
+	}
 }

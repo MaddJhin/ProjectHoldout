@@ -33,19 +33,6 @@ public class MenuManager : MonoBehaviour {
 		// Open Starting Menu
 		ShowMenu(currentMenu);
 	}
-	
-//	void Update (){
-//		if (Input.GetKeyDown (KeyCode.Mouse0))
-//		{
-//			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-//
-//			if (!Physics.Raycast(ray, 1000f, clickableMask))
-//			    {
-//					currentMenu = null;
-//					ShowMenu(currentMenu);
-//				}
-//		}
-//	}
 
 	// used to open new menus. Called by buttons
 	public void ShowMenu (Menu menu){
@@ -53,10 +40,7 @@ public class MenuManager : MonoBehaviour {
 		if (currentMenu != null) currentMenu.IsOpen = false;
 
 		// Set new menu and set IsOpen to true
-		if (currentMenu != null)
-		{
-			currentMenu = menu;
-			currentMenu.IsOpen = true;
-		}
+		currentMenu = menu;
+		currentMenu.IsOpen = true;
 	}
 }

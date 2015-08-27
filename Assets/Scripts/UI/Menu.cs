@@ -39,15 +39,15 @@ public class Menu : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		// If the state is open, make menu interactable / block raycasts 
+		// If the state not open, make menu not interactable / block raycasts 
 		if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Open"))
 		{
-			canvasGroup.blocksRaycasts = canvasGroup.interactable = true;
+			canvasGroup.blocksRaycasts = canvasGroup.interactable = false;
 		}
-		// Otherwise, make it not interactable / block raycasts
+		// Otherwise, make it interactable / block raycasts
 		else
 		{
-			canvasGroup.blocksRaycasts = canvasGroup.interactable = false;
+			canvasGroup.blocksRaycasts = canvasGroup.interactable = true;
 		}
 	}
 }
