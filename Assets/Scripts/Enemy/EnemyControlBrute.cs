@@ -46,6 +46,7 @@ public class EnemyControlBrute : MonoBehaviour
     private float elapsedTime;
     private Vector3 targetLoc;
     private NavMeshObstacle obstacle;
+    private GameManager gm;
 
     void Awake()
     {
@@ -54,6 +55,7 @@ public class EnemyControlBrute : MonoBehaviour
         action = GetComponent<EnemyAttack>();
         vision = GetComponent<UnitSight>();
         obstacle = GetComponent<NavMeshObstacle>();
+        gm = GameObject.FindObjectOfType<GameManager>();
     }
 
 	void Start (){
@@ -69,6 +71,11 @@ public class EnemyControlBrute : MonoBehaviour
 		action.stunDuration = stunDuration;
 		action.attackRadius = attackRadius;
 	}
+
+    void OnEnable()
+    {
+        gm.AddObjective();
+    }
 
     void Update()
     {

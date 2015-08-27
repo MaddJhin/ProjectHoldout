@@ -44,8 +44,9 @@ public class NewSpawnerRefactored : MonoBehaviour
     [Tooltip("How much a spawner will repeat it's waves")]
     public int repeatAmount;
 
-    //[HideInInspector]
     public List<SpawnerWave> waves;
+
+    private GameManager gm;
 
     public void AddWave()
     {
@@ -55,6 +56,11 @@ public class NewSpawnerRefactored : MonoBehaviour
     public void RemoveWave(SpawnerWave wave)
     {
         waves.Remove(wave);
+    }
+
+    void Awake()
+    {
+        gm = GameObject.FindObjectOfType<GameManager>();
     }
 
     // Use this for initialization
@@ -92,6 +98,8 @@ public class NewSpawnerRefactored : MonoBehaviour
                 break;
         }
 
+        gameObject.SetActive(false);
+        gm.IsSpawnInactive();
         yield return null;
     }
 

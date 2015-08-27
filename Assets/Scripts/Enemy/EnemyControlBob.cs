@@ -45,6 +45,7 @@ public class EnemyControlBob : MonoBehaviour
     private float elapsedTime;
     private Vector3 targetLoc;
 	private NavMeshObstacle obstacle;
+    private GameManager gm;
 
 
     void Awake()
@@ -54,6 +55,7 @@ public class EnemyControlBob : MonoBehaviour
 		action = GetComponent<EnemyAttack>();
 		vision = GetComponent<UnitSight>();
 		obstacle = GetComponent<NavMeshObstacle>();
+        gm = GameObject.FindObjectOfType<GameManager>();
 	}
 	
 	void Start(){
@@ -69,7 +71,13 @@ public class EnemyControlBob : MonoBehaviour
 		stats.attackRange = attackRange;
 		stats.armor = armor;
 		action.damage = damage;
+
 	}
+
+    void OnEnable()
+    {
+        gm.AddObjective();
+    }
 
     void Update()
     {
