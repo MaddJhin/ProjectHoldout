@@ -87,13 +87,9 @@ public class InputManagerCopy : MonoBehaviour {
         {
             waypoint_cache = hit.collider.gameObject.GetComponent<BarricadeWaypoint>();
 
-            if (hit.collider.tag == "Waypoint" && setTargetOn != null)
+            if (hit.collider.tag == "Barricade" && setTargetOn != null)
             {
-
-                StartCoroutine("DisableWaypointLights");
-                Debug.Log("Waypoint Found");
-                setTargetOn.SetDestination(hit.transform);
-                waypoint_cache.sCollider.isTrigger = true;
+                // Invoke UI
             }
         }
 
@@ -107,24 +103,4 @@ public class InputManagerCopy : MonoBehaviour {
         Debug.Log("Target set to: " + player);
 		setTargetOn = player;
 	}
-
-    IEnumerator EnableWaypointLights()
-    {
-        foreach (var waypoint in waypointMarkerList)
-        {
-            waypoint.enabled = true;
-        }
-
-        yield return null;
-    }
-
-    IEnumerator DisableWaypointLights()
-    {
-        foreach (var waypoint in waypointMarkerList)
-        {
-            waypoint.enabled = false;
-        }
-
-        yield return null;
-    }
 }

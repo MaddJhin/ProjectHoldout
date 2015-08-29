@@ -7,7 +7,7 @@ public class BarricadeWaypoint : MonoBehaviour
     public BoxCollider sCollider;                   // Reference to the collider on the barricade
 
     private int colliderIndex;
-    private GameObject resident;                    // Reference to the object occupying the barricade
+    public GameObject resident;                    // Reference to the object occupying the barricade
 
 	// Use this for initialization
 	void Start () 
@@ -19,7 +19,7 @@ public class BarricadeWaypoint : MonoBehaviour
     /* Function: Checks if the collision is a legitimate resident
      * Parameters: Collider of potential resident
      * Returns: None
-     */
+     *
     void OnTriggerEnter(Collider other)
     {
         // If the waypoint isn't occupied, and the potential resident is a player ...
@@ -34,7 +34,7 @@ public class BarricadeWaypoint : MonoBehaviour
     /* Function: Checks if the object leaving the collider is the previous resident
      * Parameters: Collider of previous resident
      * Returns: None
-     */
+     *
     void OnTriggerExit(Collider other)
     {
         // If the waypoint is already occupied and the object leaving is the previous resident ...
@@ -44,5 +44,5 @@ public class BarricadeWaypoint : MonoBehaviour
             occupied = false;
             resident = null;
         }
-    }
+    }*/
 }

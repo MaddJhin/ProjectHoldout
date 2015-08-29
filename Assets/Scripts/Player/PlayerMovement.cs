@@ -27,6 +27,7 @@ public class PlayerMovement : MonoBehaviour {
 	public Transform actionTarget; 
 	public List<string> priorityList = new List<string>();
 	public Transform targetBarricade;
+    public BarricadeWaypoint targetWaypoint;
 	public float maxBarricadeDistance = 10f;
 	public float sightDistance = 10;
 
