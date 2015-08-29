@@ -43,9 +43,12 @@ public class UnitSight : MonoBehaviour
     void Awake()
     {
         sightRange = GetComponentInChildren<SphereCollider>();
-        actionTarget = GameObject.Find(defaultTarget);
         playerMask = LayerMask.GetMask("Player");
     }
+
+	void Start(){
+		actionTarget = GameObject.Find(defaultTarget);
+	}
 
     void Update()
     {
