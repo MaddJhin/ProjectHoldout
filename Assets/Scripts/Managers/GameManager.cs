@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     private List<Spawner> spawnList;
     private int inactiveSpawns;
     private GameObject UI_canvas;
+    private GameObject UI_playerPanel;
     private InputManager IM;
     GameObject test;
 
@@ -76,6 +77,7 @@ public class GameManager : MonoBehaviour
         spawnList = new List<Spawner>();
 
         UI_canvas = GameObject.Find("Canvas");
+        UI_playerPanel = GameObject.Find("PlayerPortraitsMenu");
 
         Debug.Log("Fetching Spawners");
         Spawner[] temp = GameObject.FindObjectsOfType<Spawner>();   // Get all spawners in scene
@@ -199,7 +201,7 @@ public class GameManager : MonoBehaviour
      */
     public void AssignLoadoutUI()
     {
-        Button[] b = UI_canvas.GetComponentsInChildren<Button>();                                       // Gets each button in the canvas
+        Button[] b = UI_playerPanel.GetComponentsInChildren<Button>();                                       // Gets each button in the canvas
         Debug.Log("Game Manager button refs: ");
         int i;
 
