@@ -19,17 +19,57 @@ using System.Collections;
  */
 
 public class MenuManager : MonoBehaviour {
+	
+	public Menu playerPortraitMenu;
+	public Menu pauseMenu;
+	public Menu waypointMenu;
 
-	public Menu currentMenu;
+	private Menu currentMenu;
 
-	private int clickableMask; 	// A layer mask so the raycast only hits UI elements 
-
-
-	void Awake (){
-		clickableMask = LayerMask.GetMask("UI");
+	#region Singleton
+	private static MenuManager _instance;
+	
+	public static MenuManager instance
+	{
+		get
+		{
+			if (_instance == null)
+			{
+				_instance = GameObject.FindObjectOfType<MenuManager>();
+				
+				DontDestroyOnLoad(_instance.gameObject);
+			}
+			
+			return _instance;
+		}
+	}
+	
+	void Awake()
+	{
+		if (_instance == null)
+		{
+			
+			Debug.Log("Creating singleton");
+			// If this instance is the first in the scene, it becomes the singleton
+			_instance = this;
+			DontDestroyOnLoad(this);
+		}
+		
+		else
+		{
+			// If another Singleton already exists, destroy this object
+			if (this != _instance)
+			{
+				Debug.Log("Destroying invalid singleton");
+				Destroy(this.gameObject);
+			}
+		}
 	}
 
+	#endregion
+
 	void Start () {
+		currentMenu = playerPortraitMenu;
 		// Open Starting Menu
 		ShowMenu(currentMenu);
 	}

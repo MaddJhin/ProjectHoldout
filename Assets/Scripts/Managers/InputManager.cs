@@ -8,6 +8,7 @@ public class InputManager : MonoBehaviour {
 	public Camera tacticalCam;					// Hold the secondary ortographic camera for tactical view
 	public PlayerMovement setTargetOn;
 
+	private MenuManager menuManager;
 	private bool thirdPerson;
 	private Camera activeCam;
     private BarricadeWaypoint waypoint_cache;
@@ -54,13 +55,12 @@ public class InputManager : MonoBehaviour {
         }
 
         waypointMarkerList = new List<Light>();
-
-
     }
     #endregion
 
     void Start()
     {
+		menuManager = MenuManager.instance;
 		thirdPersonCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
 		tacticalCam = GameObject.FindGameObjectWithTag("TacticalCamera").GetComponent<Camera>();
         waypointList = FindObjectsOfType<BarricadeWaypoint>();
@@ -91,7 +91,7 @@ public class InputManager : MonoBehaviour {
 		// Return if nothing was hit
         if (!Physics.Raycast(ray, out hit))
         {
-            setTargetOn = null;
+            return;
         }
 
         // If player selects barricade, call SetTarget on the selected player character, checking for null.
@@ -101,12 +101,19 @@ public class InputManager : MonoBehaviour {
 
             if (hit.collider.tag == "Waypoint" && setTargetOn != null)
             {
-
+				menuManager.ShowMenu(menuManager.waypointMenu);
+				// Bring UI element up, assign player to the listeners on the buttons 
+				// Set UI highlight
                 StartCoroutine("DisableWaypointLights");
                 Debug.Log("Waypoint Found");
                 setTargetOn.SetDestination(hit.transform);
                 waypoint_cache.sCollider.isTrigger = true;
             }
+			else
+			{
+				// Remove UI highlight
+				setTargetOn = null;
+			}
         }
 		else if (!thirdPerson)
 		{

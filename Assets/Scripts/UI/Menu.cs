@@ -18,7 +18,8 @@ using System.Collections;
 
 public class Menu : MonoBehaviour {
 
-	private Animator animator;
+	public Animator animator;
+
 	private CanvasGroup canvasGroup;
 
 	// Get Set bool IsOpen
