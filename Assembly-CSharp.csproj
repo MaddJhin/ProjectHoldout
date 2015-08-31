@@ -61,6 +61,7 @@
      <Compile Include="Assets\Scripts\ActiveStateToggler.cs" />
      <Compile Include="Assets\Scripts\AnimatorSetup.cs" />
      <Compile Include="Assets\Scripts\AreaOfEffect.cs" />
+     <Compile Include="Assets\Scripts\Barricade.cs" />
      <Compile Include="Assets\Scripts\BarricadeWaypoint.cs" />
      <Compile Include="Assets\Scripts\Camera\CameraManager.cs" />
      <Compile Include="Assets\Scripts\Camera\CameraScroll.cs" />
@@ -82,6 +83,7 @@
      <Compile Include="Assets\Scripts\Managers\LevelManager.cs" />
      <Compile Include="Assets\Scripts\Managers\LoadoutManager.cs" />
      <Compile Include="Assets\Scripts\Managers\WorldSelectManager.cs" />
+     <Compile Include="Assets\Scripts\NewSpawnerRefactored.cs" />
      <Compile Include="Assets\Scripts\OldScripts\BasicAttack.cs" />
      <Compile Include="Assets\Scripts\OldScripts\BruteStun.cs" />
      <Compile Include="Assets\Scripts\OldScripts\SelfDestruct.cs" />

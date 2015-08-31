@@ -21,55 +21,51 @@ public class Barricade : MonoBehaviour
                 backWaypoints.Add(curr);
         }
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 
-    public void AssignWaypoint(string waypointLoc, GameObject unit)
+    public void AssignFrontWaypoint(GameObject unit)
     {
         PlayerMovement barricadeCache;
 
         if (barricadeCache = unit.GetComponent<PlayerMovement>())
         {
-            if (waypointLoc == "front")
+            foreach (var waypoint in frontWaypoints)
             {
-                foreach (var waypoint in frontWaypoints)
+                if (waypoint.occupied == false)
                 {
-                    if (waypoint.occupied = false)
+                    if (barricadeCache.targetWaypoint != null)
                     {
-                        if (barricadeCache.targetWaypoint != null)
-                        {
-                            barricadeCache.targetWaypoint.occupied = false;
-                            barricadeCache.targetWaypoint.resident = null;
-                        }
-
-                        barricadeCache.targetWaypoint = waypoint;
-                        waypoint.occupied = true;
-                        waypoint.resident = unit;
+                        barricadeCache.targetWaypoint.occupied = false;
+                        barricadeCache.targetWaypoint.resident = null;
                     }
-                }
-            }
 
-            else
-            {
-                foreach (var waypoint in frontWaypoints)
-                {
-                    if (waypoint.occupied = false)
-                    {
-                        if (barricadeCache.targetWaypoint != null)
-                        {
-                            barricadeCache.targetWaypoint.occupied = false;
-                            barricadeCache.targetWaypoint.resident = null;
-                        }
-
-                        barricadeCache.targetWaypoint = waypoint;
-                        waypoint.occupied = true;
-                        waypoint.resident = unit;
-                    }
+                    barricadeCache.targetWaypoint = waypoint;
+                    waypoint.occupied = true;
+                    waypoint.resident = unit;
                 }
             }
         }
     }
+
+	public void AssignRearWaypoint(GameObject unit) {
+		PlayerMovement barricadeCache;
+		
+		if (barricadeCache = unit.GetComponent<PlayerMovement>())
+		{
+			foreach (var waypoint in backWaypoints)
+			{
+				if (waypoint.occupied == false)
+				{
+					if (barricadeCache.targetWaypoint != null)
+					{
+						barricadeCache.targetWaypoint.occupied = false;
+						barricadeCache.targetWaypoint.resident = null;
+					}
+					
+					barricadeCache.targetWaypoint = waypoint;
+					waypoint.occupied = true;
+					waypoint.resident = unit;
+				}
+			}
+		}
+	}
 }

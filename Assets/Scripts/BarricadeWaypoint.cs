@@ -4,16 +4,14 @@ using System.Collections;
 public class BarricadeWaypoint : MonoBehaviour 
 {
     public bool occupied;  
-    public BoxCollider sCollider;                   // Reference to the collider on the barricade
+	public GameObject resident;                    // Reference to the object occupying the barricade
 
     private int colliderIndex;
-    public GameObject resident;                    // Reference to the object occupying the barricade
-
+	
 	// Use this for initialization
-	void Start () 
+	void Awake () 
     {
         occupied = false;
-        sCollider = GetComponent<BoxCollider>();
 	}
 
     /* Function: Checks if the collision is a legitimate resident
