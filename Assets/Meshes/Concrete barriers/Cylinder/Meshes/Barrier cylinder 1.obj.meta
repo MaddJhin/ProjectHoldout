@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 85815887557887d44a2e861f10c6e82d
+guid: 7eaf06ffee933114aa5c3cc866d26dbc
 labels:
 - Architecture
 - Barrier
@@ -41,6 +41,10 @@ ModelImporter:
     bakeSimulation: 0
     optimizeGameObjects: 0
     motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
     animationCompression: 1
     animationRotationError: .5
     animationPositionError: .5
