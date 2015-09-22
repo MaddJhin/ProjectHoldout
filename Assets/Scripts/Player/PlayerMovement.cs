@@ -59,7 +59,7 @@ public class PlayerMovement : MonoBehaviour {
 	void Update () {
 
 		//Update animation and next target every frame.
-		UpdateAnimator(agent.desiredVelocity);
+		
 
 		//Set action target. Make sure it is in range.  
 		SetTarget();
@@ -170,17 +170,29 @@ public class PlayerMovement : MonoBehaviour {
 		}
 	}
 
-	void UpdateAnimator(Vector3 move) {
-		//Set float values based on nav agent velocity
-		if (move.magnitude > 1f) move.Normalize();
-		move = transform.InverseTransformDirection(move);
-		m_TurnAmount = Mathf.Atan2(move.x, move.z);
-		m_ForwardAmount = move.z;
-		
-		// Update animator float values 
-		m_Animator.SetFloat("Forward", m_ForwardAmount, 0.1f, Time.deltaTime);
-		m_Animator.SetFloat("Turn", m_TurnAmount, 0.1f, Time.deltaTime);
-	}
+    void SetHealTarget(Vector3 startPos, float range, LayerMask targetMask)
+    {
+        Collider[] possibleTargets = Physics.OverlapSphere(startPos, range, targetMask);
+
+        List<UnitStats> statListCache = new List<UnitStats>();
+        UnitStats statCache;
+
+        foreach (Collider possibleTarget in possibleTargets)
+        {
+            if (statCache = possibleTarget.GetComponent<UnitStats>())
+            {
+                statListCache.Add(statCache);
+            }
+
+            else
+                Debug.Log("No UnitStats available for target");
+        }
+
+        statListCache.Sort();
+
+        
+    }
+	
 
 	void HighlightPlayer (){
 

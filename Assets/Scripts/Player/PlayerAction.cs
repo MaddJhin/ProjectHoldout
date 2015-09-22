@@ -103,9 +103,13 @@ public class PlayerAction : MonoBehaviour {
 		enemyHealth.TakeDamage(damage);
 	}
 
-	public void Heal(float damage)
+	public void Heal(float healAmount)
     {
 		UnitStats friendlyHealth = actionTarget.gameObject.GetComponent<UnitStats>();
-        friendlyHealth.Heal(damage);
+
+        while (friendlyHealth.currentHealth < friendlyHealth.healTreshold)
+        {
+            friendlyHealth.Heal(healAmount);
+        }      
 	}
 }

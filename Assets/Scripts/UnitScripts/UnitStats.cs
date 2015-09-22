@@ -23,6 +23,7 @@ public class UnitStats : MonoBehaviour
     public float attackSpeed = 1.0f;
     public float attackRange = 1f;
     public float armor = 0.0f;
+    public float healTreshold = 80f;
 
     public enum statusEffects { stun };
 

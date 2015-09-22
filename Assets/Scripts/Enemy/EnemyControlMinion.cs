@@ -47,6 +47,12 @@ public class EnemyControlMinion : MonoBehaviour
     private NavMeshObstacle obstacle;
     private GameManager gm;
 
+    // Animation attributes
+    private Animator m_Animator;
+    private float m_TurnAmount;
+    private float m_ForwardAmount;
+    private bool attacking;
+
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -54,12 +60,14 @@ public class EnemyControlMinion : MonoBehaviour
         action = GetComponent<EnemyAttack>();
         vision = GetComponent<UnitSight>();
         obstacle = GetComponent<NavMeshObstacle>();
+        m_Animator = GetComponent<Animator>();
         gm = GameObject.FindObjectOfType<GameManager>();
     }
 
 	void Start(){
 		obstacle.enabled = false;
 		agent.enabled = true;
+        attacking = false;
 		elapsedTime = 0f;
 
 		// Set values for dependant scripts. Only modify values in one script in inspector
@@ -80,6 +88,8 @@ public class EnemyControlMinion : MonoBehaviour
 
 	void Update()
     {
+        UpdateMovementAnimator(agent.desiredVelocity);
+
         // Update the target location
 		targetLoc = vision.actionTarget.transform.position;
 		
@@ -96,6 +106,7 @@ public class EnemyControlMinion : MonoBehaviour
             if (stats.attackSpeed < elapsedTime)
             {
                 elapsedTime = 0f;
+                attacking = true;
                 Attack();
             }
         }
@@ -104,6 +115,7 @@ public class EnemyControlMinion : MonoBehaviour
         {
             obstacle.enabled = false;
             agent.enabled = true;
+            attacking = false;
             Move();
         }
 
@@ -121,5 +133,19 @@ public class EnemyControlMinion : MonoBehaviour
     {
         agent.Resume();
         agent.SetDestination(targetLoc);
+    }
+
+    void UpdateMovementAnimator(Vector3 move)
+    {
+        //Set float values based on nav agent velocity
+        if (move.magnitude > 1f) move.Normalize();
+        move = transform.InverseTransformDirection(move);
+        m_TurnAmount = Mathf.Atan2(move.x, move.z);
+        m_ForwardAmount = move.z;
+
+        // Update animator float values 
+        m_Animator.SetFloat("Forward", m_ForwardAmount, 0.1f, Time.deltaTime);
+        m_Animator.SetFloat("Turn", m_TurnAmount, 0.1f, Time.deltaTime);
+        m_Animator.SetBool("Attacking", attacking);
     }
 }
