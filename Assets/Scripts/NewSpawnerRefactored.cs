@@ -44,6 +44,9 @@ public class NewSpawnerRefactored : MonoBehaviour
     [Tooltip("How much a spawner will repeat it's waves")]
     public int repeatAmount;
 
+    [Tooltip("Randomises the order of waves")]
+    public bool randomiseWaves;
+
     public List<SpawnerWave> waves;
 
     private GameManager gm;
@@ -105,6 +108,50 @@ public class NewSpawnerRefactored : MonoBehaviour
 
     IEnumerator SpawnWave(List<SpawnerWave> wavesToSpawn)
     {
+        if (randomiseWaves)
+        {
+            List<int> spawnedWaves = new List<int>();
+
+            for (int i = 0; i < wavesToSpawn.Count; i++)
+            {
+
+                int currWaveIndex = selectRandWave(spawnedWaves, wavesToSpawn);
+                spawnedWaves.Add(currWaveIndex);
+                SpawnerWave currWave = wavesToSpawn[currWaveIndex];
+
+                if (currWave.waveDelay > 0)
+                    yield return new WaitForSeconds(currWave.waveDelay);
+
+                switch (currWave.waveType)
+                {
+                    case WaveTypes.Single:
+                        yield return StartCoroutine(SpawnUnits(currWave));
+                        break;
+
+                    case WaveTypes.RepeatingWave:
+
+                        for (int i = 0; i < currWave.repeatAmount; i++)
+                        {
+                            yield return StartCoroutine(SpawnUnits(currWave));
+                        }
+
+                        break;
+
+                    case WaveTypes.InfiniteRepeatingWave:
+
+                        while (true)
+                        {
+                            yield return StartCoroutine(SpawnUnits(currWave));
+                        }
+
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+        }
+
         foreach (var currWave in wavesToSpawn)
         {
             if (currWave.waveDelay > 0)
@@ -166,5 +213,17 @@ public class NewSpawnerRefactored : MonoBehaviour
         }
 
         yield return null;
+    }
+
+    int selectRandWave(List<int> usedIndex, List<SpawnerWave> waves)
+    {
+        int waveIndex = Random.Range(0, (waves.Count - 1));
+
+        if (usedIndex.Contains(waveIndex))
+        {
+            return selectRandWave(usedIndex, waves);
+        }
+
+        return waveIndex;
     }
 }

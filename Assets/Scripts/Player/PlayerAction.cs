@@ -107,9 +107,18 @@ public class PlayerAction : MonoBehaviour {
     {
 		UnitStats friendlyHealth = actionTarget.gameObject.GetComponent<UnitStats>();
 
-        while (friendlyHealth.currentHealth < friendlyHealth.healTreshold)
+        // If the target's health is below the treshold, heal up to the treshold
+        if (friendlyHealth.currentHealth < friendlyHealth.healTreshold)
         {
+            while (friendlyHealth.currentHealth < friendlyHealth.healTreshold)
+            {
+                friendlyHealth.Heal(healAmount);
+            }
+        }
+
+        // Otherwise, heal the target once
+        else
             friendlyHealth.Heal(healAmount);
-        }      
+              
 	}
 }
