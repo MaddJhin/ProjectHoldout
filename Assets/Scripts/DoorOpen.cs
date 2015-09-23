@@ -11,14 +11,14 @@ public class DoorOpen : MonoBehaviour
     [Tooltip ("Distance a unit must be within from the door in order for it to open")]
     public float openTreshold = 1f;
 
-    [Tooltip("Distance a unit must be within from the door in order for it to close")]
-    public float closeThreshold = 2f;
+    [Tooltip("How many seconds until the door closes")]
+    public float closeTimer = 3f;
 
     private bool open = false;
     private Vector3 destination;
     private int playerMask;
 	private Vector3 startMarker;
-	private Vector3 originalPosition;
+    private Vector3 originalPosition;
 
     void Awake()
     {
@@ -30,44 +30,61 @@ public class DoorOpen : MonoBehaviour
 		originalPosition = transform.localPosition;
 	}
 
+    void Update()
+    {
+        Debug.Log("Checking for Open Trigger");
+        CheckTrigger();
+    }
+
     void CheckTrigger()
     {
         Collider[] possibleTriggers = Physics.OverlapSphere(transform.position, triggerRadius, playerMask);
+
+        Debug.Log("Possible Door Triggers: " + possibleTriggers);
 
         foreach (Collider currTrigger in possibleTriggers)
         {
             // Valid target to open the door
             if (currTrigger.tag == "Player")
             {
+                Debug.Log("Player Trigger Found");
+
                 float distanceToDoor = Vector3.Distance(currTrigger.gameObject.transform.position, transform.position);
-                
+
+                //Debug.Log("Distance to Door: " + distanceToDoor);
+                //Debug.Log("Is Door Open: " + open);
+
                 // If target is halfway through the trigger radius, open the door
                 if (distanceToDoor <= openTreshold && !open)
                 {
-                    OpenDoor();
+                    Debug.Log("Distance to Door: " + distanceToDoor);
+                    StartCoroutine("OpenDoor");
                 }
 
-                else if (distanceToDoor >= closeThreshold && open)
-                {
-                    CloseDoor();
-                }
+                Debug.Log("Finished Door Interaction");
             }
         }
     }
 
-    void OpenDoor()
+    IEnumerator OpenDoor()
     {
+        Debug.Log("Opening Door");
+        float step = speed * Time.deltaTime;
+
         open = true;
         startMarker = transform.position;
-        destination = new Vector3(transform.position.x, startMarker.y + 5, transform.position.z);
-        transform.localPosition = Vector3.Lerp(startMarker, destination, speed);
+        destination = new Vector3(startMarker.x, startMarker.y + 3, startMarker.z);
+        transform.position = Vector3.Lerp(startMarker, destination, speed);
+        yield return new WaitForSeconds(closeTimer);
+        yield return StartCoroutine("CloseDoor");
     }
 
-    void CloseDoor()
+    IEnumerator CloseDoor()
     {
+        Debug.Log("Closing Door");
         open = false;
         startMarker = transform.position;
-        destination = new Vector3(transform.position.x, startMarker.y + 5, transform.position.z);
-        transform.localPosition = Vector3.Lerp(startMarker, destination, speed);
+        transform.localPosition = Vector3.Lerp(startMarker, originalPosition, speed);
+        yield return null;
     }
 }
