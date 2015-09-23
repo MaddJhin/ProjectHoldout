@@ -109,6 +109,7 @@ public class PlayerControlMedic : MonoBehaviour {
         {
             Debug.Log("Heal Successful");
             m_Healing = true;
+            m_Animator.Play("Healing");
             Heal();
         }
 
@@ -154,6 +155,6 @@ public class PlayerControlMedic : MonoBehaviour {
         // Update animator float values 
         m_Animator.SetFloat("Forward", m_ForwardAmount, 0.1f, Time.deltaTime);
         m_Animator.SetFloat("Turn", m_TurnAmount, 0.1f, Time.deltaTime);
-        m_Animator.SetBool("Healing", m_Healing);
+        //m_Animator.SetBool("Healing", m_Healing);
     }
 }
