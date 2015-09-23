@@ -170,27 +170,49 @@ public class PlayerMovement : MonoBehaviour {
 		}
 	}
 
-    void SetHealTarget(Vector3 startPos, float range, LayerMask targetMask)
+    public GameObject SetHealTarget(Vector3 startPos, float range, LayerMask targetMask)
     {
         Collider[] possibleTargets = Physics.OverlapSphere(startPos, range, targetMask);
 
-        List<UnitStats> statListCache = new List<UnitStats>();
+        // First list holds game objects found as potential heal targets
+        // Second list contaisn their health values
+        // Correspending indexes in the list allows for easy searching
+        List<GameObject> statListCache = new List<GameObject>();
+        List<float> healthList = new List<float>();
         UnitStats statCache;
 
-        foreach (Collider possibleTarget in possibleTargets)
+        if (possibleTargets != null)
         {
-            if (statCache = possibleTarget.GetComponent<UnitStats>())
+            foreach (Collider possibleTarget in possibleTargets)
             {
-                statListCache.Add(statCache);
+                // If the potential target has UnitStats cache the object and it's current health
+                if (statCache = possibleTarget.GetComponent<UnitStats>())
+                {
+                    statListCache.Add(statCache.gameObject);
+                    healthList.Add(statCache.currentHealth);
+                }
+
+                else
+                    Debug.Log("No UnitStats available for target");
             }
 
-            else
-                Debug.Log("No UnitStats available for target");
+            // Find the lowest health value out of the potential targets
+            float min = healthList[0];
+            int minIndex = 0;
+
+            for (int i = 1; i < statListCache.Count; ++i)
+            {
+                if (healthList[i] < min)
+                {
+                    min = healthList[i];
+                    minIndex = i;
+                }
+            }
+
+            return statListCache[minIndex];
         }
 
-        statListCache.Sort();
-
-        
+        return null;
     }
 	
 

@@ -103,9 +103,9 @@ public class PlayerAction : MonoBehaviour {
 		enemyHealth.TakeDamage(damage);
 	}
 
-	public void Heal(float healAmount)
+	public void Heal(float healAmount, GameObject healTarget)
     {
-		UnitStats friendlyHealth = actionTarget.gameObject.GetComponent<UnitStats>();
+		UnitStats friendlyHealth = healTarget.gameObject.GetComponent<UnitStats>();
 
         // If the target's health is below the treshold, heal up to the treshold
         if (friendlyHealth.currentHealth < friendlyHealth.healTreshold)

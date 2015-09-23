@@ -46,6 +46,8 @@ public class PlayerControlMedic : MonoBehaviour {
 	bool targetInRange;								// Tracks when target enters and leaves range
 	float originalStoppingDistance;					// Used to store preset agent stopping distance
 	NavMeshObstacle obstacle;						// Used to indicate other units to avoid this one
+    GameObject healTarget;                          // Current target to heal
+    LayerMask healMask;                             // Layer Mask of heal targets
 
     Animator m_Animator;
     float m_ForwardAmount;
@@ -59,6 +61,7 @@ public class PlayerControlMedic : MonoBehaviour {
 		stats = GetComponent<UnitStats>();
 		obstacle = GetComponent<NavMeshObstacle>();
         m_Animator = GetComponent<Animator>();
+        healMask = LayerMask.GetMask("Player");
 	}
 	
 	void Start (){
@@ -80,6 +83,7 @@ public class PlayerControlMedic : MonoBehaviour {
 		// Add the time since Update was last called to the timer.
 		timer += Time.deltaTime;
 		actionTarget = playerControl.actionTarget;
+        healTarget = playerControl.SetHealTarget(gameObject.transform.position, healRange, healMask);
 		
 		// If there is nothing to attack, script does nothing.
 		if (actionTarget == null) 
@@ -100,7 +104,7 @@ public class PlayerControlMedic : MonoBehaviour {
 		}
 		
 		// If the target is in range and enough time has passed between attacks, Attack.
-		if (timer >= timeBetweenHeals && targetInRange && actionTarget.tag == "Player")
+		if (timer >= timeBetweenHeals && targetInRange && healTarget != null)
 		{
             m_Healing = true;
 			Heal();
@@ -128,7 +132,7 @@ public class PlayerControlMedic : MonoBehaviour {
 	
 	void Heal(){
 		timer = 0f;
-		playerAction.Heal(healPerHit);
+		playerAction.Heal(healPerHit, healTarget);
 	}
 
     void UpdateAnimator(Vector3 move)
