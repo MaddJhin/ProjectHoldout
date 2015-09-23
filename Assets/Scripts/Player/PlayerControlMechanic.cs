@@ -46,6 +46,8 @@ public class PlayerControlMechanic : MonoBehaviour {
 	bool targetInRange;								// Tracks when target enters and leaves range
 	float originalStoppingDistance;					// Used to store preset agent stopping distance
 	NavMeshObstacle obstacle;						// Used to indicate other units to avoid this one
+    GameObject repairTarget;                        // Target to be repaired
+    LayerMask repairLayer;                          // Mask to find barricades
 
 	
 	void Awake(){
@@ -54,6 +56,7 @@ public class PlayerControlMechanic : MonoBehaviour {
 		playerAction = GetComponent<PlayerAction>();
 		stats = GetComponent<UnitStats>();
 		obstacle = GetComponent<NavMeshObstacle>();
+        repairLayer = LayerMask.GetMask("Player");
 	}
 	
 	void Start (){
@@ -71,7 +74,7 @@ public class PlayerControlMechanic : MonoBehaviour {
 	void Update () {
 		// Add the time since Update was last called to the timer.
 		timer += Time.deltaTime;
-		actionTarget = playerControl.actionTarget;
+        repairTarget = playerControl.SetHealTarget(transform.position, healRange, repairLayer);
 		
 		// If there is nothing to attack, script does nothing.
 		if (actionTarget == null) 
@@ -90,7 +93,7 @@ public class PlayerControlMechanic : MonoBehaviour {
 		}
 		
 		// If the target is in range and enough time has passed between attacks, Attack.
-		if (timer >= timeBetweenHeals && targetInRange && actionTarget.tag == "Player")
+		if (timer >= timeBetweenHeals && targetInRange && repairTarget.tag == "Barricade")
 		{
 			Heal();
 		}
@@ -109,7 +112,7 @@ public class PlayerControlMechanic : MonoBehaviour {
 	
 	void Heal(){
 		timer = 0f;
-		playerAction.Heal(healPerHit);
+		playerAction.Heal(healPerHit, repairTarget);
 	}
 	
 	void Move (){

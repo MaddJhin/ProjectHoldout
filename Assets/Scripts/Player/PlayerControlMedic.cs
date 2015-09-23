@@ -104,7 +104,7 @@ public class PlayerControlMedic : MonoBehaviour {
 		}
 		
 		// If the target is in range and enough time has passed between attacks, Attack.
-		if (timer >= timeBetweenHeals && targetInRange && healTarget != null)
+		if (timer >= timeBetweenHeals && targetInRange && healTarget != null && healTarget.tag == "Player")
 		{
             m_Healing = true;
 			Heal();

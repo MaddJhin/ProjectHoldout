@@ -130,7 +130,7 @@ public class NewSpawnerRefactored : MonoBehaviour
 
                     case WaveTypes.RepeatingWave:
 
-                        for (int i = 0; i < currWave.repeatAmount; i++)
+                        for (int j = 0; i < currWave.repeatAmount; i++)
                         {
                             yield return StartCoroutine(SpawnUnits(currWave));
                         }
