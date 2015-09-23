@@ -82,33 +82,41 @@ public class PlayerControlMedic : MonoBehaviour {
 
 		// Add the time since Update was last called to the timer.
 		timer += Time.deltaTime;
-		actionTarget = playerControl.actionTarget;
         healTarget = playerControl.SetHealTarget(gameObject.transform.position, healRange, healMask);
-		
+        Debug.Log("Heal Target: " + healTarget);
+
+
 		// If there is nothing to attack, script does nothing.
-		if (actionTarget == null) 
+		if (healTarget == null) 
 		{
 			agent.stoppingDistance = originalStoppingDistance;
 			return;
 		}
 		
 		// Set if the target is in range
-		if (Vector3.Distance (actionTarget.position, transform.position) <= healRange)
+		if (Vector3.Distance (healTarget.transform.position, transform.position) <= healRange)
 		{
 			Stop();
 		}
 		else
 		{
-            m_Healing = false;
 			Move();
 		}
-		
+
+        Debug.Log("Attempting Heal");
 		// If the target is in range and enough time has passed between attacks, Attack.
-		if (timer >= timeBetweenHeals && targetInRange && healTarget != null && healTarget.tag == "Player")
-		{
+        if (timer >= timeBetweenHeals && targetInRange && healTarget != null && healTarget.tag == "Player")
+        {
+            Debug.Log("Heal Successful");
             m_Healing = true;
-			Heal();
-		}
+            Heal();
+        }
+
+        else
+        {
+            Debug.Log("Heal Ending");
+            m_Healing = false;
+        }
 	}
 
 	void Stop(){

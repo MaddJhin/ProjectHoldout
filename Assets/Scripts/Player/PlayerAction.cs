@@ -119,6 +119,5 @@ public class PlayerAction : MonoBehaviour {
         // Otherwise, heal the target once
         else
             friendlyHealth.Heal(healAmount);
-              
 	}
 }

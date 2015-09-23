@@ -181,6 +181,8 @@ public class PlayerMovement : MonoBehaviour {
         List<float> healthList = new List<float>();
         UnitStats statCache;
 
+        Debug.Log("Potential Heal Targets: " + possibleTargets);
+
         if (possibleTargets != null)
         {
             foreach (Collider possibleTarget in possibleTargets)
@@ -188,8 +190,11 @@ public class PlayerMovement : MonoBehaviour {
                 // If the potential target has UnitStats cache the object and it's current health
                 if (statCache = possibleTarget.GetComponent<UnitStats>())
                 {
-                    statListCache.Add(statCache.gameObject);
-                    healthList.Add(statCache.currentHealth);
+                    if (statCache.currentHealth < statCache.maxHealth && statCache.gameObject != gameObject)
+                    {
+                        statListCache.Add(statCache.gameObject);
+                        healthList.Add(statCache.currentHealth);
+                    }
                 }
 
                 else

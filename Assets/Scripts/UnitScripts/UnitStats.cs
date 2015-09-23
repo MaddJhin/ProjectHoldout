@@ -39,6 +39,9 @@ public class UnitStats : MonoBehaviour
     {
         if (currentHealth <= 0)
             KillUnit();
+
+        if (currentHealth > maxHealth)
+            currentHealth = maxHealth;
 	}
 
     public void TakeDamage(float damageTaken)
