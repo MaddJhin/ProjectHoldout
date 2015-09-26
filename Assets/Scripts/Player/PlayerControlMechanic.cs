@@ -46,7 +46,7 @@ public class PlayerControlMechanic : MonoBehaviour {
 	bool targetInRange;								// Tracks when target enters and leaves range
 	float originalStoppingDistance;					// Used to store preset agent stopping distance
 	NavMeshObstacle obstacle;						// Used to indicate other units to avoid this one
-    GameObject repairTarget;                        // Target to be repaired
+    UnitStats repairTarget;                        // Target to be repaired
     LayerMask repairLayer;                          // Mask to find barricades
 
 	
@@ -112,7 +112,7 @@ public class PlayerControlMechanic : MonoBehaviour {
 	
 	void Heal(){
 		timer = 0f;
-		playerAction.Heal(healPerHit, repairTarget);
+		playerAction.Heal(healPerHit, repairTarget, timeBetweenHeals);
 	}
 	
 	void Move (){

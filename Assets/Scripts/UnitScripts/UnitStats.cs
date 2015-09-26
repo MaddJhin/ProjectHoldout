@@ -55,7 +55,6 @@ public class UnitStats : MonoBehaviour
         if (currentHealth < maxHealth)
         {
             currentHealth += healAmount;
-            Debug.Log(currentHealth);
         }
 	}
 

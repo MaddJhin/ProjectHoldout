@@ -170,14 +170,14 @@ public class PlayerMovement : MonoBehaviour {
 		}
 	}
 
-    public GameObject SetHealTarget(Vector3 startPos, float range, LayerMask targetMask)
+    public UnitStats SetHealTarget(Vector3 startPos, float range, LayerMask targetMask)
     {
         Collider[] possibleTargets = Physics.OverlapSphere(startPos, range, targetMask);
 
         // First list holds game objects found as potential heal targets
         // Second list contaisn their health values
         // Correspending indexes in the list allows for easy searching
-        List<GameObject> statListCache = new List<GameObject>();
+        List<UnitStats> statListCache = new List<UnitStats>();
         List<float> healthList = new List<float>();
         UnitStats statCache;
 
@@ -192,7 +192,7 @@ public class PlayerMovement : MonoBehaviour {
                 {
                     if (statCache.currentHealth < statCache.maxHealth && statCache.gameObject != gameObject)
                     {
-                        statListCache.Add(statCache.gameObject);
+                        statListCache.Add(statCache);
                         healthList.Add(statCache.currentHealth);
                     }
                 }

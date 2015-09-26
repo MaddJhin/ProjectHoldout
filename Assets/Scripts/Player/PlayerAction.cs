@@ -103,21 +103,14 @@ public class PlayerAction : MonoBehaviour {
 		enemyHealth.TakeDamage(damage);
 	}
 
-	public void Heal(float healAmount, GameObject healTarget)
+	public IEnumerator Heal(float healAmount, UnitStats healTarget, float timeBetweenHeals)
     {
-		UnitStats friendlyHealth = healTarget.gameObject.GetComponent<UnitStats>();
-
-        // If the target's health is below the treshold, heal up to the treshold
-        if (friendlyHealth.currentHealth < friendlyHealth.healTreshold)
+        do
         {
-            while (friendlyHealth.currentHealth < friendlyHealth.healTreshold)
-            {
-                friendlyHealth.Heal(healAmount);
-            }
-        }
-
-        // Otherwise, heal the target once
-        else
-            friendlyHealth.Heal(healAmount);
+            Debug.Log("Applying Heal");
+            healTarget.Heal(healAmount);
+            yield return new WaitForSeconds(timeBetweenHeals);
+            
+        } while (healTarget.currentHealth < healTarget.healTreshold);
 	}
 }
