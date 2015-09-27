@@ -48,6 +48,8 @@ public class PlayerControlMechanic : MonoBehaviour {
 	NavMeshObstacle obstacle;						// Used to indicate other units to avoid this one
     UnitStats repairTarget;                        // Target to be repaired
     LayerMask repairLayer;                          // Mask to find barricades
+    bool m_Repairing;
+    ParticleSystem[] m_RepairParticleSystem;
 
 	
 	void Awake(){
@@ -56,6 +58,7 @@ public class PlayerControlMechanic : MonoBehaviour {
 		playerAction = GetComponent<PlayerAction>();
 		stats = GetComponent<UnitStats>();
 		obstacle = GetComponent<NavMeshObstacle>();
+        m_RepairParticleSystem = GetComponentsInChildren<ParticleSystem>();
         repairLayer = LayerMask.GetMask("Player");
 	}
 	
@@ -68,13 +71,14 @@ public class PlayerControlMechanic : MonoBehaviour {
 		playerControl.maxBarricadeDistance = barricadeMaxThether;
 		stats.armor = armor;
 		playerControl.sightDistance = sightRange;
+        m_Repairing = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		// Add the time since Update was last called to the timer.
 		timer += Time.deltaTime;
-        repairTarget = playerControl.SetHealTarget(transform.position, healRange, repairLayer);
+        repairTarget = playerControl.SetHealTarget(transform.position, healRange, repairLayer, "Barricade");
 		
 		// If there is nothing to attack, script does nothing.
 		if (actionTarget == null) 
@@ -91,12 +95,37 @@ public class PlayerControlMechanic : MonoBehaviour {
 		{
 			Move();
 		}
-		
-		// If the target is in range and enough time has passed between attacks, Attack.
-		if (timer >= timeBetweenHeals && targetInRange && repairTarget.tag == "Barricade")
-		{
-			Heal();
-		}
+
+        // If the target is in range and enough time has passed between attacks, Attack.
+        if (m_Repairing == false && targetInRange && repairTarget != null)
+        {
+            m_Repairing = true;
+            transform.LookAt(repairTarget.transform.position);
+
+            foreach (var pfx in m_RepairParticleSystem)
+            {
+                pfx.transform.position = repairTarget.transform.position;
+                pfx.enableEmission = true;
+            }
+
+            StartCoroutine(playerAction.Heal(healPerHit, repairTarget, timeBetweenHeals));
+        }
+
+        if (repairTarget.currentHealth >= repairTarget.healTreshold)
+        {
+            repairTarget = null;
+        }
+
+
+        if (m_Repairing == true && (!targetInRange || repairTarget == null))
+        {
+            m_Repairing = false;
+
+            foreach (var pfx in m_RepairParticleSystem)
+            {
+                pfx.enableEmission = false;
+            }
+        }
 	}
 	
 	void Stop(){

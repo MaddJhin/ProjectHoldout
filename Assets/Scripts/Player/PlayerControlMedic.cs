@@ -88,7 +88,7 @@ public class PlayerControlMedic : MonoBehaviour {
 
 		// Add the time since Update was last called to the timer.
 		timer += Time.deltaTime;
-        healTarget = playerControl.SetHealTarget(gameObject.transform.position, healRange, healMask);
+        healTarget = playerControl.SetHealTarget(gameObject.transform.position, healRange, healMask, "Player");
         
 
 		// If there is nothing to attack, script does nothing.
@@ -108,12 +108,11 @@ public class PlayerControlMedic : MonoBehaviour {
 			Move();
 		}
 
-        Debug.Log("Healing Status: " + m_Healing + " - In Range: " + targetInRange
-                    + " - Heal Target: " + healTarget + " - " + healTarget.tag);
 		// If the target is in range and enough time has passed between attacks, Attack.
-        if (m_Healing == false && targetInRange && healTarget != null && healTarget.gameObject.tag == "Player")
+        if (m_Healing == false && targetInRange && healTarget != null)
         {
             m_Healing = true;
+            transform.LookAt(healTarget.transform.position);
 
             foreach (var pfx in m_HealParticleSystem)
             {
@@ -122,29 +121,23 @@ public class PlayerControlMedic : MonoBehaviour {
             }
 
             StartCoroutine(playerAction.Heal(healPerHit, healTarget, timeBetweenHeals));
-            Debug.Log("Test");
         }
 
         if (healTarget.currentHealth >= healTarget.healTreshold)
         {
             healTarget = null;
-            Debug.Log("Nullifying HealTarget: " + healTarget);
         }
 
 
         if ( m_Healing == true && (!targetInRange || healTarget == null))
         {
-            Debug.Log("Ending Heal");
             m_Healing = false;
-        }
 
-        if (!m_Healing)
-        {
             foreach (var pfx in m_HealParticleSystem)
             {
                 pfx.enableEmission = false;
             }
-        }   
+        }  
 	}
 
 	void Stop()
