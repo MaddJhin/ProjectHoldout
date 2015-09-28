@@ -51,7 +51,11 @@ public class PlayerControlMechanic : MonoBehaviour {
     bool m_Repairing;
     ParticleSystem[] m_RepairParticleSystem;
 
-	
+    Animator m_Animator;
+    float m_ForwardAmount;
+    float m_TurnAmount;
+    bool m_Healing;
+
 	void Awake(){
 		agent = GetComponent<NavMeshAgent>();
 		playerControl = GetComponent<PlayerMovement>();
@@ -60,6 +64,7 @@ public class PlayerControlMechanic : MonoBehaviour {
 		obstacle = GetComponent<NavMeshObstacle>();
         m_RepairParticleSystem = GetComponentsInChildren<ParticleSystem>();
         repairLayer = LayerMask.GetMask("Player");
+        m_Animator = GetComponent<Animator>();
 	}
 	
 	void Start (){
@@ -75,7 +80,10 @@ public class PlayerControlMechanic : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+    {
+        UpdateAnimator(agent.desiredVelocity);
+
 		// Add the time since Update was last called to the timer.
 		timer += Time.deltaTime;
         repairTarget = playerControl.SetHealTarget(transform.position, healRange, repairLayer, "Barricade");
@@ -96,35 +104,35 @@ public class PlayerControlMechanic : MonoBehaviour {
 			Move();
 		}
 
-        // If the target is in range and enough time has passed between attacks, Attack.
+        if (m_Repairing == false && repairTarget == null)
+        {
+            Debug.Log("Retrieving Heal Target...");
+            repairTarget = playerControl.SetHealTarget(gameObject.transform.position, healRange, repairLayer, "Barricade");
+            Debug.Log("Heal Target found: " + repairTarget);
+        }
+
+		// If there is nothing to attack, script does nothing.
+        if (repairTarget == null) 
+		{
+			agent.stoppingDistance = originalStoppingDistance;
+			return;
+		}
+		
+		// Set if the target is in range
+        if (Vector3.Distance(repairTarget.transform.position, transform.position) <= healRange)
+		{
+			Stop();
+		}
+		else
+		{
+			Move();
+		}
+
+		// If the target is in range and enough time has passed between attacks, Attack.
         if (m_Repairing == false && targetInRange && repairTarget != null)
         {
-            m_Repairing = true;
-            transform.LookAt(repairTarget.transform.position);
-
-            foreach (var pfx in m_RepairParticleSystem)
-            {
-                pfx.transform.position = repairTarget.transform.position;
-                pfx.enableEmission = true;
-            }
-
-            StartCoroutine(playerAction.Heal(healPerHit, repairTarget, timeBetweenHeals));
-        }
-
-        if (repairTarget.currentHealth >= repairTarget.healTreshold)
-        {
-            repairTarget = null;
-        }
-
-
-        if (m_Repairing == true && (!targetInRange || repairTarget == null))
-        {
-            m_Repairing = false;
-
-            foreach (var pfx in m_RepairParticleSystem)
-            {
-                pfx.enableEmission = false;
-            }
+            
+            StartCoroutine("Repair");
         }
 	}
 	
@@ -139,9 +147,30 @@ public class PlayerControlMechanic : MonoBehaviour {
 //		obstacle.enabled = true;
 	}
 	
-	void Heal(){
-		timer = 0f;
-		playerAction.Heal(healPerHit, repairTarget, timeBetweenHeals);
+	IEnumerator Repair()
+    {
+        m_Repairing = true;
+        transform.LookAt(repairTarget.transform.position);
+
+        foreach (var pfx in m_RepairParticleSystem)
+        {
+            pfx.transform.position = repairTarget.transform.position;
+            pfx.enableEmission = true;
+        }
+
+        Debug.Log("Healing: " + repairTarget);
+        playerAction.Heal(healPerHit, repairTarget);
+
+        yield return new WaitForSeconds(timeBetweenHeals);
+
+        m_Repairing = false;
+        repairTarget = null;
+        Debug.Log("Post Healing Target: " + repairTarget);
+
+        foreach (var pfx in m_RepairParticleSystem)
+        {
+            pfx.enableEmission = false;
+        }
 	}
 	
 	void Move (){
@@ -151,4 +180,18 @@ public class PlayerControlMechanic : MonoBehaviour {
 //		agent.enabled = true;
 //		agent.Resume();
 	}
+
+    void UpdateAnimator(Vector3 move)
+    {
+        //Set float values based on nav agent velocity
+        if (move.magnitude > 1f) move.Normalize();
+        move = transform.InverseTransformDirection(move);
+        m_TurnAmount = Mathf.Atan2(move.x, move.z);
+        m_ForwardAmount = move.z;
+
+        // Update animator float values 
+        m_Animator.SetFloat("Forward", m_ForwardAmount, 0.1f, Time.deltaTime);
+        m_Animator.SetFloat("Turn", m_TurnAmount, 0.1f, Time.deltaTime);
+        m_Animator.SetBool("Healing", m_Repairing);
+    }
 }

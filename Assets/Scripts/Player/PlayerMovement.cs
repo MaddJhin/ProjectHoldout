@@ -192,6 +192,7 @@ public class PlayerMovement : MonoBehaviour {
                 {
                     if (statCache.currentHealth < statCache.maxHealth && statCache.gameObject != gameObject && gameObject.tag == mode)
                     {
+                        Debug.Log("Valid Potential Target Found: " + statCache.gameObject);
                         statListCache.Add(statCache);
                         healthList.Add(statCache.currentHealth);
                     }

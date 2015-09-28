@@ -32,7 +32,6 @@ public class DoorOpen : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("Checking for Open Trigger");
         CheckTrigger();
     }
 
@@ -40,14 +39,11 @@ public class DoorOpen : MonoBehaviour
     {
         Collider[] possibleTriggers = Physics.OverlapSphere(transform.position, triggerRadius, playerMask);
 
-        Debug.Log("Possible Door Triggers: " + possibleTriggers);
-
         foreach (Collider currTrigger in possibleTriggers)
         {
             // Valid target to open the door
             if (currTrigger.tag == "Player")
             {
-                Debug.Log("Player Trigger Found");
 
                 float distanceToDoor = Vector3.Distance(currTrigger.gameObject.transform.position, transform.position);
 
@@ -57,11 +53,8 @@ public class DoorOpen : MonoBehaviour
                 // If target is halfway through the trigger radius, open the door
                 if (distanceToDoor <= openTreshold && !open)
                 {
-                    Debug.Log("Distance to Door: " + distanceToDoor);
                     StartCoroutine("OpenDoor");
                 }
-
-                Debug.Log("Finished Door Interaction");
             }
         }
     }

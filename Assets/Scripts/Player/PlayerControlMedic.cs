@@ -49,6 +49,7 @@ public class PlayerControlMedic : MonoBehaviour {
     UnitStats healTarget;                          // Current target to heal
     LayerMask healMask;                             // Layer Mask of heal targets
     ParticleSystem[] m_HealParticleSystem;            // Particles for healing
+    LineRenderer healBeam;
 
     Animator m_Animator;
     float m_ForwardAmount;
@@ -64,6 +65,7 @@ public class PlayerControlMedic : MonoBehaviour {
         m_Animator = GetComponent<Animator>();
         healMask = LayerMask.GetMask("Player");
         m_HealParticleSystem = GetComponentsInChildren<ParticleSystem>();
+        healBeam = GetComponent<LineRenderer>();
 	}
 	
 	void Start (){
@@ -76,6 +78,7 @@ public class PlayerControlMedic : MonoBehaviour {
 		stats.armor = armor;
 		playerControl.sightDistance = sightRange;
         m_Healing = false;
+        healBeam.enabled = false;
 
         foreach (var pfx in m_HealParticleSystem)
             pfx.enableEmission = false;
@@ -88,8 +91,17 @@ public class PlayerControlMedic : MonoBehaviour {
 
 		// Add the time since Update was last called to the timer.
 		timer += Time.deltaTime;
-        healTarget = playerControl.SetHealTarget(gameObject.transform.position, healRange, healMask, "Player");
-        
+
+        Debug.Log("Healing: " + m_Healing);
+        Debug.Log("Current Heal Target: " + healTarget);
+
+
+        if (m_Healing == false && healTarget == null)
+        {
+            Debug.Log("Retrieving Heal Target...");
+            healTarget = playerControl.SetHealTarget(gameObject.transform.position, healRange, healMask, "Player");
+            Debug.Log("Heal Target found: " + healTarget);
+        }
 
 		// If there is nothing to attack, script does nothing.
 		if (healTarget == null) 
@@ -111,33 +123,9 @@ public class PlayerControlMedic : MonoBehaviour {
 		// If the target is in range and enough time has passed between attacks, Attack.
         if (m_Healing == false && targetInRange && healTarget != null)
         {
-            m_Healing = true;
-            transform.LookAt(healTarget.transform.position);
-
-            foreach (var pfx in m_HealParticleSystem)
-            {
-                pfx.transform.position = healTarget.transform.position;
-                pfx.enableEmission = true;
-            }
-
-            StartCoroutine(playerAction.Heal(healPerHit, healTarget, timeBetweenHeals));
+            
+            StartCoroutine("Heal");
         }
-
-        if (healTarget.currentHealth >= healTarget.healTreshold)
-        {
-            healTarget = null;
-        }
-
-
-        if ( m_Healing == true && (!targetInRange || healTarget == null))
-        {
-            m_Healing = false;
-
-            foreach (var pfx in m_HealParticleSystem)
-            {
-                pfx.enableEmission = false;
-            }
-        }  
 	}
 
 	void Stop()
@@ -150,20 +138,31 @@ public class PlayerControlMedic : MonoBehaviour {
 		targetInRange = false;
 	}
 	
-	void Heal()
+	IEnumerator Heal()
     {
 		timer = 0f;
+        m_Healing = true;
+        transform.LookAt(healTarget.transform.position);
+
         foreach (var pfx in m_HealParticleSystem)
         {
             pfx.transform.position = healTarget.transform.position;
             pfx.enableEmission = true;
         }
-        
-        Debug.Log("Healing: " + m_Healing);
-        StartCoroutine(playerAction.Heal(healPerHit, healTarget, timeBetweenHeals));
-        Debug.Log("Healing Finished");
-        //m_Healing = false;
-        Debug.Log("Healing: " + m_Healing);
+
+        Debug.Log("Healing: " + healTarget);
+        playerAction.Heal(healPerHit, healTarget);
+
+        yield return new WaitForSeconds(timeBetweenHeals);
+
+        m_Healing = false;
+        healTarget = null;
+        Debug.Log("Post Healing Target: " + healTarget);
+
+        foreach (var pfx in m_HealParticleSystem)
+        {
+            pfx.enableEmission = false;
+        }
 	}
 
     void UpdateAnimator(Vector3 move)

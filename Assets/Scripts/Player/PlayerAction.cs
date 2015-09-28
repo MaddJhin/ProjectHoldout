@@ -103,14 +103,9 @@ public class PlayerAction : MonoBehaviour {
 		enemyHealth.TakeDamage(damage);
 	}
 
-	public IEnumerator Heal(float healAmount, UnitStats healTarget, float timeBetweenHeals)
+	public void Heal(float healAmount, UnitStats healTarget)
     {
-        do
-        {
             Debug.Log("Applying Heal");
             healTarget.Heal(healAmount);
-            yield return new WaitForSeconds(timeBetweenHeals);
-            
-        } while (healTarget.currentHealth < healTarget.healTreshold);
 	}
 }
