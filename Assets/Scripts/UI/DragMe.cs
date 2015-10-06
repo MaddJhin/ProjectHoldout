@@ -5,6 +5,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Image))]
 public class DragMe : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
+    public int unitIndex;
 	public bool dragOnSurfaces = true;
 	
 	private GameObject m_DraggingIcon;

@@ -1,7 +1,12 @@
 fileFormatVersion: 2
 guid: 76bfe752a4c07f44397e06523bd1834d
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: TempleRun Items_0
+    21300002: TempleRun Items_1
+    21300004: TempleRun Items_2
+    21300006: TempleRun Items_3
+    21300008: TempleRun Items_4
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -35,6 +40,7 @@ TextureImporter:
   lightmap: 0
   rGBM: 0
   compressionQuality: 50
+  allowsAlphaSplitting: 0
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1

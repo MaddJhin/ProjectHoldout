@@ -1,7 +1,11 @@
 fileFormatVersion: 2
 guid: bb4089c4721a3b741b84d773e4b47dc8
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: VerticalDemo_Items_0
+    21300002: VerticalDemo_Items_1
+    21300004: VerticalDemo_Items_2
+    21300006: VerticalDemo_Items_3
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -35,6 +39,7 @@ TextureImporter:
   lightmap: 0
   rGBM: 0
   compressionQuality: 50
+  allowsAlphaSplitting: 0
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1

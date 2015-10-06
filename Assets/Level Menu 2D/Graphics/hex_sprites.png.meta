@@ -1,7 +1,13 @@
 fileFormatVersion: 2
 guid: 67b472f0669f1c34889b697aebc5e09b
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: hex_sprites_0
+    21300002: hex_sprites_1
+    21300004: hex_sprites_2
+    21300006: hex_sprites_3
+    21300008: hex_sprites_4
+    21300010: hex_sprites_5
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -35,6 +41,7 @@ TextureImporter:
   lightmap: 0
   rGBM: 0
   compressionQuality: 50
+  allowsAlphaSplitting: 0
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
