@@ -1,7 +1,18 @@
 fileFormatVersion: 2
 guid: 893ae1f1d5b0c134bb98a6675dc9b63e
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: Upgrades_Demo_0
+    21300002: Upgrades_Demo_1
+    21300004: Upgrades_Demo_2
+    21300006: Upgrades_Demo_3
+    21300008: Upgrades_Demo_4
+    21300010: Upgrades_Demo_5
+    21300012: Upgrades_Demo_6
+    21300014: Upgrades_Demo_7
+    21300016: Upgrades_Demo_8
+    21300018: Upgrades_Demo_9
+    21300020: Upgrades_Demo_10
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -35,6 +46,7 @@ TextureImporter:
   lightmap: 0
   rGBM: 0
   compressionQuality: 50
+  allowsAlphaSplitting: 0
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1

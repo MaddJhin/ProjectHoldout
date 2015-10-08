@@ -1,7 +1,14 @@
 fileFormatVersion: 2
 guid: c74cc6329db84f141822ce77462dd33e
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: AngryBirds_Items_1
+    21300002: AngryBirds_Items_2
+    21300004: AngryBirds_Items_2
+    21300006: AngryBirds_Items_3
+    21300008: AngryBirds_Items_4
+    21300010: AngryBirds_Items_5
+    21300012: AngryBirds_Items_6
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -35,6 +42,7 @@ TextureImporter:
   lightmap: 0
   rGBM: 0
   compressionQuality: 50
+  allowsAlphaSplitting: 0
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1

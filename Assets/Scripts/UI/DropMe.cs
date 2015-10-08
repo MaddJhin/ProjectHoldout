@@ -5,10 +5,12 @@ using UnityEngine.UI;
 
 public class DropMe : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler
 {
+    public int slotIndex;
 	public Image containerImage;
 	public Image receivingImage;
-	private Color normalColor;
-	public Color highlightColor = Color.yellow;
+    public Color highlightColor = Color.yellow;
+
+    private Color normalColor;
 	
 	public void OnEnable ()
 	{
@@ -26,6 +28,10 @@ public class DropMe : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointe
 		Sprite dropSprite = GetDropSprite (data);
 		if (dropSprite != null)
 			receivingImage.overrideSprite = dropSprite;
+
+        int unitIndex = GetDropIndex(data);
+        Debug.Log("New unitIndex is: " + unitIndex);
+        GameManager.instance.AssignLoadoutIndex(unitIndex,slotIndex);
 	}
 
 	public void OnPointerEnter(PointerEventData data)
@@ -58,4 +64,11 @@ public class DropMe : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointe
 		
 		return srcImage.sprite;
 	}
+
+    private int GetDropIndex(PointerEventData data)
+    {
+        var originalObj = data.pointerDrag;
+        var srcInt = originalObj.GetComponent<DragMe>().unitIndex;
+        return srcInt;
+    }
 }

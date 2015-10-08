@@ -19,7 +19,6 @@ using System.Collections.Generic;
 public class GameManager : MonoBehaviour
 {
     public GameObject[] playerLoadout = new GameObject[7];
-    public GameObject spawnPoint;
     public float spawnOffset = 1f;                                      // Distance between player units being spawned
     public List<GameObject> availableUnits;                             // List of units available to the player
 
@@ -29,8 +28,8 @@ public class GameManager : MonoBehaviour
     private GameObject UI_canvas;
     private GameObject UI_playerPanel;
     private InputManager IM;
-    GameObject test;
-
+    private GameObject spawnPoint;
+    private int[] loadoutIndex;
 
     // Following region ensures that there is only ever one game manager
     #region Singleton
@@ -72,51 +71,46 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        objectiveCounter = 0;                                       
-        inactiveSpawns = 0;
-        spawnList = new List<Spawner>();
-
-        UI_canvas = GameObject.Find("Canvas");
-        UI_playerPanel = GameObject.Find("PlayerPortraitsMenu");
-
-        Debug.Log("Fetching Spawners");
-        Spawner[] temp = GameObject.FindObjectsOfType<Spawner>();   // Get all spawners in scene
-
-        // Ignore Player tagged spawners
-        foreach (var spawn in temp)
-        {
-            if (spawn.tag == "Enemy Spawn")
-                spawnList.Add(spawn);
-        }
-
-        Debug.Log("Spawn List: " + spawnList);
-
-        // Temporary
-        // Used for testing purposes
-        
-
-        Debug.Log("Preparing to Spawn Units");
-        
-        Debug.Log("Spawn attempted complete");
+        loadoutIndex = new int[7];
     }
     #endregion
 
-    void Start()
+    void OnLevelWasLoaded(int level)
     {
-        IM = GameObject.FindObjectOfType<InputManager>();
+        if (level != 1)
+        {
+            objectiveCounter = 0;
+            inactiveSpawns = 0;
+            spawnList = new List<Spawner>();
 
-        
-        AssignLoadoutSlot(1, 0);
-        AssignLoadoutSlot(1, 1);
-        AssignLoadoutSlot(1, 2);
-        AssignLoadoutSlot(1, 3);
-        AssignLoadoutSlot(1, 4);
-        AssignLoadoutSlot(1, 5);
-        AssignLoadoutSlot(1, 6);
-        
+            Debug.Log("Fetching Spawners");
+            Spawner[] temp = GameObject.FindObjectsOfType<Spawner>();   // Get all spawners in scene
 
-        AssignLoadoutUI();
-        SpawnPlayerUnits();
+            // Ignore Player tagged spawners
+            foreach (var spawn in temp)
+            {
+                if (spawn.tag == "Enemy Spawn")
+                    spawnList.Add(spawn);
+            }
+
+            Debug.Log("Spawn List: " + spawnList);
+
+            // Temporary
+            // Used for testing purposes
+
+
+            Debug.Log("Preparing to Spawn Units");
+
+            UI_canvas = GameObject.Find("Canvas");
+            UI_playerPanel = GameObject.Find("PlayerPortraitsMenu");
+            IM = GameObject.FindObjectOfType<InputManager>();
+            spawnPoint = GameObject.FindGameObjectWithTag("PlayerSpawnPoint");
+            Debug.Log("Spawn attempted complete");
+
+            AssignLoadoutSlot();
+            AssignLoadoutUI();
+            SpawnPlayerUnits();
+        }
     }
 
     // Following region handles the tracking of objectives and transition conditions
@@ -128,7 +122,7 @@ public class GameManager : MonoBehaviour
         Application.LoadLevel(sceneName);
     }
 
-    public void AddObjective()
+public void AddObjective()
     {
         objectiveCounter++;
         Debug.Log("Objective Count: " + objectiveCounter);
@@ -159,19 +153,32 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-    #endregion 
+
+    #endregion
 
     // Following region allows for units to be assigned to a loadout, and spawned
     #region Player Unit Management
 
-    /* Function: Assigns a unit to the appropriate loadout slot
-     * Parameters: The name of the unit to be spawned, The slow position
-     * Returns: void
-     */
-    public void AssignLoadoutSlot(int unit_id, int slot_no)
+    /* Function: Sets the player character index to use 
+    * Parameters: player character id to spawn, order in which to spawn character
+    * Returns: Void
+    */
+    public void AssignLoadoutIndex(int characterIndex, int orderIndex)
     {
-        playerLoadout[slot_no] = Instantiate(availableUnits[unit_id]);
-        playerLoadout[slot_no].SetActive(false);
+        loadoutIndex[orderIndex] = characterIndex;
+    }
+
+    /* Function: Assigns a unit to the appropriate loadout slot
+     * Parameters: None
+     * Returns: Void
+     */
+    public void AssignLoadoutSlot()
+    {
+        for (int i = 0; i <loadoutIndex.Length; i++)
+        {
+            playerLoadout[i] = Instantiate(availableUnits[loadoutIndex[i]]);
+            playerLoadout[i].SetActive(false);
+        }
     }
 
     /* Function: Spawns all units in the loadout into the scene

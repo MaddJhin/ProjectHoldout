@@ -1,7 +1,13 @@
 fileFormatVersion: 2
 guid: 9a82cd64c2fe3bb439f79b5ad97d73f7
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: Square
+    21300002: Wide
+    21300004: Small
+    21300006: Long
+    21300008: Big
+    21300010: Irregular
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -35,6 +41,7 @@ TextureImporter:
   lightmap: 0
   rGBM: 0
   compressionQuality: 50
+  allowsAlphaSplitting: 0
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
