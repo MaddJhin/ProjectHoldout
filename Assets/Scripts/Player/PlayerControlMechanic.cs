@@ -83,10 +83,6 @@ public class PlayerControlMechanic : MonoBehaviour {
 	void Update () 
     {
         UpdateAnimator(agent.desiredVelocity);
-
-		// Add the time since Update was last called to the timer.
-		timer += Time.deltaTime;
-        repairTarget = playerControl.SetHealTarget(transform.position, healRange, repairLayer, "Barricade");
 		
 		// If there is nothing to attack, script does nothing.
 		if (actionTarget == null) 
@@ -106,6 +102,8 @@ public class PlayerControlMechanic : MonoBehaviour {
 
         if (m_Repairing == false && repairTarget == null)
         {
+            // ** TEST EFFICIENCY WITH: **
+            // - Setting repair target based on current barricade
             Debug.Log("Retrieving Heal Target...");
             repairTarget = playerControl.SetHealTarget(gameObject.transform.position, healRange, repairLayer, "Barricade");
             Debug.Log("Heal Target found: " + repairTarget);

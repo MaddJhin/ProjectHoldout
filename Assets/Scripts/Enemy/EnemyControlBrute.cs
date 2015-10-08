@@ -47,6 +47,7 @@ public class EnemyControlBrute : MonoBehaviour
     private Vector3 targetLoc;
     private NavMeshObstacle obstacle;
     private GameManager gm;
+    private Animator m_Animator;
 
     void Awake()
     {
@@ -56,6 +57,7 @@ public class EnemyControlBrute : MonoBehaviour
         vision = GetComponent<UnitSight>();
         obstacle = GetComponent<NavMeshObstacle>();
         gm = GameObject.FindObjectOfType<GameManager>();
+        m_Animator = GetComponent<Animator>();
     }
 
 	void Start (){
@@ -91,9 +93,11 @@ public class EnemyControlBrute : MonoBehaviour
 			}
             agent.enabled = false;
             obstacle.enabled = true;
+            m_Animator.SetBool("Walk Forward", false);
 
             if (stats.attackSpeed < elapsedTime)
             {
+                m_Animator.SetTrigger("PunchTrigger");
                 elapsedTime = 0f;
                 Attack();
             }
@@ -103,6 +107,7 @@ public class EnemyControlBrute : MonoBehaviour
         {
             obstacle.enabled = false;
             agent.enabled = true;
+            m_Animator.SetBool("Walk Forward", true);
             Move();
         }
 

@@ -105,7 +105,10 @@ public class PlayerAction : MonoBehaviour {
 
 	public void Heal(float healAmount, UnitStats healTarget)
     {
+        if (healTarget != null)
+        {
             Debug.Log("Applying Heal");
             healTarget.Heal(healAmount);
+        }
 	}
 }
