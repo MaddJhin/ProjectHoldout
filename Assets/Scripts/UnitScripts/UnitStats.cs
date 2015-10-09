@@ -28,11 +28,18 @@ public class UnitStats : MonoBehaviour
     public enum statusEffects { stun };
 
     private GameManager gm;
+    private PlayerControlMedic[] availableMedics;
 
     void Awake()
     {
         currentHealth = maxHealth;
         gm = GameObject.FindObjectOfType<GameManager>();
+        
+    }
+
+    void Start()
+    {
+        availableMedics = FindObjectsOfType<PlayerControlMedic>();
     }
 
 	void Update () 
@@ -42,6 +49,24 @@ public class UnitStats : MonoBehaviour
 
         if (currentHealth > maxHealth)
             currentHealth = maxHealth;
+        
+        if (currentHealth < maxHealth)
+        {
+            Debug.Log("Notifying medics");
+            Debug.Log("Medics to Notify: " + availableMedics);
+            foreach (var medic in availableMedics)
+            {
+                Debug.Log("Checking Heal Conditions");
+                if (Vector3.Distance(transform.position, medic.transform.position) < medic.healRange && medic.m_Healing == false)
+                {
+                    Debug.Log("Beginning Heal");
+                    medic.healTarget = this;
+                    medic.m_Healing = true;
+                    medic.StartCoroutine("Heal");
+                    break;
+                }
+            }
+        }
 	}
 
     public void TakeDamage(float damageTaken)
