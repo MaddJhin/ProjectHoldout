@@ -48,6 +48,7 @@ public class EnemyControlBrute : MonoBehaviour
     private NavMeshObstacle obstacle;
     private GameManager gm;
     private Animator m_Animator;
+    private ParticleSystem m_ParticleSystem;
 
     void Awake()
     {
@@ -58,6 +59,7 @@ public class EnemyControlBrute : MonoBehaviour
         obstacle = GetComponent<NavMeshObstacle>();
         gm = GameObject.FindObjectOfType<GameManager>();
         m_Animator = GetComponent<Animator>();
+        m_ParticleSystem = GetComponentInChildren<ParticleSystem>();
     }
 
 	void Start (){
@@ -72,6 +74,7 @@ public class EnemyControlBrute : MonoBehaviour
 		stats.armor = armor;
 		action.stunDuration = stunDuration;
 		action.attackRadius = attackRadius;
+
 	}
 
     void OnEnable()
@@ -117,6 +120,9 @@ public class EnemyControlBrute : MonoBehaviour
     void Attack()
     {
         //agent.Stop();
+        Debug.Log("Current Particles: " + m_ParticleSystem);
+        m_ParticleSystem.Stop();
+        m_ParticleSystem.Play();
         Debug.Log(vision.actionTarget);
         action.Slam(vision.actionTarget);
     }

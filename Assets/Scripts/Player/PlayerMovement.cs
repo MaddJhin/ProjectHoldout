@@ -181,8 +181,6 @@ public class PlayerMovement : MonoBehaviour {
         List<float> healthList = new List<float>();
         UnitStats statCache;
 
-        Debug.Log("Potential Heal Targets: " + possibleTargets);
-
         if (possibleTargets != null)
         {
             foreach (Collider possibleTarget in possibleTargets)
@@ -192,7 +190,6 @@ public class PlayerMovement : MonoBehaviour {
                 {
                     if (statCache.currentHealth < statCache.maxHealth && statCache.gameObject != gameObject && gameObject.tag == mode)
                     {
-                        Debug.Log("Valid Potential Target Found: " + statCache.gameObject);
                         statListCache.Add(statCache);
                         healthList.Add(statCache.currentHealth);
                     }

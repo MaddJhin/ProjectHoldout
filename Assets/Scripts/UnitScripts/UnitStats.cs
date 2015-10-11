@@ -52,14 +52,10 @@ public class UnitStats : MonoBehaviour
         
         if (currentHealth < maxHealth)
         {
-            Debug.Log("Notifying medics");
-            Debug.Log("Medics to Notify: " + availableMedics);
             foreach (var medic in availableMedics)
             {
-                Debug.Log("Checking Heal Conditions");
                 if (Vector3.Distance(transform.position, medic.transform.position) < medic.healRange && medic.m_Healing == false)
                 {
-                    Debug.Log("Beginning Heal");
                     medic.healTarget = this;
                     medic.m_Healing = true;
                     medic.StartCoroutine("Heal");
@@ -94,18 +90,13 @@ public class UnitStats : MonoBehaviour
     {
         if (effect == statusEffects.stun)
         {
-            Debug.Log("Stun detected for " + duration + " seconds");
             StartCoroutine(ActivateStun(duration));
         }
     }
 
     IEnumerator ActivateStun(float duration)
     {
-        Debug.Log("Activating Stun effect");
-
         yield return null;
         yield return new WaitForSeconds(duration);
-
-        Debug.Log("Stun Over");
     }
 }
