@@ -18,12 +18,17 @@ using System.Collections;
 public class UnitStats : MonoBehaviour 
 {
     // Unit attributes
-    public float maxHealth = 100.0f;
+    [HideInInspector]
+    public float maxHealth;
+
+    [HideInInspector]
     public float currentHealth;
-    public float attackSpeed = 1.0f;
-    public float attackRange = 1f;
-    public float armor = 0.0f;
-    public float healTreshold = 80f;
+
+    [HideInInspector]
+    public float attackSpeed;
+
+    [HideInInspector]
+    public float attackRange;
 
     public enum statusEffects { stun };
 
@@ -68,7 +73,6 @@ public class UnitStats : MonoBehaviour
     public void TakeDamage(float damageTaken)
     {
         currentHealth -= damageTaken;
-        Debug.Log(gameObject.name + " HP: " + currentHealth);
     }
 
 	public void Heal(float healAmount)

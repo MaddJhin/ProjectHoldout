@@ -77,9 +77,9 @@ public class EnemyControlMinion : MonoBehaviour
 		vision.priorityList = priorityList;
         vision.sightDistance = sightDistance;
 		stats.maxHealth = maxHealth;
+        stats.currentHealth = maxHealth;
 		stats.attackSpeed = attackSpeed;
 		stats.attackRange = attackRange;
-		stats.armor = armor;
 		action.damage = damage;
 
 	}

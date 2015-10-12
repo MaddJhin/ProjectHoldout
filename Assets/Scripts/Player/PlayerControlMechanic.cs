@@ -28,16 +28,20 @@ using System.Collections.Generic;
 
 public class PlayerControlMechanic : MonoBehaviour {
 
-	public float health = 100f;
-	public float armor = 0f;
+    [Header ("Unit Attributes")]
+	public float maxHealth = 100f;
 	public float sightRange = 10;
+    public float barricadeMaxThether = 10f;
+    public List<string> priorityList = new List<string>();	// Stores action target priorty (highest first).
+
+
 	public float healPerHit = 20f;
 	public float healRange = 100f;
 	public float timeBetweenHeals = 0.15f;
-	public float barricadeMaxThether = 10f;
-	public List<string> priorityList = new List<string>();	// Stores action target priorty (highest first).
 	
-	UnitStats stats;								// Unit stat scripts for health assignment
+	
+	
+	UnitStats stats;								// Unit stat scripts for maxHealth assignment
 	Transform actionTarget;							// Current Action target
 	float timer;                                    // A timer between actions.
 	NavMeshAgent agent;								// Nav Agent for moving character
@@ -72,9 +76,8 @@ public class PlayerControlMechanic : MonoBehaviour {
 		playerControl.priorityList = priorityList;
 		playerAction.timeBetweenAttacks = timeBetweenHeals;
 		originalStoppingDistance = agent.stoppingDistance;
-		stats.currentHealth = health;
+		stats.maxHealth = maxHealth;
 		playerControl.maxBarricadeDistance = barricadeMaxThether;
-		stats.armor = armor;
 		playerControl.sightDistance = sightRange;
         m_Repairing = false;
 	}

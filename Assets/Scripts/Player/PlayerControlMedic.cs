@@ -29,7 +29,7 @@ using System.Collections.Generic;
 public class PlayerControlMedic : MonoBehaviour 
 {
     [Header("Unit Attributes")]
-	public float health = 100f;
+	public float maxHealth = 100f;
 	public float sightRange = 10;
     public float barricadeMaxThether = 10f;
 	public List<string> priorityList = new List<string>();	// Stores action target priorty (highest first).
@@ -84,7 +84,8 @@ public class PlayerControlMedic : MonoBehaviour
 		playerControl.priorityList = priorityList;
 		playerAction.timeBetweenAttacks = timeBetweenHeals;
 		originalStoppingDistance = agent.stoppingDistance;
-		stats.currentHealth = health;
+		stats.maxHealth = maxHealth;
+        stats.currentHealth = maxHealth;
 		playerControl.maxBarricadeDistance = barricadeMaxThether;
 		playerControl.sightDistance = sightRange;
         m_Healing = false;

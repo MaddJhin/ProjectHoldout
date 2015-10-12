@@ -31,7 +31,6 @@ using System.Collections.Generic;
 public class EnemyControlBob : MonoBehaviour
 {
 	public float maxHealth = 100.0f;
-	public float armor = 0.0f;
     public float sightDistance = 10f;
 	public float attackSpeed = 1.0f;
 	public float attackRange = 1f;
@@ -69,11 +68,10 @@ public class EnemyControlBob : MonoBehaviour
 		vision.priorityList = priorityList;
         vision.sightDistance = sightDistance;
 		stats.maxHealth = maxHealth;
+        stats.currentHealth = maxHealth;
 		stats.attackSpeed = attackSpeed;
 		stats.attackRange = attackRange;
-		stats.armor = armor;
 		action.damage = damage;
-
 	}
 
     void OnEnable()
