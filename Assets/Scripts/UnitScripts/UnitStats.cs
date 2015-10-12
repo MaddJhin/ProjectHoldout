@@ -20,8 +20,6 @@ public class UnitStats : MonoBehaviour
     // Unit attributes
     [HideInInspector]
     public float maxHealth;
-
-    [HideInInspector]
     public float currentHealth;
 
     [HideInInspector]
@@ -50,7 +48,10 @@ public class UnitStats : MonoBehaviour
 	void Update () 
     {
         if (currentHealth <= 0)
+        {
+            Debug.Log("Killing Unit");
             KillUnit();
+        }
 
         if (currentHealth > maxHealth)
             currentHealth = maxHealth;
@@ -86,8 +87,9 @@ public class UnitStats : MonoBehaviour
     public void KillUnit()
     {
         // Deactivates the unit
-		gm.RemoveObjective();
+        Debug.Log("Removing Unit");
         gameObject.SetActive(false);
+		gm.RemoveObjective();
     }
 
     public void ApplyStatus(statusEffects effect, float duration)
