@@ -150,7 +150,10 @@ public class PlayerControlMedic : MonoBehaviour
 	IEnumerator Heal()
     {		
         tickCounter = 0;                                                  // Iterator for counting heal ticks
- 
+
+        if (healTarget.tag != "Player")
+            yield return null;
+
         // Enabled relevant particle systems
         StartCoroutine("BeamModulator");
         foreach (var pfx in m_HealParticleSystem)
