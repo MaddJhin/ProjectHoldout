@@ -34,6 +34,7 @@ public class EnemyControlBrute : MonoBehaviour
 	public float attackSpeed = 1.0f;
 	public float attackRange = 1f;
 	public float armor = 0.0f;
+    public float sightDistance = 10f;
 	public float stunDuration = 1f;
 	public float attackRadius = 5f;
 	public string defaultTarget;
@@ -68,6 +69,7 @@ public class EnemyControlBrute : MonoBehaviour
 		// Set values for dependant scripts. Only modify values in one script in inspector
 		vision.defaultTarget = defaultTarget;
 		vision.priorityList = priorityList;
+        vision.sightDistance = sightDistance;
 		stats.maxHealth = maxHealth;
 		stats.attackSpeed = attackSpeed;
 		stats.attackRange = attackRange;
@@ -136,6 +138,6 @@ public class EnemyControlBrute : MonoBehaviour
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
+        Gizmos.DrawWireSphere(transform.position, attackRadius);
     }
 }

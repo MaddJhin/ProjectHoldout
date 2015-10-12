@@ -23,18 +23,27 @@ using System.Collections.Generic;
 
 public class UnitSight : MonoBehaviour
 {
+    [HideInInspector]
     public bool targetInRange;
+
+    [HideInInspector]
     public GameObject actionTarget;
+
+    [HideInInspector]
     public string defaultTarget;
-    public float sightDistance = 10f;
+
+    [HideInInspector]
+    public float sightDistance;
 
     // Stores priority of GameObject tags
     // First element is the highest priority
     // E.G: if element[0] contains the string "Player", the "Player" tag is highest priority
+    [HideInInspector]
     public List<string> priorityList = new List<string>();
 
+    [HideInInspector]
     public float targetDistance; // Distance between this object and it's target
-    private SphereCollider sightRange;
+
     private UnitStats targetStats;
 
     // Setting up LayerMask for Player and Barricades
@@ -42,7 +51,6 @@ public class UnitSight : MonoBehaviour
 
     void Awake()
     {
-        sightRange = GetComponentInChildren<SphereCollider>();
         playerMask = LayerMask.GetMask("Player");
     }
 
@@ -113,66 +121,9 @@ public class UnitSight : MonoBehaviour
         }
     }
 
-    /*
-    // Checks if a potential target enters range
-    void OnTriggerEnter(Collider other)
+    void OnDrawGizmos()
     {
-        // Check each tag considered a priority
-        foreach(string targetTag in priorityList)
-        {
-            // If a match is found then that gameObject becomes the new target
-            // The first element is first priority etc
-            if (other.gameObject.tag == targetTag && (actionTarget == null || actionTarget == GameObject.Find(defaultTarget)) && other.isTrigger == false)
-            {
-                actionTarget = other.gameObject;
-                targetInRange = true;
-                targetStats = actionTarget.GetComponent<UnitStats>();
-                targetDistance = Vector3.Distance(actionTarget.transform.position, gameObject.transform.position);
-            }
-        }      
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, sightDistance);
     }
-
-    // If the current target leaves range, it helps to select a new target
-    void OnTriggerStay(Collider other)
-    {
-        if (actionTarget == null || actionTarget == GameObject.Find(defaultTarget))
-        {
-            // Check each tag considered a priority
-            foreach (string targetTag in priorityList)
-            {
-                // If a match is found then that gameObject becomes the new target
-                // The first element is first priority etc
-                if (other.gameObject.tag == targetTag && (actionTarget == null ||actionTarget == GameObject.Find(defaultTarget)))
-                {
-
-                    Debug.Log(gameObject + " checking isTrigger");
-
-                    // Checks if the target collider is a trigger
-                    // If it's not, then the collider is valid for targetting
-                    // Trigger colliders are used to represent a target's vision, thus are ignored
-                    if (other.isTrigger == false)
-                    {
-                        Debug.Log(gameObject + " found no trigger. Assigning target");
-                        actionTarget = other.gameObject;
-                        targetInRange = true;
-                        targetDistance = Vector3.Distance(actionTarget.transform.position, gameObject.transform.position);
-                    }
-
-                    else
-                    {
-                        Debug.Log(gameObject + " found trigger. Ignoring target");
-                    }
-                }
-            }  
-        }
-    }
-
-    void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject == actionTarget)
-        {
-            actionTarget = null;
-            targetInRange = false;
-        }
-    }*/
 }
