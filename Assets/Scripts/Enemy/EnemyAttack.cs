@@ -23,8 +23,13 @@ using System.Collections;
 
 public class EnemyAttack : MonoBehaviour {
 
+    [HideInInspector]
 	public float damage = 5f;
+
+    [HideInInspector]
 	public float stunDuration = 1f;
+
+    [HideInInspector]
 	public float attackRadius = 5f;
 
 	private ParticleSystem explosionFX;                 // Stores the instance of the explosion Particle System

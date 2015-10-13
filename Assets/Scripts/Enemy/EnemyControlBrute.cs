@@ -30,15 +30,21 @@ using System.Collections.Generic;
 
 public class EnemyControlBrute : MonoBehaviour 
 {
+    [Header ("Unit Attributes")]
 	public float maxHealth = 100.0f;
-	public float attackSpeed = 1.0f;
-	public float attackRange = 1f;
-	public float armor = 0.0f;
     public float sightDistance = 10f;
+    
+    [Tooltip ("The target object the unit moves to by default")]
+    public string defaultTarget;
+    public List<string> priorityList = new List<string>();
+
+    [Header ("Attack Attributes")]
+	public float attackSpeed = 1.0f;
+	public float attackRange = 1f;   
 	public float stunDuration = 1f;
 	public float attackRadius = 5f;
-	public string defaultTarget;
-	public List<string> priorityList = new List<string>();
+    public float damage = 10f;
+	
 
     private NavMeshAgent agent;
     private UnitStats stats;
@@ -76,6 +82,7 @@ public class EnemyControlBrute : MonoBehaviour
 		stats.attackRange = attackRange;
 		action.stunDuration = stunDuration;
 		action.attackRadius = attackRadius;
+        action.damage = damage;
 
 	}
 

@@ -30,13 +30,18 @@ using System.Collections.Generic;
 
 public class EnemyControlBob : MonoBehaviour
 {
-	public float maxHealth = 100.0f;
+    [Header("Unit Attributes")]
+    public float maxHealth = 100.0f;
     public float sightDistance = 10f;
-	public float attackSpeed = 1.0f;
-	public float attackRange = 1f;
-	public float damage = 5;
-	public string defaultTarget;
-	public List<string> priorityList = new List<string>();
+
+    [Tooltip("The target object the unit moves to by default")]
+    public string defaultTarget;
+    public List<string> priorityList = new List<string>();
+
+    [Header("Attack Attributes")]
+    public float attackSpeed = 1.0f;
+    public float attackRange = 1f;
+    public float damage = 5;
 
     private NavMeshAgent agent;
     private UnitStats stats;
