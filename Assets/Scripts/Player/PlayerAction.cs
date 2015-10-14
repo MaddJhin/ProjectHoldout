@@ -23,7 +23,10 @@ using System.Collections;
 
 public class PlayerAction : MonoBehaviour {
 	
+    [HideInInspector]
 	public float timeBetweenAttacks;        // The time between each shot.
+
+    [HideInInspector]
 	public float range;                     // The distance the gun can fire.
 	public Transform actionTarget;			// Target to shoot
 	public Transform shootPoint;

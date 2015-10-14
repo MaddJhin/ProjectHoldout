@@ -28,6 +28,9 @@ public class UnitStats : MonoBehaviour
     [HideInInspector]
     public float attackRange;
 
+    [HideInInspector]
+    public bool stunImmunity;
+
     public enum statusEffects { stun };
 
     private GameManager gm;

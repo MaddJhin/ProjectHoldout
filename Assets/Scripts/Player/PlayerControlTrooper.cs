@@ -31,6 +31,7 @@ public class PlayerControlTrooper : MonoBehaviour {
     [Header ("Unit Attributes")]
 	public float maxHealth = 100f;
 	public float sightRange = 10;
+    public bool stunImmunity = false;
 
     [Tooltip ("How far the unit can go before returning to it's waypoint")]
     public float barricadeMaxThether = 10f;
@@ -69,6 +70,7 @@ public class PlayerControlTrooper : MonoBehaviour {
 		stats.maxHealth = maxHealth;
         stats.currentHealth = maxHealth;
         stats.attackRange = attackRange;
+        stats.stunImmunity = stunImmunity;
 		playerControl.maxBarricadeDistance = barricadeMaxThether;
 		playerControl.sightDistance = sightRange;
 	}

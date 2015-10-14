@@ -24,11 +24,18 @@ using System.Collections.Generic;
 
 public class PlayerMovement : MonoBehaviour {
 
-	public Transform actionTarget; 
+    [HideInInspector]
+	public Transform actionTarget;
+
+    [HideInInspector]
 	public List<string> priorityList = new List<string>();
 	public Transform targetBarricade;
     public BarricadeWaypoint targetWaypoint;
+
+    [HideInInspector]
 	public float maxBarricadeDistance = 10f;
+
+    [HideInInspector]
 	public float sightDistance = 10;
 
 	NavMeshAgent agent;
