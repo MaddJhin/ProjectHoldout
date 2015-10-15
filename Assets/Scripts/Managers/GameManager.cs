@@ -219,9 +219,11 @@ public void AddObjective()
             Debug.Log("Adding Listener for: " + playerLoadout[i] + " at position " + i);
 
 			PlayerMovement param = playerLoadout[i].GetComponent<PlayerMovement>();     // Cache the character controller to be added
+            GameObject playerChar = playerLoadout[i];
 
             b[i].onClick.RemoveAllListeners();                                                          // Remove all previous listeners
             b[i].onClick.AddListener(delegate { IM.SetTarget(param); });                                // Add a new listener with the cached controller
+            b[i].onClick.AddListener(delegate { IM.FocusCamera(playerChar); });
         }
     }
 

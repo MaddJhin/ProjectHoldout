@@ -25,7 +25,7 @@ public class CameraScroll : MonoBehaviour {
 		side *= Time.deltaTime;
 
 		// Move camera based on world space to ignore camera rotation
-		transform.Translate(Vector3.forward * vertical, Space.World);
-		transform.Translate(Vector3.right * side, Space.World);
+		cameraTarget.Translate(Vector3.forward * vertical, Space.World);
+		cameraTarget.Translate(Vector3.right * side, Space.World);
 	}
 }

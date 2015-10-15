@@ -9,6 +9,7 @@ public class InputManager : MonoBehaviour {
 	public Camera thirdPersonCam; 				// Holds the main camera used in third person view
 	public Camera tacticalCam;					// Hold the secondary ortographic camera for tactical view
 	public PlayerMovement setTargetOn;
+    public float lerpSpeed = 1;
 
 	private MenuManager menuManager;
 	private bool thirdPerson;
@@ -18,6 +19,7 @@ public class InputManager : MonoBehaviour {
     private List<Light> waypointMarkerList;
 	private Button frontWaypointButton;
 	private Button rearWaypointButton;
+    private float startTime;
 
     #region Singleton
     private static InputManager _instance;
@@ -72,7 +74,8 @@ public class InputManager : MonoBehaviour {
 		tacticalCam.enabled = false;
 		thirdPerson = true;
 		activeCam = thirdPersonCam;
-	}
+        startTime = Time.time;
+    }
 
     void Update () {
 		// Run when user clicks
@@ -195,4 +198,14 @@ public class InputManager : MonoBehaviour {
 		b.interactable = false;
 		b.gameObject.SetActive(false);
 	}
+
+    public void FocusCamera(GameObject target)
+    {
+        Vector3 currentLocation = thirdPersonCam.transform.parent.position;
+        Vector3 targetlocation = new Vector3(target.transform.position.x, 
+                                             thirdPersonCam.transform.parent.position.y, 
+                                             target.transform.position.z);
+
+        thirdPersonCam.transform.parent.position = Vector3.Lerp(currentLocation, targetlocation, 1f);
+    }
 }
