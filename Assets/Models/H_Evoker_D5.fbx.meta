@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: f20ff78b777b23540b329248c9cf6eb1
-timeCreated: 1442586021
+timeCreated: 1444068316
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
@@ -296,7 +296,7 @@ ModelImporter:
       transformModified: 1
     - name: Bone.005
       position: {x: -3.5527136e-17, y: .00951595511, z: -1.49011609e-10}
-      rotation: {x: .00215351488, y: -.990585864, z: .0622561276, w: .121898383}
+      rotation: {x: .0176637005, y: 1.19190688e-07, z: -2.10567719e-09, w: .999844015}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: Bone.005_end

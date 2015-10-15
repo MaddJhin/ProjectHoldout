@@ -18,36 +18,65 @@ using System.Collections;
 public class UnitStats : MonoBehaviour 
 {
     // Unit attributes
-    public float maxHealth = 100.0f;
+    [HideInInspector]
+    public float maxHealth;
     public float currentHealth;
-    public float attackSpeed = 1.0f;
-    public float attackRange = 1f;
-    public float armor = 0.0f;
-    public float healTreshold = 80f;
+
+    [HideInInspector]
+    public float attackSpeed;
+
+    [HideInInspector]
+    public float attackRange;
+
+    [HideInInspector]
+    public bool stunImmunity;
 
     public enum statusEffects { stun };
 
     private GameManager gm;
+    private PlayerControlMedic[] availableMedics;
 
     void Awake()
     {
         currentHealth = maxHealth;
         gm = GameObject.FindObjectOfType<GameManager>();
+        
+    }
+
+    void Start()
+    {
+        availableMedics = FindObjectsOfType<PlayerControlMedic>();
     }
 
 	void Update () 
     {
         if (currentHealth <= 0)
+        {
+            Debug.Log("Killing Unit");
             KillUnit();
+        }
 
         if (currentHealth > maxHealth)
             currentHealth = maxHealth;
+        
+        if (currentHealth < maxHealth)
+        {
+            foreach (var medic in availableMedics)
+            {
+                if (Vector3.Distance(transform.position, medic.transform.position) < medic.healRange && medic.m_Healing == false)
+                {
+                    medic.healTarget = this;
+                    medic.m_Healing = true;
+                    medic.StartCoroutine("Heal");
+                    break;
+                }
+            }
+        }
 	}
 
     public void TakeDamage(float damageTaken)
     {
         currentHealth -= damageTaken;
-        Debug.Log(gameObject.name + " HP: " + currentHealth);
     }
 
 	public void Heal(float healAmount)
@@ -61,26 +90,22 @@ public class UnitStats : MonoBehaviour
     public void KillUnit()
     {
         // Deactivates the unit
-		gm.RemoveObjective();
+        Debug.Log("Removing Unit");
         gameObject.SetActive(false);
+		gm.RemoveObjective();
     }
 
     public void ApplyStatus(statusEffects effect, float duration)
     {
         if (effect == statusEffects.stun)
         {
-            Debug.Log("Stun detected for " + duration + " seconds");
             StartCoroutine(ActivateStun(duration));
         }
     }
 
     IEnumerator ActivateStun(float duration)
     {
-        Debug.Log("Activating Stun effect");
-
         yield return null;
         yield return new WaitForSeconds(duration);
-
-        Debug.Log("Stun Over");
     }
 }

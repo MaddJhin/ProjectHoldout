@@ -28,14 +28,21 @@ using System.Collections.Generic;
 
 public class PlayerControlTrooper : MonoBehaviour {
 
-	public float health = 100f;
-	public float armor = 0f;
+    [Header ("Unit Attributes")]
+	public float maxHealth = 100f;
 	public float sightRange = 10;
+    public bool stunImmunity = false;
+
+    [Tooltip ("How far the unit can go before returning to it's waypoint")]
+    public float barricadeMaxThether = 10f;
+
+    [Tooltip ("List of units to target. Most important at the start of the list")]
+    public List<string> priorityList = new List<string>();	// Stores action target priorty (highest first).
+
+    [Header("Action Attributes")]
 	public float damagePerHit = 20f;
 	public float attackRange = 2f;
 	public float timeBetweenAttacks = 0.15f;
-	public float barricadeMaxThether = 10f;
-	public List<string> priorityList = new List<string>();	// Stores action target priorty (highest first).
 
 	Transform actionTarget;							// Target to shoot
 	UnitStats stats;								// Unit stat scripts for health assignment
@@ -60,9 +67,11 @@ public class PlayerControlTrooper : MonoBehaviour {
 		playerControl.priorityList = priorityList;
 		playerAction.timeBetweenAttacks = timeBetweenAttacks;
 		originalStoppingDistance = agent.stoppingDistance;
-		stats.currentHealth = health;
+		stats.maxHealth = maxHealth;
+        stats.currentHealth = maxHealth;
+        stats.attackRange = attackRange;
+        stats.stunImmunity = stunImmunity;
 		playerControl.maxBarricadeDistance = barricadeMaxThether;
-		stats.armor = armor;
 		playerControl.sightDistance = sightRange;
 	}
 	

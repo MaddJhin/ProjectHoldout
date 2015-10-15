@@ -19,10 +19,11 @@ public class AreaOfEffect : MonoBehaviour
                 (cache = hitColliders[colliderIndex].gameObject.GetComponent<UnitStats>()))
             {
                 Debug.Log("Valid Target" + hitColliders[colliderIndex]);
-                //hitColliders[colliderIndex].gameObject.GetComponent<UnitStats>().TakeDamage(damage);
-                //hitColliders[colliderIndex].gameObject.GetComponent<UnitStats>().ApplyStatus(UnitStats.statusEffects.stun, duration);
                 cache.TakeDamage(damage);
-                cache.ApplyStatus(UnitStats.statusEffects.stun, duration);
+
+                if(!cache.stunImmunity)
+                    cache.ApplyStatus(UnitStats.statusEffects.stun, duration);
+
                 Debug.Log("Target Attacked");
             }
 

@@ -30,14 +30,21 @@ using System.Collections.Generic;
 
 public class EnemyControlBrute : MonoBehaviour 
 {
+    [Header ("Unit Attributes")]
 	public float maxHealth = 100.0f;
+    public float sightDistance = 10f;
+    
+    [Tooltip ("The target object the unit moves to by default")]
+    public string defaultTarget;
+    public List<string> priorityList = new List<string>();
+
+    [Header ("Attack Attributes")]
 	public float attackSpeed = 1.0f;
-	public float attackRange = 1f;
-	public float armor = 0.0f;
+	public float attackRange = 1f;   
 	public float stunDuration = 1f;
 	public float attackRadius = 5f;
-	public string defaultTarget;
-	public List<string> priorityList = new List<string>();
+    public float damage = 10f;
+	
 
     private NavMeshAgent agent;
     private UnitStats stats;
@@ -47,6 +54,8 @@ public class EnemyControlBrute : MonoBehaviour
     private Vector3 targetLoc;
     private NavMeshObstacle obstacle;
     private GameManager gm;
+    private Animator m_Animator;
+    private ParticleSystem m_ParticleSystem;
 
     void Awake()
     {
@@ -56,6 +65,8 @@ public class EnemyControlBrute : MonoBehaviour
         vision = GetComponent<UnitSight>();
         obstacle = GetComponent<NavMeshObstacle>();
         gm = GameObject.FindObjectOfType<GameManager>();
+        m_Animator = GetComponent<Animator>();
+        m_ParticleSystem = GetComponentInChildren<ParticleSystem>();
     }
 
 	void Start (){
@@ -64,12 +75,15 @@ public class EnemyControlBrute : MonoBehaviour
 		// Set values for dependant scripts. Only modify values in one script in inspector
 		vision.defaultTarget = defaultTarget;
 		vision.priorityList = priorityList;
+        vision.sightDistance = sightDistance;
 		stats.maxHealth = maxHealth;
+        stats.currentHealth = maxHealth;
 		stats.attackSpeed = attackSpeed;
 		stats.attackRange = attackRange;
-		stats.armor = armor;
 		action.stunDuration = stunDuration;
 		action.attackRadius = attackRadius;
+        action.damage = damage;
+
 	}
 
     void OnEnable()
@@ -91,9 +105,11 @@ public class EnemyControlBrute : MonoBehaviour
 			}
             agent.enabled = false;
             obstacle.enabled = true;
+            m_Animator.SetBool("Walk Forward", false);
 
             if (stats.attackSpeed < elapsedTime)
             {
+                m_Animator.SetTrigger("PunchTrigger");
                 elapsedTime = 0f;
                 Attack();
             }
@@ -103,6 +119,7 @@ public class EnemyControlBrute : MonoBehaviour
         {
             obstacle.enabled = false;
             agent.enabled = true;
+            m_Animator.SetBool("Walk Forward", true);
             Move();
         }
 
@@ -112,6 +129,9 @@ public class EnemyControlBrute : MonoBehaviour
     void Attack()
     {
         //agent.Stop();
+        Debug.Log("Current Particles: " + m_ParticleSystem);
+        m_ParticleSystem.Stop();
+        m_ParticleSystem.Play();
         Debug.Log(vision.actionTarget);
         action.Slam(vision.actionTarget);
     }
@@ -120,5 +140,11 @@ public class EnemyControlBrute : MonoBehaviour
     {
         agent.Resume();
         agent.SetDestination(targetLoc);
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRadius);
     }
 }

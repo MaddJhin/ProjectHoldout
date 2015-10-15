@@ -24,11 +24,18 @@ using System.Collections.Generic;
 
 public class PlayerMovement : MonoBehaviour {
 
-	public Transform actionTarget; 
+    [HideInInspector]
+	public Transform actionTarget;
+
+    [HideInInspector]
 	public List<string> priorityList = new List<string>();
 	public Transform targetBarricade;
     public BarricadeWaypoint targetWaypoint;
+
+    [HideInInspector]
 	public float maxBarricadeDistance = 10f;
+
+    [HideInInspector]
 	public float sightDistance = 10;
 
 	NavMeshAgent agent;
@@ -181,8 +188,6 @@ public class PlayerMovement : MonoBehaviour {
         List<float> healthList = new List<float>();
         UnitStats statCache;
 
-        Debug.Log("Potential Heal Targets: " + possibleTargets);
-
         if (possibleTargets != null)
         {
             foreach (Collider possibleTarget in possibleTargets)
@@ -192,7 +197,6 @@ public class PlayerMovement : MonoBehaviour {
                 {
                     if (statCache.currentHealth < statCache.maxHealth && statCache.gameObject != gameObject && gameObject.tag == mode)
                     {
-                        Debug.Log("Valid Potential Target Found: " + statCache.gameObject);
                         statListCache.Add(statCache);
                         healthList.Add(statCache.currentHealth);
                     }

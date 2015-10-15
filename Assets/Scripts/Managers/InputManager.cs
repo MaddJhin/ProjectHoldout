@@ -21,6 +21,10 @@ public class InputManager : MonoBehaviour {
 	private Button rearWaypointButton;
     private float startTime;
 
+    private Renderer rendCache;                 // Used to cache the selected unit's renderer
+    private Color colorCache;                   // Used to cache the outline color of selected unit
+    private Color newColorCache;                // Used to cache the new outline color
+
     #region Singleton
     private static InputManager _instance;
 
@@ -127,7 +131,25 @@ public class InputManager : MonoBehaviour {
 	public void SetTarget (PlayerMovement player)
     {
         Debug.Log("Target set to: " + player);
+
+        // Reset previous target's outline color before setting new target
+        if (rendCache != null)
+            rendCache.material.SetColor("_OutlineColor", colorCache);
+
+        // Set new target and cache their renderer for future color changes
 		setTargetOn = player;
+        rendCache = player.gameObject.GetComponentInChildren<Renderer>();
+
+        Debug.Log("Cached renderer " + rendCache);
+
+        // Create new color from cache, change alpha, and apply
+        if (rendCache != null)
+        {
+            colorCache = rendCache.material.GetColor("_OutlineColor");
+            newColorCache = colorCache;
+            newColorCache.a = (255F);
+            rendCache.material.SetColor("_OutlineColor", newColorCache);
+        }
 	}
 
 	public void Move (BarricadeWaypoint target){

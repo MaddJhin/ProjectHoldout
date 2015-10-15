@@ -30,13 +30,18 @@ using System.Collections.Generic;
 
 public class EnemyControlBob : MonoBehaviour
 {
-	public float maxHealth = 100.0f;
-	public float armor = 0.0f;
-	public float attackSpeed = 1.0f;
-	public float attackRange = 1f;
-	public float damage = 5;
-	public string defaultTarget;
-	public List<string> priorityList = new List<string>();
+    [Header("Unit Attributes")]
+    public float maxHealth = 100.0f;
+    public float sightDistance = 10f;
+
+    [Tooltip("The target object the unit moves to by default")]
+    public string defaultTarget;
+    public List<string> priorityList = new List<string>();
+
+    [Header("Attack Attributes")]
+    public float attackSpeed = 1.0f;
+    public float attackRange = 1f;
+    public float damage = 5;
 
     private NavMeshAgent agent;
     private UnitStats stats;
@@ -66,12 +71,12 @@ public class EnemyControlBob : MonoBehaviour
 		// Set values for dependant scripts. Only modify values in one script in inspector
 		vision.defaultTarget = defaultTarget;
 		vision.priorityList = priorityList;
+        vision.sightDistance = sightDistance;
 		stats.maxHealth = maxHealth;
+        stats.currentHealth = maxHealth;
 		stats.attackSpeed = attackSpeed;
 		stats.attackRange = attackRange;
-		stats.armor = armor;
 		action.damage = damage;
-
 	}
 
     void OnEnable()

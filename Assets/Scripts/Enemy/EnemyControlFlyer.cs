@@ -61,7 +61,6 @@ public class EnemyControlFlyer : MonoBehaviour
 		stats.maxHealth = maxHealth;
 		stats.attackSpeed = attackSpeed;
 		stats.attackRange = attackRange;
-		stats.armor = armor;
 		action.damage = damage;
 	}
 

@@ -23,7 +23,10 @@ using System.Collections;
 
 public class PlayerAction : MonoBehaviour {
 	
+    [HideInInspector]
 	public float timeBetweenAttacks;        // The time between each shot.
+
+    [HideInInspector]
 	public float range;                     // The distance the gun can fire.
 	public Transform actionTarget;			// Target to shoot
 	public Transform shootPoint;
@@ -35,6 +38,9 @@ public class PlayerAction : MonoBehaviour {
 	LineRenderer gunLine;                           // Reference to the line renderer.
 	AudioSource gunAudio;                           // Reference to the audio source.
 	Light gunLight;                                 // Reference to the light component.
+
+    Renderer rendCache;                             // Used to set default alpha
+    Color colorCache;
 	
 	void Awake ()
 	{
@@ -46,7 +52,16 @@ public class PlayerAction : MonoBehaviour {
 		gunLine = GetComponentInChildren <LineRenderer> ();
 		gunAudio = GetComponent<AudioSource> ();
 		gunLight = GetComponentInChildren<Light> ();
+        rendCache = GetComponentInChildren<Renderer>();
 	}
+
+    void Start()
+    {
+        // Set default alpha for outline
+        colorCache = rendCache.material.GetColor("_OutlineColor");
+        colorCache.a = (10F / 255F);
+        rendCache.material.SetColor("_OutlineColor", colorCache);
+    }
 	
 	public void DisableEffects ()
 	{
@@ -105,7 +120,10 @@ public class PlayerAction : MonoBehaviour {
 
 	public void Heal(float healAmount, UnitStats healTarget)
     {
+        if (healTarget != null)
+        {
             Debug.Log("Applying Heal");
             healTarget.Heal(healAmount);
+        }
 	}
 }

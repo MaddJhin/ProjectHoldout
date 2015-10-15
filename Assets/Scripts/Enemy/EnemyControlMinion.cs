@@ -30,13 +30,19 @@ using System.Collections.Generic;
 
 public class EnemyControlMinion : MonoBehaviour 
 {
+    [Header ("Unit Attributes")]
 	public float maxHealth = 100.0f;
-	public float armor = 0.0f;
+    public float sightDistance = 10f;
+
+    [Tooltip("The target object the unit moves to by default")]
+    public string defaultTarget;
+    public List<string> priorityList = new List<string>();
+
+    [Header ("Attack Attributes")]
 	public float attackSpeed = 1.0f;
 	public float attackRange = 1f;
 	public float damage = 5;
-	public string defaultTarget;
-	public List<string> priorityList = new List<string>();
+	
 	
 	private NavMeshAgent agent;
     private UnitStats stats;
@@ -46,6 +52,7 @@ public class EnemyControlMinion : MonoBehaviour
     private Vector3 targetLoc;
     private NavMeshObstacle obstacle;
     private GameManager gm;
+    private LineRenderer atkLine;               // Temporary
 
     // Animation attributes
     private Animator m_Animator;
@@ -73,10 +80,11 @@ public class EnemyControlMinion : MonoBehaviour
 		// Set values for dependant scripts. Only modify values in one script in inspector
 		vision.defaultTarget = defaultTarget;
 		vision.priorityList = priorityList;
+        vision.sightDistance = sightDistance;
 		stats.maxHealth = maxHealth;
+        stats.currentHealth = maxHealth;
 		stats.attackSpeed = attackSpeed;
 		stats.attackRange = attackRange;
-		stats.armor = armor;
 		action.damage = damage;
 
 	}
@@ -92,7 +100,7 @@ public class EnemyControlMinion : MonoBehaviour
 
         // Update the target location
 		targetLoc = vision.actionTarget.transform.position;
-		
+
 		// If unit as at the target, stop moving and block other units
         if (vision.targetDistance <= attackRange)
         {
@@ -116,6 +124,8 @@ public class EnemyControlMinion : MonoBehaviour
             obstacle.enabled = false;
             agent.enabled = true;
             attacking = false;
+            if (atkLine != null)
+                atkLine.enabled = false;
             Move();
         }
 
@@ -124,7 +134,17 @@ public class EnemyControlMinion : MonoBehaviour
 
     void Attack()
     {
+        // Use of line renderer is temporary until animations are hooked up for Evoker
+         
         //agent.Stop();
+        if (gameObject.tag == "Evoker")
+        {
+            atkLine = GetComponent<LineRenderer>();
+            atkLine.SetPosition(0, transform.position);
+            atkLine.SetPosition(1, vision.actionTarget.transform.position);
+            atkLine.enabled = true;
+        }
+
         Debug.Log(vision.actionTarget);
         action.Punch(vision.actionTarget);
     }
@@ -147,5 +167,11 @@ public class EnemyControlMinion : MonoBehaviour
         m_Animator.SetFloat("Forward", m_ForwardAmount, 0.1f, Time.deltaTime);
         m_Animator.SetFloat("Turn", m_TurnAmount, 0.1f, Time.deltaTime);
         m_Animator.SetBool("Attacking", attacking);
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 }
