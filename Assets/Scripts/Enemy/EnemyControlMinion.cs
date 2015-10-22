@@ -67,7 +67,7 @@ public class EnemyControlMinion : MonoBehaviour
         action = GetComponent<EnemyAttack>();
         vision = GetComponent<UnitSight>();
         obstacle = GetComponent<NavMeshObstacle>();
-        m_Animator = GetComponent<Animator>();
+        m_Animator = GetComponentInChildren<Animator>();
         gm = GameObject.FindObjectOfType<GameManager>();
     }
 
@@ -146,6 +146,7 @@ public class EnemyControlMinion : MonoBehaviour
         }
 
         Debug.Log(vision.actionTarget);
+        m_Animator.SetTrigger("AttackTrigger");
         action.Punch(vision.actionTarget);
     }
 
@@ -166,7 +167,6 @@ public class EnemyControlMinion : MonoBehaviour
         // Update animator float values 
         m_Animator.SetFloat("Forward", m_ForwardAmount, 0.1f, Time.deltaTime);
         m_Animator.SetFloat("Turn", m_TurnAmount, 0.1f, Time.deltaTime);
-        m_Animator.SetBool("Attacking", attacking);
     }
 
     void OnDrawGizmos()

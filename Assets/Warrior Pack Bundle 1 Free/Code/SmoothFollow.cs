@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class SmoothFollow : MonoBehaviour
+public class SmoothFollow1 : MonoBehaviour
 {
 	#region Consts
 	private const float SMOOTH_TIME = 0.3f;

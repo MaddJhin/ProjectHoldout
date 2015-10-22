@@ -2,6 +2,9 @@
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using System;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 /*
  * USAGE
@@ -228,4 +231,40 @@ public void AddObjective()
     }
 
     #endregion
+
+    // Handles save & load logic
+    #region Data Management
+
+    public void Save()
+    {
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file = File.Open(Application.persistentDataPath + "/gameInfo.dat", FileMode.Open);
+
+        // Create save data container
+        PlayerData saveData = new PlayerData();
+
+        bf.Serialize(file, saveData);
+        file.Close();
+    }
+
+    public void Load()
+    {
+        if (File.Exists(Application.persistentDataPath + "/gameInfo.dat"))
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(Application.persistentDataPath + "/gameInfo.dat", FileMode.Open);
+
+            PlayerData loadData = (PlayerData)bf.Deserialize(file);
+        }
+    }
+
+    #endregion
+}
+
+// Data containing to write save data to a file
+[Serializable]
+class PlayerData
+{
+    // Save loadout
+    // Save unlocked levels
 }

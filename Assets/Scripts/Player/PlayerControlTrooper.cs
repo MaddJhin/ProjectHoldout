@@ -53,6 +53,11 @@ public class PlayerControlTrooper : MonoBehaviour {
 	bool targetInRange;								// Tracks when target enters and leaves range
 	float originalStoppingDistance;					// Used to store preset agent stopping distance
 	NavMeshObstacle obstacle;						// Used to indicate other units to avoid this one
+
+    Animator m_Animator;
+    float m_TurnAmount;
+    float m_ForwardAmount;
+    bool m_Attacking;
 	
 	void Awake(){
 		agent = GetComponent<NavMeshAgent>();
@@ -60,6 +65,7 @@ public class PlayerControlTrooper : MonoBehaviour {
 		playerAction = GetComponent<PlayerAction>();
 		stats = GetComponent<UnitStats>();
 		obstacle = GetComponent<NavMeshObstacle>();
+        m_Animator = GetComponentInChildren<Animator>();
 	}
 	
 	void Start (){
@@ -77,6 +83,9 @@ public class PlayerControlTrooper : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+        UpdateAnimator(agent.desiredVelocity);
+
 		// Add the time since Update was last called to the timer.
 		timer += Time.deltaTime;
 		actionTarget = playerControl.actionTarget;
@@ -101,6 +110,7 @@ public class PlayerControlTrooper : MonoBehaviour {
 		// If the target is in range and enough time has passed between attacks, Attack.
 		if (timer >= timeBetweenAttacks && targetInRange)
 		{
+            m_Animator.SetTrigger("AttackTrigger");
 			Attack();
 		}
 	}
@@ -128,4 +138,17 @@ public class PlayerControlTrooper : MonoBehaviour {
 		agent.enabled = true;
 		agent.Resume();
 	}
+
+    void UpdateAnimator(Vector3 move)
+    {
+        //Set float values based on nav agent velocity
+        if (move.magnitude > 1f) move.Normalize();
+        move = transform.InverseTransformDirection(move);
+        m_TurnAmount = Mathf.Atan2(move.x, move.z);
+        m_ForwardAmount = move.z;
+
+        // Update animator float values 
+        m_Animator.SetFloat("Forward", m_ForwardAmount, 0.1f, Time.deltaTime);
+        m_Animator.SetFloat("Turn", m_TurnAmount, 0.1f, Time.deltaTime);
+    }
 }
