@@ -110,7 +110,8 @@ public class PlayerControlTrooper : MonoBehaviour {
 		// If the target is in range and enough time has passed between attacks, Attack.
 		if (timer >= timeBetweenAttacks && targetInRange)
 		{
-            m_Animator.SetTrigger("AttackTrigger");
+            Debug.Log("Tropper Attacking");
+            
 			Attack();
 		}
 	}
@@ -128,6 +129,7 @@ public class PlayerControlTrooper : MonoBehaviour {
 
 	void Attack(){
 		timer = 0f;
+        m_Animator.SetTrigger("AttackTrigger");
 		playerAction.Attack(damagePerHit);
 	}
 
