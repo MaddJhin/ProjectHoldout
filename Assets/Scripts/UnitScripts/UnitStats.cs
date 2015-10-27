@@ -53,7 +53,7 @@ public class UnitStats : MonoBehaviour
         if (currentHealth <= 0)
         {
             Debug.Log("Killing Unit");
-            KillUnit();
+            //KillUnit();
         }
 
         if (currentHealth > maxHealth)
@@ -61,13 +61,18 @@ public class UnitStats : MonoBehaviour
         
         if (currentHealth < maxHealth)
         {
+            Debug.Log("Healing Required");
+
             foreach (var medic in availableMedics)
             {
+                Debug.Log("Checking for Medics");
+                Debug.Log(availableMedics);
                 if (Vector3.Distance(transform.position, medic.transform.position) < medic.healRange && medic.m_Healing == false)
                 {
                     medic.healTarget = this;
                     medic.m_Healing = true;
                     medic.StartCoroutine("Heal");
+                    Debug.Log("Polling Medic");
                     break;
                 }
             }

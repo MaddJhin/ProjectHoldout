@@ -113,6 +113,12 @@ public class PlayerControlMedic : MonoBehaviour
             Debug.Log("Heal Target found: " + healTarget);
         }*/
 
+        if (stats.currentHealth <= 0)
+        {
+            m_Animator.Play("Death");
+            StartCoroutine("KillUnit");
+        }
+
 		// If there is nothing to attack, script does nothing.
 		if (healTarget == null) 
 		{
@@ -241,5 +247,11 @@ public class PlayerControlMedic : MonoBehaviour
         healBeam.enabled = false;
 
         yield return null;
+    }
+
+    IEnumerator KillUnit()
+    {
+        yield return new WaitForSeconds(2);
+        gameObject.SetActive(false);
     }
 }

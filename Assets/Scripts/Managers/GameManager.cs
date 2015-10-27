@@ -243,6 +243,9 @@ public void AddObjective()
         // Create save data container
         PlayerData saveData = new PlayerData();
 
+        // Record data in container
+
+
         bf.Serialize(file, saveData);
         file.Close();
     }
@@ -266,5 +269,7 @@ public void AddObjective()
 class PlayerData
 {
     // Save loadout
+    GameObject[] savedLoadout = new GameObject[7];
+
     // Save unlocked levels
 }
