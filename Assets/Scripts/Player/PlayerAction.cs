@@ -58,9 +58,10 @@ public class PlayerAction : MonoBehaviour {
     void Start()
     {
         // Set default alpha for outline
-        colorCache = rendCache.material.GetColor("_OutlineColor");
-        colorCache.a = (10F / 255F);
-        rendCache.material.SetColor("_OutlineColor", colorCache);
+        Debug.Log(rendCache);
+        //colorCache = rendCache.material.GetColor("_OutlineColor");
+        //colorCache.a = (10F / 255F);
+        //rendCache.material.SetColor("_OutlineColor", colorCache);
     }
 	
 	public void DisableEffects ()

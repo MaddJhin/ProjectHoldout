@@ -5,10 +5,10 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<RootNamespace></RootNamespace>
-	<ProjectGuid>{8CD9FA91-5B61-08A4-C0F9-0011FD624AD8}</ProjectGuid>
+	<ProjectGuid>{7BF4B920-5173-902F-3139-29809AC21C40}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
+	<RootNamespace></RootNamespace>
 	<AssemblyName>Assembly-CSharp-Editor</AssemblyName>
 	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
 	<FileAlignment>512</FileAlignment>
@@ -19,7 +19,7 @@
 	<DebugType>full</DebugType>
 	<Optimize>false</Optimize>
 	<OutputPath>Temp\bin\Debug\</OutputPath>
-	<DefineConstants>DEBUG;TRACE;UNITY_5_2_0;UNITY_5_2;UNITY_5;ENABLE_NEW_BUGREPORTER;ENABLE_2D_PHYSICS;ENABLE_4_6_FEATURES;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_REFLECTION_BUFFERS;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;INCLUDE_DIRECTX12;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_LOCALIZATION;ENABLE_ANDROID_ATLAS_ETC1_COMPRESSION;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_LOG_MIXED_STACKTRACE;ENABLE_UNITYWEBREQUEST;ENABLE_EVENT_QUEUE;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN</DefineConstants>
+	<DefineConstants>DEBUG;TRACE;UNITY_5_0_1;UNITY_5_0;UNITY_5;ENABLE_LICENSE_RENAME;ENABLE_NEW_BUGREPORTER;ENABLE_2D_PHYSICS;ENABLE_4_6_FEATURES;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_NEW_HIERARCHY;ENABLE_PHYSICS;ENABLE_PHYSICS_PHYSX3;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_AUDIOMIXER_SUSPEND;ENABLE_NONPRO;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_MONO;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;CROSS_PLATFORM_INPUT</DefineConstants>
 	<ErrorReport>prompt</ErrorReport>
 	<WarningLevel>4</WarningLevel>
 	<NoWarn>0169</NoWarn>
@@ -28,6 +28,7 @@
 	<DebugType>pdbonly</DebugType>
 	<Optimize>true</Optimize>
 	<OutputPath>Temp\bin\Release\</OutputPath>
+	<DefineConstants>TRACE</DefineConstants>
 	<ErrorReport>prompt</ErrorReport>
 	<WarningLevel>4</WarningLevel>
 	<NoWarn>0169</NoWarn>
@@ -38,99 +39,139 @@
 	<Reference Include="System.Core" />
 	<Reference Include="System.Xml.Linq" />
 	<Reference Include="UnityEngine">
-	  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	  <HintPath>D:/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
-	  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	  <HintPath>D:/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Editor\SpawnerScriptEditor.cs" />
+     <Compile Include="Assets\FreeAssetsForTesting\Crafting Mecanim Animation Pack FREE\Elements\Editor\ReviewConfig.cs" />
+     <Compile Include="Assets\FreeAssetsForTesting\Crafting Mecanim Animation Pack FREE\Elements\Editor\ReviewWindowEditor.cs" />
+     <Compile Include="Assets\FreeAssetsForTesting\MecanimAnimationStore\Editor\MixamoStoreWindow.cs" />
+     <Compile Include="Assets\FreeAssetsForTesting\MeshBaker\scripts\Editor\MB3_BatchPrefabBakerEditor.cs" />
+     <Compile Include="Assets\FreeAssetsForTesting\MeshBaker\scripts\Editor\MB3_DisableHiddenAnimationsEditor.cs" />
+     <Compile Include="Assets\FreeAssetsForTesting\MeshBaker\scripts\Editor\MB3_GameObjectMaterialInfo.cs" />
+     <Compile Include="Assets\FreeAssetsForTesting\MeshBaker\scripts\Editor\MB3_MBVersionConcreteEditor.cs" />
+     <Compile Include="Assets\FreeAssetsForTesting\MeshBaker\scripts\Editor\MB3_MeshBakerEditor.cs" />
+     <Compile Include="Assets\FreeAssetsForTesting\MeshBaker\scripts\Editor\MB3_MeshBakerEditorInternal.cs" />
+     <Compile Include="Assets\FreeAssetsForTesting\MeshBaker\scripts\Editor\MB3_MeshBakerEditorWindow.cs" />
+     <Compile Include="Assets\FreeAssetsForTesting\MeshBaker\scripts\Editor\MB3_MeshBakerGrouperEditor.cs" />
+     <Compile Include="Assets\FreeAssetsForTesting\MeshBaker\scripts\Editor\MB3_MultiMeshBakerEditor.cs" />
+     <Compile Include="Assets\FreeAssetsForTesting\MeshBaker\scripts\Editor\MB3_SearchFilters.cs" />
+     <Compile Include="Assets\FreeAssetsForTesting\MeshBaker\scripts\Editor\MB3_ShaderTexturePropertyDrawer.cs" />
+     <Compile Include="Assets\FreeAssetsForTesting\MeshBaker\scripts\Editor\MB3_TextureBakerEditor.cs" />
+     <Compile Include="Assets\FreeAssetsForTesting\MeshBaker\scripts\Editor\MB3_TextureBakerEditorInternal.cs" />
+     <Compile Include="Assets\FreeAssetsForTesting\MeshBaker\scripts\Editor\searchFilters\MB3_GroupByAlreadyAdded.cs" />
+     <Compile Include="Assets\FreeAssetsForTesting\MeshBaker\scripts\Editor\searchFilters\MB3_GroupByLightmapIndex.cs" />
+     <Compile Include="Assets\FreeAssetsForTesting\MeshBaker\scripts\Editor\searchFilters\MB3_GroupByMaterial.cs" />
+     <Compile Include="Assets\FreeAssetsForTesting\MeshBaker\scripts\Editor\searchFilters\MB3_GroupByOutOfBoundsUVs.cs" />
+     <Compile Include="Assets\FreeAssetsForTesting\MeshBaker\scripts\Editor\searchFilters\MB3_GroupByRenderType.cs" />
+     <Compile Include="Assets\FreeAssetsForTesting\MeshBaker\scripts\Editor\searchFilters\MB3_GroupByShader.cs" />
+     <Compile Include="Assets\FreeAssetsForTesting\MeshBaker\scripts\Editor\searchFilters\MB3_GroupByStatic.cs" />
+     <Compile Include="Assets\FreeAssetsForTesting\Mirza Beig\Particle Twister\_scripts\editor\ParticleTwister.cs" />
+     <Compile Include="Assets\FreeAssetsForTesting\Warrior Pack Bundle 3 FREE\Elements\Editor\ReviewConfig.cs" />
+     <Compile Include="Assets\FreeAssetsForTesting\Warrior Pack Bundle 3 FREE\Elements\Editor\ReviewWindowEditor.cs" />
      <Compile Include="Assets\Scripts\Editor\AlphaNumericSort.cs" />
      <Compile Include="Assets\Scripts\Editor\GUIHierarchy.cs" />
      <None Include="Assets\Shaders\Alpha_Texture.shader" />
-     <None Include="Assets\DiscoveryPack_Demo\_README_FIRST.txt" />
+     <None Include="Assets\FreeAssetsForTesting\DiscoveryPack_Demo\_README_FIRST.txt" />
      <None Include="Assets\Shaders\DoubleSided-Light-Spec.shader" />
-     <None Include="Assets\PopcornFX\README.txt" />
-     <None Include="Assets\Shaders\Outline-Diffuse.shader" />
+     <None Include="Assets\FreeAssetsForTesting\Material Animator\Material Animator Lite\Readme.txt" />
+     <None Include="Assets\FreeAssetsForTesting\PopcornFX\README.txt" />
+     <None Include="Assets\FreeAssetsForTesting\Mirza Beig\Particle Twister\README.txt" />
+     <None Include="Assets\FreeAssetsForTesting\Mobility_01_Free_v2\Mobility_Free_Unity_Info.txt" />
+     <None Include="Assets\FreeAssetsForTesting\Material Animator\Resources\SampleShader.shader" />
      <None Include="Assets\Shaders\Rim Lit Bumped Specular.shader" />
-     <None Include="Assets\PopcornFX\Resources\PKFxDistortionEffect.shader" />
-     <None Include="Assets\PopcornFX\Resources\PKFxDistQuickDirtyBlurEffect.shader" />
-     <None Include="Assets\Elementals\!Readme.txt" />
-     <None Include="Assets\Shaders\Bumped-Outline-Diffuse.shader" />
+     <None Include="Assets\FreeAssetsForTesting\PopcornFX\Resources\PKFxDistortionEffect.shader" />
+     <None Include="Assets\FreeAssetsForTesting\PopcornFX\Resources\PKFxDistQuickDirtyBlurEffect.shader" />
+     <None Include="Assets\FreeAssetsForTesting\Elementals\!Readme.txt" />
+     <None Include="Assets\FreeAssetsForTesting\MeshBaker\Release Notes.txt" />
+     <None Include="Assets\FreeAssetsForTesting\MeshBaker\docs\README.txt" />
      <None Include="Assets\Shaders\ProjectorLight.shader" />
+     <None Include="Assets\Shaders\Outline-Shader.shader" />
+     <None Include="Assets\Shaders\Outline-Diffuse.shader" />
+     <None Include="Assets\Shaders\Bumped-Outline-Diffuse.shader" />
      <None Include="Assets\ThirdPersonCharacterGuidelines.txt" />
      <None Include="Assets\Shaders\Skybox-Procedural.shader" />
- <Reference Include="UnityEditor.Advertisements">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/Editor/UnityEditor.Advertisements.dll</HintPath>
- </Reference>
  <Reference Include="UnityEngine.UI">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.UI">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/Editor/UnityEditor.UI.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.Networking">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
- </Reference>
- <Reference Include="UnityEditor.Networking">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/Editor/UnityEditor.Networking.dll</HintPath>
- </Reference>
- <Reference Include="PKFx-Helper">
- <HintPath>C:/Users/Francisco/Repositories/Holdout/Assets/PopcornFX/Scripts/PKFx-Helper.dll</HintPath>
- </Reference>
- <Reference Include="PKFx-Runtime">
- <HintPath>C:/Users/Francisco/Repositories/Holdout/Assets/PopcornFX/Scripts/PKFx-Runtime.dll</HintPath>
- </Reference>
- <Reference Include="PKFxManager">
- <HintPath>C:/Users/Francisco/Repositories/Holdout/Assets/PopcornFX/Scripts/PKFxManager.dll</HintPath>
- </Reference>
- <Reference Include="PKFx-Editor">
- <HintPath>C:/Users/Francisco/Repositories/Holdout/Assets/PopcornFX/Scripts/Editor/PKFx-Editor.dll</HintPath>
+ <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/Editor/UnityEditor.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Graphs">
- <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
+ <HintPath>D:/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Android.Extensions">
- <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/androidplayer/UnityEditor.Android.Extensions.dll</HintPath>
+ <HintPath>D:/Unity/Editor/Data/PlaybackEngines/androidplayer/UnityEditor.Android.Extensions.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions">
- <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.dll</HintPath>
+ <HintPath>D:/Unity/Editor/Data/PlaybackEngines/iossupport/UnityEditor.iOS.Extensions.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.WP8.Extensions">
- <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/wp8support/UnityEditor.WP8.Extensions.dll</HintPath>
+ <HintPath>D:/Unity/Editor/Data/PlaybackEngines/wp8support/UnityEditor.WP8.Extensions.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Metro.Extensions">
- <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/metrosupport/UnityEditor.Metro.Extensions.dll</HintPath>
+ <HintPath>D:/Unity/Editor/Data/PlaybackEngines/metrosupport/UnityEditor.Metro.Extensions.dll</HintPath>
  </Reference>
- <Reference Include="UnityEditor.Tizen.Extensions">
- <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/TizenPlayer/TizenPlayer/UnityEditor.Tizen.Extensions.dll</HintPath>
- </Reference>
- <Reference Include="UnityEditor.SamsungTV.Extensions">
- <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/stvplayer/STVPlayer/UnityEditor.SamsungTV.Extensions.dll</HintPath>
+ <Reference Include="UnityEditor.BB10.Extensions">
+ <HintPath>D:/Unity/Editor/Data/PlaybackEngines/blackberryplayer/UnityEditor.BB10.Extensions.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.WebGL.Extensions">
- <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/webglsupport/UnityEditor.WebGL.Extensions.dll</HintPath>
+ <HintPath>D:/Unity/Editor/Data/PlaybackEngines/webglsupport/UnityEditor.WebGL.Extensions.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.LinuxStandalone.Extensions">
- <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/linuxstandalonesupport/UnityEditor.LinuxStandalone.Extensions.dll</HintPath>
+ <HintPath>D:/Unity/Editor/Data/PlaybackEngines/linuxstandalonesupport/UnityEditor.LinuxStandalone.Extensions.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.WindowsStandalone.Extensions">
- <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
+ <HintPath>D:/Unity/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.OSXStandalone.Extensions">
- <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/macstandalonesupport/UnityEditor.OSXStandalone.Extensions.dll</HintPath>
+ <HintPath>D:/Unity/Editor/Data/PlaybackEngines/macstandalonesupport/UnityEditor.OSXStandalone.Extensions.dll</HintPath>
  </Reference>
- <Reference Include="Mono.Cecil">
- <HintPath>C:/Program Files/Unity/Editor/Data/Managed/Mono.Cecil.dll</HintPath>
+ <Reference Include="Mixamo.UnityStore">
+ <HintPath>C:/Users/Andrew/Documents/ProjectHoldout/Assets/FreeAssetsForTesting/MecanimAnimationStore/Editor/Mixamo.UnityStore.dll</HintPath>
+ </Reference>
+ <Reference Include="Mixamo.UnityStore.Unity4">
+ <HintPath>C:/Users/Andrew/Documents/ProjectHoldout/Assets/FreeAssetsForTesting/MecanimAnimationStore/Editor/Mixamo.UnityStore.Unity4.dll</HintPath>
+ </Reference>
+ <Reference Include="PKFx-Runtime">
+ <HintPath>C:/Users/Andrew/Documents/ProjectHoldout/Assets/FreeAssetsForTesting/PopcornFX/Scripts/PKFx-Runtime.dll</HintPath>
+ </Reference>
+ <Reference Include="PKFx-Helper">
+ <HintPath>C:/Users/Andrew/Documents/ProjectHoldout/Assets/FreeAssetsForTesting/PopcornFX/Scripts/PKFx-Helper.dll</HintPath>
+ </Reference>
+ <Reference Include="PKFxManager">
+ <HintPath>C:/Users/Andrew/Documents/ProjectHoldout/Assets/FreeAssetsForTesting/PopcornFX/Scripts/PKFxManager.dll</HintPath>
+ </Reference>
+ <Reference Include="PKFx-Editor">
+ <HintPath>C:/Users/Andrew/Documents/ProjectHoldout/Assets/FreeAssetsForTesting/PopcornFX/Scripts/Editor/PKFx-Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="ParticleTwister">
+ <HintPath>C:/Users/Andrew/Documents/ProjectHoldout/Assets/FreeAssetsForTesting/Mirza Beig/Particle Twister/_scripts/editor/ParticleTwister.dll</HintPath>
+ </Reference>
+ <Reference Include="MeshBakerCore">
+ <HintPath>C:/Users/Andrew/Documents/ProjectHoldout/Assets/FreeAssetsForTesting/MeshBaker/scripts/MeshBakerCore.dll</HintPath>
+ </Reference>
+ <Reference Include="MeshBakerEvalVersionEditor">
+ <HintPath>C:/Users/Andrew/Documents/ProjectHoldout/Assets/FreeAssetsForTesting/MeshBaker/scripts/Editor/MeshBakerEvalVersionEditor.dll</HintPath>
+ </Reference>
+ <Reference Include="MaterialAnimatorLite">
+ <HintPath>C:/Users/Andrew/Documents/ProjectHoldout/Assets/FreeAssetsForTesting/Material Animator/Material Animator Lite/MaterialAnimatorLite.dll</HintPath>
+ </Reference>
+ <Reference Include="MatAnimLiteEditor">
+ <HintPath>C:/Users/Andrew/Documents/ProjectHoldout/Assets/FreeAssetsForTesting/Material Animator/Material Animator Lite/Editor/MatAnimLiteEditor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
- <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+ <HintPath>D:/Unity/Editor/Data/PlaybackEngines/iossupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp.csproj">
-      <Project>{401A813C-1B39-EA1F-3FCC-5E49B4FEF93F}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
+      <Project>{71505822-3FDA-93FC-7D89-411C558F94AD}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
+    <ProjectReference Include="Assembly-UnityScript.unityproj">
+      <Project>{DC6A05B6-ADC5-E840-23E5-53C154D959FF}</Project>      <Name>Assembly-UnityScript</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
