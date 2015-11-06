@@ -46,57 +46,41 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\FreeAssetsForTesting\Crafting Mecanim Animation Pack FREE\Elements\Editor\ReviewConfig.cs" />
-     <Compile Include="Assets\FreeAssetsForTesting\Crafting Mecanim Animation Pack FREE\Elements\Editor\ReviewWindowEditor.cs" />
-     <Compile Include="Assets\FreeAssetsForTesting\MecanimAnimationStore\Editor\MixamoStoreWindow.cs" />
-     <Compile Include="Assets\FreeAssetsForTesting\MeshBaker\scripts\Editor\MB3_BatchPrefabBakerEditor.cs" />
-     <Compile Include="Assets\FreeAssetsForTesting\MeshBaker\scripts\Editor\MB3_DisableHiddenAnimationsEditor.cs" />
-     <Compile Include="Assets\FreeAssetsForTesting\MeshBaker\scripts\Editor\MB3_GameObjectMaterialInfo.cs" />
-     <Compile Include="Assets\FreeAssetsForTesting\MeshBaker\scripts\Editor\MB3_MBVersionConcreteEditor.cs" />
-     <Compile Include="Assets\FreeAssetsForTesting\MeshBaker\scripts\Editor\MB3_MeshBakerEditor.cs" />
-     <Compile Include="Assets\FreeAssetsForTesting\MeshBaker\scripts\Editor\MB3_MeshBakerEditorInternal.cs" />
-     <Compile Include="Assets\FreeAssetsForTesting\MeshBaker\scripts\Editor\MB3_MeshBakerEditorWindow.cs" />
-     <Compile Include="Assets\FreeAssetsForTesting\MeshBaker\scripts\Editor\MB3_MeshBakerGrouperEditor.cs" />
-     <Compile Include="Assets\FreeAssetsForTesting\MeshBaker\scripts\Editor\MB3_MultiMeshBakerEditor.cs" />
-     <Compile Include="Assets\FreeAssetsForTesting\MeshBaker\scripts\Editor\MB3_SearchFilters.cs" />
-     <Compile Include="Assets\FreeAssetsForTesting\MeshBaker\scripts\Editor\MB3_ShaderTexturePropertyDrawer.cs" />
-     <Compile Include="Assets\FreeAssetsForTesting\MeshBaker\scripts\Editor\MB3_TextureBakerEditor.cs" />
-     <Compile Include="Assets\FreeAssetsForTesting\MeshBaker\scripts\Editor\MB3_TextureBakerEditorInternal.cs" />
-     <Compile Include="Assets\FreeAssetsForTesting\MeshBaker\scripts\Editor\searchFilters\MB3_GroupByAlreadyAdded.cs" />
-     <Compile Include="Assets\FreeAssetsForTesting\MeshBaker\scripts\Editor\searchFilters\MB3_GroupByLightmapIndex.cs" />
-     <Compile Include="Assets\FreeAssetsForTesting\MeshBaker\scripts\Editor\searchFilters\MB3_GroupByMaterial.cs" />
-     <Compile Include="Assets\FreeAssetsForTesting\MeshBaker\scripts\Editor\searchFilters\MB3_GroupByOutOfBoundsUVs.cs" />
-     <Compile Include="Assets\FreeAssetsForTesting\MeshBaker\scripts\Editor\searchFilters\MB3_GroupByRenderType.cs" />
-     <Compile Include="Assets\FreeAssetsForTesting\MeshBaker\scripts\Editor\searchFilters\MB3_GroupByShader.cs" />
-     <Compile Include="Assets\FreeAssetsForTesting\MeshBaker\scripts\Editor\searchFilters\MB3_GroupByStatic.cs" />
-     <Compile Include="Assets\FreeAssetsForTesting\Mirza Beig\Particle Twister\_scripts\editor\ParticleTwister.cs" />
-     <Compile Include="Assets\FreeAssetsForTesting\Warrior Pack Bundle 3 FREE\Elements\Editor\ReviewConfig.cs" />
-     <Compile Include="Assets\FreeAssetsForTesting\Warrior Pack Bundle 3 FREE\Elements\Editor\ReviewWindowEditor.cs" />
+     <Compile Include="Assets\Animation\Warrior Pack Bundle 3 FREE\Elements\Editor\ReviewConfig.cs" />
+     <Compile Include="Assets\Animation\Warrior Pack Bundle 3 FREE\Elements\Editor\ReviewWindowEditor.cs" />
+     <Compile Include="Assets\MeshBaker\scripts\Editor\MB3_BatchPrefabBakerEditor.cs" />
+     <Compile Include="Assets\MeshBaker\scripts\Editor\MB3_DisableHiddenAnimationsEditor.cs" />
+     <Compile Include="Assets\MeshBaker\scripts\Editor\MB3_GameObjectMaterialInfo.cs" />
+     <Compile Include="Assets\MeshBaker\scripts\Editor\MB3_MBVersionConcreteEditor.cs" />
+     <Compile Include="Assets\MeshBaker\scripts\Editor\MB3_MeshBakerEditor.cs" />
+     <Compile Include="Assets\MeshBaker\scripts\Editor\MB3_MeshBakerEditorInternal.cs" />
+     <Compile Include="Assets\MeshBaker\scripts\Editor\MB3_MeshBakerEditorWindow.cs" />
+     <Compile Include="Assets\MeshBaker\scripts\Editor\MB3_MeshBakerGrouperEditor.cs" />
+     <Compile Include="Assets\MeshBaker\scripts\Editor\MB3_MultiMeshBakerEditor.cs" />
+     <Compile Include="Assets\MeshBaker\scripts\Editor\MB3_SearchFilters.cs" />
+     <Compile Include="Assets\MeshBaker\scripts\Editor\MB3_ShaderTexturePropertyDrawer.cs" />
+     <Compile Include="Assets\MeshBaker\scripts\Editor\MB3_TextureBakerEditor.cs" />
+     <Compile Include="Assets\MeshBaker\scripts\Editor\MB3_TextureBakerEditorInternal.cs" />
+     <Compile Include="Assets\MeshBaker\scripts\Editor\searchFilters\MB3_GroupByAlreadyAdded.cs" />
+     <Compile Include="Assets\MeshBaker\scripts\Editor\searchFilters\MB3_GroupByLightmapIndex.cs" />
+     <Compile Include="Assets\MeshBaker\scripts\Editor\searchFilters\MB3_GroupByMaterial.cs" />
+     <Compile Include="Assets\MeshBaker\scripts\Editor\searchFilters\MB3_GroupByOutOfBoundsUVs.cs" />
+     <Compile Include="Assets\MeshBaker\scripts\Editor\searchFilters\MB3_GroupByRenderType.cs" />
+     <Compile Include="Assets\MeshBaker\scripts\Editor\searchFilters\MB3_GroupByShader.cs" />
+     <Compile Include="Assets\MeshBaker\scripts\Editor\searchFilters\MB3_GroupByStatic.cs" />
      <Compile Include="Assets\Scripts\Editor\AlphaNumericSort.cs" />
      <Compile Include="Assets\Scripts\Editor\GUIHierarchy.cs" />
      <None Include="Assets\Shaders\Alpha_Texture.shader" />
-     <None Include="Assets\FreeAssetsForTesting\DiscoveryPack_Demo\_README_FIRST.txt" />
      <None Include="Assets\Shaders\DoubleSided-Light-Spec.shader" />
-     <None Include="Assets\FreeAssetsForTesting\Material Animator\Material Animator Lite\Readme.txt" />
-     <None Include="Assets\FreeAssetsForTesting\PopcornFX\README.txt" />
-     <None Include="Assets\FreeAssetsForTesting\Mirza Beig\Particle Twister\README.txt" />
-     <None Include="Assets\FreeAssetsForTesting\Mobility_01_Free_v2\Mobility_Free_Unity_Info.txt" />
-     <None Include="Assets\FreeAssetsForTesting\Material Animator\Resources\SampleShader.shader" />
      <None Include="Assets\Shaders\Rim Lit Bumped Specular.shader" />
-     <None Include="Assets\FreeAssetsForTesting\PopcornFX\Resources\PKFxDistortionEffect.shader" />
-     <None Include="Assets\FreeAssetsForTesting\PopcornFX\Resources\PKFxDistQuickDirtyBlurEffect.shader" />
-     <None Include="Assets\FreeAssetsForTesting\Elementals\!Readme.txt" />
-     <None Include="Assets\FreeAssetsForTesting\MeshBaker\Release Notes.txt" />
-     <None Include="Assets\FreeAssetsForTesting\MeshBaker\docs\README.txt" />
+     <None Include="Assets\MeshBaker\Release Notes.txt" />
+     <None Include="Assets\MeshBaker\docs\README.txt" />
      <None Include="Assets\Shaders\ProjectorLight.shader" />
      <None Include="Assets\Shaders\Outline-Shader.shader" />
      <None Include="Assets\Shaders\Outline-Diffuse.shader" />
      <None Include="Assets\Shaders\Bumped-Outline-Diffuse.shader" />
      <None Include="Assets\ThirdPersonCharacterGuidelines.txt" />
      <None Include="Assets\Shaders\Skybox-Procedural.shader" />
- <Reference Include="Assembly-UnityScript">
- <HintPath>C:/Users/Andrew/Documents/ProjectHoldout/Library/ScriptAssemblies/Assembly-UnityScript.dll</HintPath>
- </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
@@ -133,38 +117,11 @@
  <Reference Include="UnityEditor.OSXStandalone.Extensions">
  <HintPath>D:/Unity/Editor/Data/PlaybackEngines/macstandalonesupport/UnityEditor.OSXStandalone.Extensions.dll</HintPath>
  </Reference>
- <Reference Include="Mixamo.UnityStore">
- <HintPath>C:/Users/Andrew/Documents/ProjectHoldout/Assets/FreeAssetsForTesting/MecanimAnimationStore/Editor/Mixamo.UnityStore.dll</HintPath>
- </Reference>
- <Reference Include="Mixamo.UnityStore.Unity4">
- <HintPath>C:/Users/Andrew/Documents/ProjectHoldout/Assets/FreeAssetsForTesting/MecanimAnimationStore/Editor/Mixamo.UnityStore.Unity4.dll</HintPath>
- </Reference>
- <Reference Include="PKFx-Runtime">
- <HintPath>C:/Users/Andrew/Documents/ProjectHoldout/Assets/FreeAssetsForTesting/PopcornFX/Scripts/PKFx-Runtime.dll</HintPath>
- </Reference>
- <Reference Include="PKFx-Helper">
- <HintPath>C:/Users/Andrew/Documents/ProjectHoldout/Assets/FreeAssetsForTesting/PopcornFX/Scripts/PKFx-Helper.dll</HintPath>
- </Reference>
- <Reference Include="PKFxManager">
- <HintPath>C:/Users/Andrew/Documents/ProjectHoldout/Assets/FreeAssetsForTesting/PopcornFX/Scripts/PKFxManager.dll</HintPath>
- </Reference>
- <Reference Include="PKFx-Editor">
- <HintPath>C:/Users/Andrew/Documents/ProjectHoldout/Assets/FreeAssetsForTesting/PopcornFX/Scripts/Editor/PKFx-Editor.dll</HintPath>
- </Reference>
- <Reference Include="ParticleTwister">
- <HintPath>C:/Users/Andrew/Documents/ProjectHoldout/Assets/FreeAssetsForTesting/Mirza Beig/Particle Twister/_scripts/editor/ParticleTwister.dll</HintPath>
- </Reference>
  <Reference Include="MeshBakerCore">
- <HintPath>C:/Users/Andrew/Documents/ProjectHoldout/Assets/FreeAssetsForTesting/MeshBaker/scripts/MeshBakerCore.dll</HintPath>
+ <HintPath>C:/Users/Andrew/Documents/ProjectHoldout/Assets/MeshBaker/scripts/MeshBakerCore.dll</HintPath>
  </Reference>
  <Reference Include="MeshBakerEvalVersionEditor">
- <HintPath>C:/Users/Andrew/Documents/ProjectHoldout/Assets/FreeAssetsForTesting/MeshBaker/scripts/Editor/MeshBakerEvalVersionEditor.dll</HintPath>
- </Reference>
- <Reference Include="MaterialAnimatorLite">
- <HintPath>C:/Users/Andrew/Documents/ProjectHoldout/Assets/FreeAssetsForTesting/Material Animator/Material Animator Lite/MaterialAnimatorLite.dll</HintPath>
- </Reference>
- <Reference Include="MatAnimLiteEditor">
- <HintPath>C:/Users/Andrew/Documents/ProjectHoldout/Assets/FreeAssetsForTesting/Material Animator/Material Animator Lite/Editor/MatAnimLiteEditor.dll</HintPath>
+ <HintPath>C:/Users/Andrew/Documents/ProjectHoldout/Assets/MeshBaker/scripts/Editor/MeshBakerEvalVersionEditor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>D:/Unity/Editor/Data/PlaybackEngines/iossupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>

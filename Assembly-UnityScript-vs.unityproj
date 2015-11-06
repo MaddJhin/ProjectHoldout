@@ -59,8 +59,8 @@
      <None Include="Assets\FreeAssetsForTesting\PopcornFX\Resources\PKFxDistortionEffect.shader" />
      <None Include="Assets\FreeAssetsForTesting\PopcornFX\Resources\PKFxDistQuickDirtyBlurEffect.shader" />
      <None Include="Assets\FreeAssetsForTesting\Elementals\!Readme.txt" />
-     <None Include="Assets\FreeAssetsForTesting\MeshBaker\Release Notes.txt" />
-     <None Include="Assets\FreeAssetsForTesting\MeshBaker\docs\README.txt" />
+     <None Include="Assets\MeshBaker\Release Notes.txt" />
+     <None Include="Assets\MeshBaker\docs\README.txt" />
      <None Include="Assets\Shaders\ProjectorLight.shader" />
      <None Include="Assets\Shaders\Outline-Shader.shader" />
      <None Include="Assets\Shaders\Outline-Diffuse.shader" />
@@ -70,20 +70,20 @@
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
- <Reference Include="PKFx-Runtime">
- <HintPath>C:/Users/Andrew/Documents/ProjectHoldout/Assets/FreeAssetsForTesting/PopcornFX/Scripts/PKFx-Runtime.dll</HintPath>
+ <Reference Include="MaterialAnimatorLite">
+ <HintPath>C:/Users/Andrew/Documents/ProjectHoldout/Assets/FreeAssetsForTesting/Material Animator/Material Animator Lite/MaterialAnimatorLite.dll</HintPath>
  </Reference>
  <Reference Include="PKFx-Helper">
  <HintPath>C:/Users/Andrew/Documents/ProjectHoldout/Assets/FreeAssetsForTesting/PopcornFX/Scripts/PKFx-Helper.dll</HintPath>
+ </Reference>
+ <Reference Include="PKFx-Runtime">
+ <HintPath>C:/Users/Andrew/Documents/ProjectHoldout/Assets/FreeAssetsForTesting/PopcornFX/Scripts/PKFx-Runtime.dll</HintPath>
  </Reference>
  <Reference Include="PKFxManager">
  <HintPath>C:/Users/Andrew/Documents/ProjectHoldout/Assets/FreeAssetsForTesting/PopcornFX/Scripts/PKFxManager.dll</HintPath>
  </Reference>
  <Reference Include="MeshBakerCore">
- <HintPath>C:/Users/Andrew/Documents/ProjectHoldout/Assets/FreeAssetsForTesting/MeshBaker/scripts/MeshBakerCore.dll</HintPath>
- </Reference>
- <Reference Include="MaterialAnimatorLite">
- <HintPath>C:/Users/Andrew/Documents/ProjectHoldout/Assets/FreeAssetsForTesting/Material Animator/Material Animator Lite/MaterialAnimatorLite.dll</HintPath>
+ <HintPath>C:/Users/Andrew/Documents/ProjectHoldout/Assets/MeshBaker/scripts/MeshBakerCore.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>D:/Unity/Editor/Data/PlaybackEngines/iossupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
