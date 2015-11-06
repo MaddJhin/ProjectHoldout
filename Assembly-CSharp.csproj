@@ -119,7 +119,6 @@
      <Compile Include="Assets\Scripts\UI\DragPanel.cs" />
      <Compile Include="Assets\Scripts\UI\DropMe.cs" />
      <Compile Include="Assets\Scripts\UI\HorizontalScrollSnap.cs" />
-     <Compile Include="Assets\Scripts\UI\LevelMenu2DUI.cs" />
      <Compile Include="Assets\Scripts\UI\Menu.cs" />
      <Compile Include="Assets\Scripts\UI\MenuManager.cs" />
      <Compile Include="Assets\Scripts\UI\PanelManager.cs" />
@@ -138,7 +137,6 @@
      <None Include="Assets\MeshBaker\Release Notes.txt" />
      <None Include="Assets\MeshBaker\docs\README.txt" />
      <None Include="Assets\Shaders\ProjectorLight.shader" />
-     <None Include="Assets\Shaders\Outline-Shader.shader" />
      <None Include="Assets\Shaders\Outline-Diffuse.shader" />
      <None Include="Assets\Shaders\Bumped-Outline-Diffuse.shader" />
      <None Include="Assets\ThirdPersonCharacterGuidelines.txt" />
